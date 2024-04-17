@@ -20,7 +20,7 @@
     align-items: center;
 }
 .pie-pagina .grupo-1 .box figure img{
-    width: 250px;
+    width: 20px;
 }
 .pie-pagina .grupo-1 .box h2{
     color: #fff;
@@ -29,7 +29,8 @@
 }
 .pie-pagina .grupo-1 .box p{
     color: #efefef;
-    margin-bottom: 10px;
+    font-size: 12px;
+    margin-bottom: 5px;
 }
 .pie-pagina .grupo-1 .red-social div{
     display: inline-block;
