@@ -151,7 +151,7 @@ export function PaginaPrincipal(props) {
                 </section>
             </section>
         </main>
-        <footer>
+        <footer class="footer1">
             <section class="left">
                 <ul>
                     <li><a href="#">Linkedin</a></li>

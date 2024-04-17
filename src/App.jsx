@@ -3,6 +3,8 @@ import PaginaPrincipal from "./views/pagina_principal/PaginaPrincipal";
 import Card from "./components/Card";
 import ShowHide from "./components/ShowHide";
 import vehicles from "./data/vehicles";
+import Footer from "./components/Footer"
+
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
         {vehicleList}
       </div>
       <ShowHide/>
+      <Footer/>
     </div>
   );
 
