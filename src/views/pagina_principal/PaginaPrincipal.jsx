@@ -1,5 +1,6 @@
 import React from 'react'
 import "./PaginaPrincipal.css"
+import FooterWave from '../../components/FooterWave'
 
 export function PaginaPrincipal(props) {
     
@@ -151,18 +152,7 @@ export function PaginaPrincipal(props) {
                 </section>
             </section>
         </main>
-        <footer class="footer1">
-            <section class="left">
-                <ul>
-                    <li><a href="#">Linkedin</a></li>
-                    <li><a href="#">Crunchbase</a></li>
-                    <li><a href="#">Hackernews</a></li>
-                </ul>
-            </section>
-            <section class="right">
-                <img src="./assets/img/Logo SwapDeal Blanco.svg" alt="Logo de Batatabit 2020"/>
-            </section>
-        </footer>
+        <FooterWave/>
         </>
     )
 }
