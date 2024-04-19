@@ -19,7 +19,7 @@
       }
 
       .cls-7 {
-        fill: gray;
+        fill: #ddd;
         font-family: ProductSans-Regular, 'Product Sans';
         font-size: 164.28px;
       }

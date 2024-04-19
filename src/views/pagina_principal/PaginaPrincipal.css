@@ -20,8 +20,8 @@ header {
     background: linear-gradient(160deg,#201E1C 30%, #5E2714 65%,#FF3D00 100%);
 }
 header img {
-    width: 250px;
-    height: 74px;
+    width: 120px;
+    height: auto;
     margin-top: 60px;
     align-self: center;
 }
