@@ -1,6 +1,6 @@
 import React from 'react'
 import "./PaginaPrincipal.css"
-import FooterWave from '../../components/FooterWave'
+import FooterWave from '../../components/Footers/FooterWave'
 
 export function PaginaPrincipal(props) {
 

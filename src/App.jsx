@@ -3,7 +3,7 @@ import PaginaPrincipal from "./views/pagina_principal/PaginaPrincipal";
 import Card from "./components/Card";
 import ShowHide from "./components/ShowHide";
 import vehicles from "./data/vehicles";
-import FooterWave from "./components/FooterWave";
+import FooterWave from "./components/Footers/FooterWave";
 
 
 function App() {
