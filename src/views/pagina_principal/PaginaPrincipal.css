@@ -186,6 +186,7 @@ main {
     overflow: scroll;
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
+    margin-bottom: 200px;
 }
 .main-currency-table, .main-comissions-table {
     scroll-snap-align: center;
