@@ -17,10 +17,10 @@ header {
     min-width: 320px;
     height: 334px;
     text-align: center;
-    background: linear-gradient(160deg,#201E1C 30%, #5E2714 65%,#FF3D00 100%);
+    background: linear-gradient(170deg,#4e0500 35%, #680700 55%,#FF3D00 100%);
 }
 header img {
-    width: 120px;
+    width: 140px;
     height: auto;
     margin-top: 60px;
     align-self: center;
@@ -30,20 +30,20 @@ header img {
     min-width: 288px;
     max-width: 900px;
     height: 218px;
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: center;
     align-self: center;
 }
 .header--title-container h1 {
-    font-size: 2.4rem;
-    font-weight: bold;
+    font-size: 2.3rem;
+    font-weight: 1000;
     line-height: 2.6rem;
     color: var(--just-white);
 }
 .header--title-container p {
     margin-top: 23px;
     font-size: 1.4rem;
-    font-weight: 500;
+    font-weight: 300;
     line-height: 1.8rem;
     color: var(--just-white);
 }
@@ -395,7 +395,7 @@ main {
     width: 100%;
     min-width: 320;
     height: 50vh;
-    background-image: url("./assets/img/shakehands_largo.jpg");
+    background-image: url("./assets/img/qlokura.jpeg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
