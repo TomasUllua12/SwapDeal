@@ -1,5 +1,6 @@
 import React from 'react'
 import "./LoginRegister.css"
+import { Link } from 'react-router-dom'
 
 export function LoginRegister(props) {
     
@@ -7,6 +8,7 @@ export function LoginRegister(props) {
     return (
         <>
             <body>
+                <div className='background'></div>
                 <div className='wrapper'></div>
                 <div className='overlay'>
                     <img className="logo" src="../../public/assets/icons/LogoynombreSwapDealBlanco.svg" alt="Logo SwapDeal" />
@@ -21,7 +23,7 @@ export function LoginRegister(props) {
                                     name='email' placeholder='Email' required=""/>
                                     <input className="input" type="password"
                                     name='pswd' placeholder='Password' required=""/>
-                                    <button>Iniciar sesión</button>
+                                    <Link to={"/Inicio"}><button>Iniciar sesión</button></Link>
                                 </form>
                             </div>
                             
@@ -34,7 +36,7 @@ export function LoginRegister(props) {
                                     name='email' placeholder='Email' required=""/>
                                     <input className="input" type="password"
                                     name='pswd' placeholder='Password' required=""/>
-                                    <button>Crear</button>
+                                    <Link to={"/Inicio"}><button>Crear</button></Link>
                                 </form>
                             </div>
                         </div>

@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import vehicles from './data/vehicles.js'
 import VehicleView from './views/VehicleView.jsx'
 import { LoginRegister } from './views/LoginRegister.jsx'
+import { Inicio } from './views/Inicio.jsx'
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
   {
     path: "/Login",
     element: <LoginRegister/>
+  },
+  {
+    path: "/Inicio",
+    element: <Inicio/>
   }
 ];
 
