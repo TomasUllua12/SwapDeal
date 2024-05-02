@@ -1,6 +1,7 @@
 import React from 'react'
 import "./PaginaPrincipal.css"
 import FooterWave from '../../components/Footers/FooterWave'
+import BotonLogin from "../../components/BotonLogin"
 
 export function PaginaPrincipal(props) {
 
@@ -14,8 +15,8 @@ export function PaginaPrincipal(props) {
                     <p>
                         SwapDeal te guía a través del laberinto de intercambios seguros y rentables.
                     </p>
-                    <a href="#plans" class="header--button">Comienza aquí ahora<span></span> </a>
                 </div>
+                <BotonLogin/>
             </header>
             <main>
                 <section id="plans" class="main-plans-container">
