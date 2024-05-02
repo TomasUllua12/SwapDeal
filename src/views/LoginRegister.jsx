@@ -11,7 +11,9 @@ export function LoginRegister(props) {
                 <div className='background'></div>
                 <div className='wrapper'></div>
                 <div className='overlay'>
+                    <Link to={"/"}>
                     <img className="logo" src="../../public/assets/icons/LogoynombreSwapDealBlanco.svg" alt="Logo SwapDeal" />
+                    </Link>
                     <div className='container'>
                         <div className='main'>
                             <input type="checkbox" id='chk' aria-hidden="true" />
