@@ -57,8 +57,8 @@ main {
     width: 100%;
     min-width: 320px;
     height: auto;
-    padding-top: 80px;
-    padding-bottom: 30px;
+    padding-bottom: 180px;
+    padding-top: 150px;
     text-align: center;
 }
 .main-exchange-container {
@@ -66,16 +66,6 @@ main {
     min-width: 288px;
     max-width: 900px;
     margin: 0 auto;
-}
-.main-exchange-container .backgroundImg {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    background-image: url(./assets/img/Bitcoin.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 .main-exchange-container h2 {
     margin-bottom: 30px;
@@ -90,69 +80,6 @@ main {
     font-weight: 500;
     line-height: 1.6rem;
     color: #757575;
-}
-
-.currency-container {
-    background-color: #faf8f7;
-    border-radius: 15px;
-    display: grid;
-    grid-template-rows: 60px 60px 60px 60px; 
-    grid-auto-columns: minmax(115px,160px) minmax(115px,160px);
-    grid-auto-flow: column;
-    gap: 2px;
-    font-size: 1.6rem;
-    font-weight: 500;
-    align-content: center;
-
-}
-.currency-container .item {
-    display: grid;
-    background-color: var(--just-white);
-}
-.currency-container .item div {
-    display: flex;
-    place-self: center;
-}
-.currency-container .item div span {
-    align-self: center;
-}
-
-.price {
-    font-size: 1.4rem;
-    font-weight: normal;
-    color: #757575;
-}
-.price .down {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin-left: 10px;
-    background-image: url(./assets/icons/trending-down.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.price .up {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    margin-left: 10px;
-    background-image: url(./assets/icons/trending-up.svg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.currency-container .top-left {
-    border-radius: 15px 0 0 0;
-}
-.currency-container .top-right {
-    border-radius: 0 15px 0 0;
-}
-.currency-container .bottom-left {
-    border-radius: 0 0 0 15px;
-}
-.currency-container .bottom-right {
-    border-radius: 0 0 15px 0;
 }
 
 .main-product-detail {
