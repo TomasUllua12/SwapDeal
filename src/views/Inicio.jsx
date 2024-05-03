@@ -17,7 +17,7 @@ export function Inicio(props) {
                 {vehicleList}
             </div>
             <ShowHide/>
-            <div class="espacio"></div>
+            <div className="espacio"></div>
             <FooterWave/>
         </>
     )

@@ -6,19 +6,19 @@ export function FooterWave(props) {
 
     return (
         <>
-            <footer class="footer">
-                <div class="waves">
-                    <div class="wave" id="wave1"></div>
-                    <div class="wave" id="wave2"></div>
-                    <div class="wave" id="wave3"></div>
-                    <div class="wave" id="wave4"></div>
+            <footer className="footer">
+                <div className="waves">
+                    <div className="wave" id="wave1"></div>
+                    <div className="wave" id="wave2"></div>
+                    <div className="wave" id="wave3"></div>
+                    <div className="wave" id="wave4"></div>
                 </div>
-                <img class="footer-logo" src="../../public/assets/img/Logo SwapDeal Blanco.svg"></img>
-                <ul class="menu">
-                    <li class="menu__item"><a class="menu__link" href="#">Inicio</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Categorías</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Chat</a></li>
-                    <li class="menu__item"><a class="menu__link" href="#">Ayuda</a></li>
+                <img className="footer-logo" src="../../public/assets/img/Logo SwapDeal Blanco.svg"></img>
+                <ul className="menu">
+                    <li className="menu__item"><a className="menu__link" href="#">Inicio</a></li>
+                    <li className="menu__item"><a className="menu__link" href="#">Categorías</a></li>
+                    <li className="menu__item"><a className="menu__link" href="#">Chat</a></li>
+                    <li className="menu__item"><a className="menu__link" href="#">Ayuda</a></li>
 
                 </ul>
                 <p>&copy;2024 <b>SwapDeal</b> | Todos los Derechos Reservados.</p>
