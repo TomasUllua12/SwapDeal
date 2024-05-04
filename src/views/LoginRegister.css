@@ -1,175 +1,182 @@
 :root {
-    --color-boton: linear-gradient(20deg, rgb(204, 0, 0), rgb(185, 68, 0));
+  --color-boton: linear-gradient(20deg, rgb(204, 0, 0), rgb(185, 68, 0));
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../../public/assets/img/login-image.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: -2; /* Coloca la imagen de fondo detrás de todo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../../public/assets/img/login-image.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -2; /* Coloca la imagen de fondo detrás de todo */
 }
 
 .wrapper {
-    height: 100vh;
-    background: linear-gradient(45deg, rgb(94, 0, 0), rgb(255, 102, 0), 
-    rgb(224, 0, 0), rgb(255, 102, 0), rgb(94, 0, 0)) 0 0 / 1000% no-repeat;
-    animation: animate 7s ease infinite;
-    opacity: 0.3; /* Ajusta la opacidad según sea necesario */
+  height: 100vh;
+  background: linear-gradient(
+      45deg,
+      rgb(94, 0, 0),
+      rgb(255, 102, 0),
+      rgb(224, 0, 0),
+      rgb(255, 102, 0),
+      rgb(94, 0, 0)
+    )
+    0 0 / 1000% no-repeat;
+  animation: animate 7s ease infinite;
+  opacity: 0.3; /* Ajusta la opacidad según sea necesario */
 }
 @keyframes animate {
-    0% {
-        background-position: 0 30%, 0 0;
-    }
-    50% {
-        background-position: 100% 70%, 0 0;
-    }
-    100% {
-        background-position: 0 30%, 0 0;
-    }
+  0% {
+    background-position: 0 30%, 0 0;
+  }
+  50% {
+    background-position: 100% 70%, 0 0;
+  }
+  100% {
+    background-position: 0 30%, 0 0;
+  }
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .logo {
-    position: absolute;
-    top: 10vh; /* Ajusta la posición vertical del logo según necesites */
-    left: 0; /* Ajusta la posición horizontal del logo según necesites */
-    right: 0;
-    margin: auto;
-    width: 100px; /* Ajusta el tamaño del logo según necesites */
-    height: auto; /* Mantén la proporción del logo */
-    z-index: 3; /* Asegúrate de que el logo esté encima de todo */
+  position: absolute;
+  top: 10vh; /* Ajusta la posición vertical del logo según necesites */
+  left: 0; /* Ajusta la posición horizontal del logo según necesites */
+  right: 0;
+  margin: auto;
+  width: 100px; /* Ajusta el tamaño del logo según necesites */
+  height: auto; /* Mantén la proporción del logo */
+  z-index: 3; /* Asegúrate de que el logo esté encima de todo */
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .main {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    max-height: 455px;
-    width: 300px;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 7px 7px 10px 3px #24004628;
-    font-family: 'Comfortaa';
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  max-height: 455px;
+  width: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 7px 7px 10px 3px #24004628;
+  font-family: "Comfortaa";
 }
 
 .form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 14px;
-    padding: 24px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
 }
 
 #chk {
-    display: none;
+  display: none;
 }
 
 .login {
-    position: relative;
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .login label {
-    margin: 25% 0 5%;
+  margin: 25% 0 5%;
 }
 
 label {
-    color: #fff;
-    font-size: 2rem;
-    justify-content: center;
-    display: flex;
-    font-weight: bold;
-    cursor: pointer;
-    transition: .5s ease-in-out;
+  color: #fff;
+  font-size: 2rem;
+  justify-content: center;
+  display: flex;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
 }
 
 .input {
-    color: #555555;
-    width: 100%;
-    height: 40px;
-    background: #e0dede;
-    padding: 10px;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    font-family: 'Comfortaa';
-    font-size: 1.2rem;
+  color: #555555;
+  width: 100%;
+  height: 40px;
+  background: #e0dede;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  font-family: "Comfortaa";
+  font-size: 1.2rem;
 }
 
 .register {
-    background-color: #eee;
-    border-radius: 70% / 10%;
-    transform: translateY(5%);
-    transition: .8s ease-in-out;
+  background-color: #eee;
+  border-radius: 70% / 10%;
+  transform: translateY(5%);
+  transition: 0.8s ease-in-out;
 }
 
 .register label {
-    color: #000000;
-    transform: scale(.7);
+  color: #000000;
+  transform: scale(0.7);
 }
 
 #chk:checked ~ .register {
-    transform: translateY(-60%);
+  transform: translateY(-60%);
 }
 
 #chk:checked ~ .register label {
-    transform: scale(1);
-    margin: 10% 0 5%;
+  transform: scale(1);
+  margin: 10% 0 5%;
 }
 
 #chk:checked ~ .login label {
-    transform: scale(.7);
-    margin: 5% 0 5%;
+  transform: scale(0.7);
+  margin: 5% 0 5%;
 }
 
 .form button {
-    width: 100%;
-    height: 40px;
-    margin: 12px auto 10%;
-    color: #fff;
-    background: var(--color-boton);
-    font-size: 1.2rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: .2s ease-in;
+  width: 100%;
+  height: 40px;
+  margin: 12px auto 10%;
+  color: #fff;
+  background: var(--color-boton);
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
 }
 
 .form button:hover {
-    background-color: #6d44b8;
+  background-color: #6d44b8;
 }
- 
-
-
-

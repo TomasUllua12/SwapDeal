@@ -1,213 +1,213 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  html {
-    font-size: 62.5%;
-    font-family: 'DM Sans', sans-serif;
-    scroll-behavior: smooth;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+  font-family: "DM Sans", sans-serif;
+  scroll-behavior: smooth;
+}
 header {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    min-width: 320px;
-    height: 334px;
-    text-align: center;
-    background: linear-gradient(170deg,#4e0500 35%, #680700 55%,#FF3D00 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-width: 320px;
+  height: 334px;
+  text-align: center;
+  background: linear-gradient(170deg, #4e0500 35%, #680700 55%, #ff3d00 100%);
 }
 header img {
-    width: 140px;
-    height: auto;
-    margin-top: 60px;
-    align-self: center;
+  width: 140px;
+  height: auto;
+  margin-top: 60px;
+  align-self: center;
 }
 .header--title-container {
-    width: 90%;
-    min-width: 288px;
-    max-width: 900px;
-    height: 218px;
-    margin-top: 40px;
-    text-align: center;
-    align-self: center;
+  width: 90%;
+  min-width: 288px;
+  max-width: 900px;
+  height: 218px;
+  margin-top: 40px;
+  text-align: center;
+  align-self: center;
 }
 .header--title-container h1 {
-    font-size: 2.3rem;
-    font-weight: 1000;
-    line-height: 2.6rem;
-    color: var(--just-white);
+  font-size: 2.3rem;
+  font-weight: 1000;
+  line-height: 2.6rem;
+  color: var(--just-white);
 }
 .header--title-container p {
-    margin-top: 23px;
-    font-size: 1.4rem;
-    font-weight: 300;
-    line-height: 1.8rem;
-    color: var(--just-white);
+  margin-top: 23px;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.8rem;
+  color: var(--just-white);
 }
 
 main {
-    width: 100%;
-    height: auto;
-    background-color: var(--off-white);
+  width: 100%;
+  height: auto;
+  background-color: var(--off-white);
 }
 .main-exchange-container {
-    width: 100%;
-    min-width: 320px;
-    height: auto;
-    padding-bottom: 180px;
-    padding-top: 150px;
-    text-align: center;
+  width: 100%;
+  min-width: 320px;
+  height: auto;
+  padding-bottom: 180px;
+  padding-top: 150px;
+  text-align: center;
 }
 .main-exchange-container {
-    width: 90%;
-    min-width: 288px;
-    max-width: 900px;
-    margin: 0 auto;
+  width: 90%;
+  min-width: 288px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 .main-exchange-container h2 {
-    margin-bottom: 30px;
-    font-size: 2.4rem;
-    font-weight: bold;
-    line-height: 2.6rem;
-    color: var(--black);
+  margin-bottom: 30px;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 2.6rem;
+  color: var(--black);
 }
 .main-exchange-container p {
-    margin-bottom: 30px;
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 1.6rem;
-    color: #757575;
+  margin-bottom: 30px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+  color: #757575;
 }
 
 .main-product-detail {
-    position: relative;
-    width: 100%;
-    min-width: 320px;
-    height: auto;
-    padding: 20px 10px;
-    background-color: #6e0d00;
+  position: relative;
+  width: 100%;
+  min-width: 320px;
+  height: auto;
+  padding: 20px 10px;
+  background-color: #6e0d00;
 }
 .product-detail--batata-logo {
-    position: absolute;
-    width: 55px;
-    height: 31px;
-    top: -15px;
-    left: calc(50% - 28px);
-    background-image: url(./assets/icons/Logo\ SwapDeal.svg);
+  position: absolute;
+  width: 55px;
+  height: 31px;
+  top: -15px;
+  left: calc(50% - 28px);
+  background-image: url(./assets/icons/Logo\ SwapDeal.svg);
 }
 .product-detail--title {
-    width: 90%;
-    min-width: 288px;
-    height: auto;
-    margin: 0 auto;
-    margin-top: 50px;
-    text-align: center;
+  width: 90%;
+  min-width: 288px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
 }
 .product-detail--title h2 {
-    margin-bottom: 20px;
-    font-size: 2.4rem;
-    font-weight: bold;
-    line-height: 2.6rem;
-    color: var(--just-white);
+  margin-bottom: 20px;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 2.6rem;
+  color: var(--just-white);
 }
 .product-detail--title p {
-    margin-bottom: 20px;
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 1.8rem;
-    color: #c0c0c0;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  color: #c0c0c0;
 }
 .product-detail--card {
-    width: 90%;
-    min-width: 288px;
-    max-width: 400px;
-    min-height: 150px;
-    margin: 15px auto;
-    padding: 15px;
-    background-color: var(--warm-black);
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.16);
+  width: 90%;
+  min-width: 288px;
+  max-width: 400px;
+  min-height: 150px;
+  margin: 15px auto;
+  padding: 15px;
+  background-color: var(--warm-black);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
 }
 .product-detail--card .icon-card {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-bottom: 10px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .product-detail--card .clock {
-    background-image: url(./assets/icons/clock.svg);
+  background-image: url(./assets/icons/clock.svg);
 }
 .product-detail--card .eye {
-    background-image: url(./assets/icons/eye.svg);
+  background-image: url(./assets/icons/eye.svg);
 }
 .product-detail--card .money {
-    background-image: url(./assets/icons/dollar-sign.svg);
+  background-image: url(./assets/icons/dollar-sign.svg);
 }
 .product-detail--card .tick {
-    background-image: url(./assets/icons/check-circle.svg);
+  background-image: url(./assets/icons/check-circle.svg);
 }
 .product--card-title {
-    margin-bottom: 15px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    line-height: 1.8rem;
-    color: var(--just-white);
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1.8rem;
+  color: var(--just-white);
 }
 .product--card-body {
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 1.8rem;
-    color: #c0c0c0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  color: #c0c0c0;
 }
 
 .bitcoin-img-container {
-    width: 100%;
-    min-width: 320;
-    height: 50vh;
-    background-image: url("./assets/img/qlokura.jpeg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  width: 100%;
+  min-width: 320;
+  height: 50vh;
+  background-image: url("./assets/img/qlokura.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .bitcoin-img-container h2 {
-    padding-top: 60px;
-    font-size: 2.4rem;
-    font-weight: bold;
-    line-height: 2.6rem;
-    color: var(--just-white);
-    text-align: center;
+  padding-top: 60px;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 2.6rem;
+  color: var(--just-white);
+  text-align: center;
 }
 
 .main-plans-container {
-    width: 100%;
-    min-width: 320;
-    padding-bottom: 70px;
-    text-align: center;
+  width: 100%;
+  min-width: 320;
+  padding-bottom: 70px;
+  text-align: center;
 }
 .plans--title {
-    width: 90%;
-    min-width: 288px;
-    height: auto;
-    margin: 0 auto;
-    margin-bottom: 50px;
+  width: 90%;
+  min-width: 288px;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
 .plans--title h2 {
-    padding-top: 50px;
-    font-size: 2.4rem;
-    font-weight: bold;
-    line-height: 2.6rem;
-    color: var(--black);
+  padding-top: 50px;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 2.6rem;
+  color: var(--black);
 }
 .plans--title p {
-    padding-top: 30px;
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 1.8rem;
-    color: #535353;
+  padding-top: 30px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  color: #535353;
 }

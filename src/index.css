@@ -1,5 +1,5 @@
 :root {
-  font-family: "Comfortaa","DM Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Comfortaa", "DM Sans", Inter, system-ui, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,17 +11,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   /* Colores */
-    --bitcoin-orange: #FF3D00;
-    --soft-orange: #ffe9d5;
-    --secondary-blue: #1a9af7;
-    --soft-blue: #e7f5ff;
-    --warm-black: #490f00;
-    --black: #201e1c;
-    --grey: #bababa;
-    --off-white: #faf8f7;
-    --just-white: #fff;
+  --bitcoin-orange: #ff3d00;
+  --soft-orange: #ffe9d5;
+  --secondary-blue: #1a9af7;
+  --soft-blue: #e7f5ff;
+  --warm-black: #490f00;
+  --black: #201e1c;
+  --grey: #bababa;
+  --off-white: #faf8f7;
+  --just-white: #fff;
 }
 
 a {
