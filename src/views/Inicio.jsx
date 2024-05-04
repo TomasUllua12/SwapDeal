@@ -3,6 +3,7 @@ import FooterWave from '../components/Footers/FooterWave'
 import Card from '../components/Card'
 import ShowHide from '../components/ShowHide';
 import vehicles from '../data/vehicles';
+import { Header } from '../components/Header';
 
 export function Inicio(props) {
     
@@ -12,7 +13,7 @@ export function Inicio(props) {
 
     return (
         <>
-            <h1>SwapDeal</h1>
+            <Header/>
             <div className="container">
                 {vehicleList}
             </div>
