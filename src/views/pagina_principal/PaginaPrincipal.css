@@ -8,7 +8,9 @@ html {
   font-family: "DM Sans", sans-serif;
   scroll-behavior: smooth;
 }
-header {
+
+/* HEADER */
+.header-principal {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -19,13 +21,13 @@ header {
   text-align: center;
   background: linear-gradient(170deg, #4e0500 35%, #680700 55%, #ff3d00 100%);
 }
-header img {
+.header-principal__image {
   width: 140px;
   height: auto;
   margin-top: 60px;
   align-self: center;
 }
-.header--title-container {
+.header-principal--title-container {
   width: 90%;
   min-width: 288px;
   max-width: 900px;
@@ -34,13 +36,13 @@ header img {
   text-align: center;
   align-self: center;
 }
-.header--title-container h1 {
+.header-principal__title {
   font-size: 2.3rem;
   font-weight: 1000;
   line-height: 2.6rem;
   color: var(--just-white);
 }
-.header--title-container p {
+.header-principal__description {
   margin-top: 23px;
   font-size: 1.4rem;
   font-weight: 300;
@@ -53,36 +55,38 @@ main {
   height: auto;
   background-color: var(--off-white);
 }
-.main-exchange-container {
+
+/* MAIN SECTION 1*/
+.main-principal-section-1 {
   width: 100%;
-  min-width: 320px;
-  height: auto;
-  padding-bottom: 180px;
-  padding-top: 150px;
+  min-width: 320;
+  padding-bottom: 70px;
   text-align: center;
 }
-.main-exchange-container {
+.main-principal-section-1--title {
   width: 90%;
   min-width: 288px;
-  max-width: 900px;
+  height: auto;
   margin: 0 auto;
+  margin-bottom: 50px;
 }
-.main-exchange-container h2 {
-  margin-bottom: 30px;
+.main-principal-section-1--title-text {
+  padding-top: 50px;
   font-size: 2.4rem;
   font-weight: bold;
   line-height: 2.6rem;
   color: var(--black);
 }
-.main-exchange-container p {
-  margin-bottom: 30px;
+.main-principal-section-1--title-description {
+  padding-top: 30px;
   font-size: 1.4rem;
   font-weight: 500;
-  line-height: 1.6rem;
-  color: #757575;
+  line-height: 1.8rem;
+  color: #535353;
 }
 
-.main-product-detail {
+/* MAIN SECTION 2 */
+.main-principal-section-2 {
   position: relative;
   width: 100%;
   min-width: 320px;
@@ -90,15 +94,15 @@ main {
   padding: 20px 10px;
   background-color: #6e0d00;
 }
-.product-detail--batata-logo {
+.main-principal-section-2--swapdeal-logo {
   position: absolute;
-  width: 55px;
-  height: 31px;
+  width: 85px;
+  height: 48px;
   top: -15px;
   left: calc(50% - 28px);
-  background-image: url(./assets/icons/Logo\ SwapDeal.svg);
+  background-image: url("../../../public/assets/icons/LogoSwapDeal.svg");
 }
-.product-detail--title {
+.main-principal-section-2--title {
   width: 90%;
   min-width: 288px;
   height: auto;
@@ -106,21 +110,23 @@ main {
   margin-top: 50px;
   text-align: center;
 }
-.product-detail--title h2 {
+.main-principal-section-2--title-text {
   margin-bottom: 20px;
   font-size: 2.4rem;
   font-weight: bold;
   line-height: 2.6rem;
   color: var(--just-white);
 }
-.product-detail--title p {
+.main-principal-section-2--title-description {
   margin-bottom: 20px;
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.8rem;
   color: #c0c0c0;
 }
-.product-detail--card {
+
+/* MAIN SECTION 2 CARDS*/
+.main-principal-section-2--cards .--card {
   width: 90%;
   min-width: 288px;
   max-width: 400px;
@@ -131,7 +137,7 @@ main {
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
 }
-.product-detail--card .icon-card {
+.--card .--card__icon {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -140,33 +146,33 @@ main {
   background-position: center;
   background-repeat: no-repeat;
 }
-.product-detail--card .clock {
+.--card .clock {
   background-image: url(./assets/icons/clock.svg);
 }
-.product-detail--card .eye {
+.--card .eye {
   background-image: url(./assets/icons/eye.svg);
 }
-.product-detail--card .money {
+.--card .money {
   background-image: url(./assets/icons/dollar-sign.svg);
 }
-.product-detail--card .tick {
+.--card .tick {
   background-image: url(./assets/icons/check-circle.svg);
 }
-.product--card-title {
+.--card-title {
   margin-bottom: 15px;
   font-size: 1.8rem;
   font-weight: bold;
   line-height: 1.8rem;
   color: var(--just-white);
 }
-.product--card-body {
+.--card-body {
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.8rem;
   color: #c0c0c0;
 }
 
-.bitcoin-img-container {
+.swapdeal-image-container {
   width: 100%;
   min-width: 320;
   height: 50vh;
@@ -175,7 +181,7 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.bitcoin-img-container h2 {
+.swapdeal-image-container--text {
   padding-top: 60px;
   font-size: 2.4rem;
   font-weight: bold;
@@ -184,30 +190,28 @@ main {
   text-align: center;
 }
 
-.main-plans-container {
+/* MAIN SECTION 3 */
+.main-principal-section-3 {
   width: 100%;
-  min-width: 320;
-  padding-bottom: 70px;
-  text-align: center;
-}
-.plans--title {
-  width: 90%;
-  min-width: 288px;
+  min-width: 320px;
   height: auto;
+  padding-bottom: 180px;
+  padding-top: 150px;
+  text-align: center;
+  max-width: 900px;
   margin: 0 auto;
-  margin-bottom: 50px;
 }
-.plans--title h2 {
-  padding-top: 50px;
+.main-principal-section-3--title-text {
+  margin-bottom: 30px;
   font-size: 2.4rem;
   font-weight: bold;
   line-height: 2.6rem;
   color: var(--black);
 }
-.plans--title p {
-  padding-top: 30px;
+.main-principal-section-3--description {
+  margin-bottom: 30px;
   font-size: 1.4rem;
   font-weight: 500;
-  line-height: 1.8rem;
-  color: #535353;
+  line-height: 1.6rem;
+  color: #757575;
 }

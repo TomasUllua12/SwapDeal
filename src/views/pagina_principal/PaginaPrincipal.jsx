@@ -6,75 +6,93 @@ import BotonLogin from "../../components/BotonLogin";
 export function PaginaPrincipal(props) {
   return (
     <>
-      <header>
+      <header className="header-principal">
         <img
+          className="header-principal__image"
           src="../../../public/assets/icons/LogoynombreSwapDeal.svg"
           alt=""
         />
-        <div className="header--title-container">
-          <h1>Tu Plataforma Segura de Intercambio</h1>
-          <p>
+        <div className="header-principal--title-container">
+          <h1 className="header-principal__title">
+            Tu Plataforma Segura de Intercambio
+          </h1>
+          <p className="header-principal__description">
             SwapDeal te guía a través del laberinto de intercambios seguros y
             rentables.
           </p>
         </div>
         <BotonLogin />
       </header>
+
       <main>
-        <section id="plans" className="main-plans-container">
-          <div className="plans--title">
-            <h2>Escoge el plan que mejor se ajuste a ti.</h2>
-            <p>Cualquier plan te da acceso completo a nuestra plataforma.</p>
+        <section className="main-principal-section-1">
+          <div className="main-principal-section-1--title">
+            <h2 className="main-principal-section-1--title-text">
+              Escoge el plan que mejor se ajuste a ti.
+            </h2>
+            <p className="main-principal-section-1--title-description">
+              Cualquier plan te da acceso completo a nuestra plataforma.
+            </p>
           </div>
         </section>
-        <section className="main-product-detail">
-          <span className="product-detail--batata-logo"></span>
-          <div className="product-detail--title">
-            <h2>Creamos un producto sin comparación.</h2>
-            <p>Confiable y diseñado para su uso diario.</p>
+
+        <section className="main-principal-section-2">
+          <span className="main-principal-section-2--swapdeal-logo"></span>
+          <div className="main-principal-section-2--title">
+            <h2 className="main-principal-section-2--title-text">
+              Creamos un producto sin comparación.
+            </h2>
+            <p className="main-principal-section-2--title-description">
+              Confiable y diseñado para su uso diario.
+            </p>
           </div>
-          <section className="product-cards--container">
-            <article className="product-detail--card">
-              <span className="icon-card clock"></span>
-              <p className="product--card-title">Tiempo real</p>
-              <p className="product--card-body">
+
+          <section className="main-principal-section-2--cards">
+            <article className="--card">
+              <span className="--card__icon clock"></span>
+              <p className="--card-title">Tiempo real</p>
+              <p className="--card-body">
                 Nuestro API toma información minuto a minuto sobre las tasas que
                 más determinan el comportamiento.
               </p>
             </article>
-            <article className="product-detail--card">
-              <span className="icon-card eye"></span>
-              <p className="product--card-title">No hay tasas escondidas</p>
-              <p className="product--card-body">
+            <article className="--card">
+              <span className="--card__icon eye"></span>
+              <p className="--card-title">No hay tasas escondidas</p>
+              <p className="--card-body">
                 Ni en la compra o al momento de exit, Batabit siempre te muestra
                 el costo real de lo que estás adquiriendo.
               </p>
             </article>
-            <article className="product-detail--card">
-              <span className="icon-card money"></span>
-              <p className="product--card-title">Compara monedas</p>
-              <p className="product--card-body">
+            <article className="--card">
+              <span className="--card__icon money"></span>
+              <p className="--card-title">Compara monedas</p>
+              <p className="--card-body">
                 No más rumores, con Babtabit sabrás el valor real de cada moneda
                 en el mercado actual.
               </p>
             </article>
-            <article className="product-detail--card">
-              <span className="icon-card tick"></span>
-              <p className="product--card-title">Información confiable</p>
-              <p className="product--card-body">
+            <article className="--card">
+              <span className="--card__icon tick"></span>
+              <p className="--card-title">Información confiable</p>
+              <p className="--card-body">
                 Nuestras fuentes están 100% verificadas y continuamos auditando
                 su contenido mientras se actualizan.
               </p>
             </article>
           </section>
         </section>
-        <section className="bitcoin-img-container">
-          <h2>Conócelo Ahora.</h2>
+
+        <section className="swapdeal-image-container">
+          <h2 className="swapdeal-image-container--text">Conócelo Ahora.</h2>
         </section>
-        <section className="main-exchange-container">
-          <div className="main-exchange-container--title">
-            <h2>Visibilizamos todas las tasas de cambio.</h2>
-            <p>
+
+        <section className="main-principal-section-3">
+          <div className="main-principal-section-3--title">
+            <h2 className="main-principal-section-3--title-text">
+              Visibilizamos todas las tasas de cambio.
+            </h2>
+            <p className="main-principal-section-3--description">
               Traemos información en tiempo real de las casas de cambio y las
               monedas más importantes del mundo.
             </p>
