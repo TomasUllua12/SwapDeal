@@ -24,7 +24,7 @@ export function PaginaPrincipal(props) {
         <BotonLogin />
       </header>
 
-      <main>
+      <main className="main-principal">
         <section className="main-principal-section-1">
           <div className="main-principal-section-1--title">
             <h2 className="main-principal-section-1--title-text">

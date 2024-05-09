@@ -50,7 +50,7 @@ html {
   color: var(--just-white);
 }
 
-main {
+.main-principal {
   width: 100%;
   height: auto;
   background-color: var(--off-white);
