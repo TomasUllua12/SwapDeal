@@ -1,6 +1,6 @@
 import React from "react";
 import "./PaginaPrincipal.css";
-import FooterWave from "../../components/Footers/FooterWave";
+import FooterWavePrincipal from "../../components/Footers/FooterWavePrincipal";
 import BotonLogin from "../../components/BotonLogin";
 
 export function PaginaPrincipal(props) {
@@ -99,7 +99,7 @@ export function PaginaPrincipal(props) {
           </div>
         </section>
       </main>
-      <FooterWave />
+      <FooterWavePrincipal />
     </>
   );
 }
