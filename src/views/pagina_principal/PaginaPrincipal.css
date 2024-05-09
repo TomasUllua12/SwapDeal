@@ -9,6 +9,18 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --just-white: #fff;
+  --just-black: #000000;
+  --light-orange: #ffa167;
+  --first-orange: #ff6200;
+  --second-orange: #ff1a00;
+  --third-orange: #b60900;
+  --fourth-orange: #930300;
+  --fifth-orange: #590200;
+  --sixth-orange: #380100;
+}
+
 /* HEADER */
 .header-principal {
   position: relative;
@@ -19,7 +31,45 @@ html {
   min-width: 320px;
   height: 334px;
   text-align: center;
-  background: linear-gradient(170deg, #4e0500 35%, #680700 55%, #ff3d00 100%);
+}
+.background-header-color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta el tamaño del video para que cubra todo el contenedor */
+  opacity: 0.8;
+  background: linear-gradient(
+      150deg,
+      var(--sixth-orange),
+      var(--fourth-orange),
+      var(--just-black)
+    )
+    0 0 / 1000% no-repeat;
+  animation: animation-header 10s ease infinite;
+  z-index: -1;
+}
+@keyframes animation-header {
+  0% {
+    background-position: 0 30%, 0 0;
+  }
+  50% {
+    background-position: 100% 70%, 0 0;
+  }
+  100% {
+    background-position: 0 30%, 0 0;
+  }
+}
+.background-header-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta el tamaño del video para que cubra todo el contenedor */
+  opacity: 1;
+  z-index: -2;
 }
 .header-principal__image {
   width: 140px;
@@ -176,12 +226,21 @@ html {
   width: 100%;
   min-width: 320;
   height: 50vh;
-  background-image: url("./assets/img/qlokura.jpeg");
+  background-image: url("./assets/img/shakehands.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+.swapdeal-image-container__color {
+  position: absolute;
+  width: 100%;
+  min-width: 320;
+  height: 50vh;
+  background: #000000;
+  opacity: 0.5;
+}
 .swapdeal-image-container--text {
+  position: relative;
   padding-top: 60px;
   font-size: 2.4rem;
   font-weight: bold;

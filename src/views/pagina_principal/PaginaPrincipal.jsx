@@ -21,6 +21,20 @@ export function PaginaPrincipal(props) {
             rentables.
           </p>
         </div>
+        <div className="background-header-color"></div>
+        <video
+          autoPlay
+          playsInline
+          muted
+          loop
+          className="background-header-video"
+        >
+          <source
+            src="../../../public/assets/vids/saludosVideo.mp4"
+            type="video/mp4"
+          />
+          Tu navegador no admite la etiqueta de video HTML5.
+        </video>
         <BotonLogin />
       </header>
 
@@ -84,7 +98,8 @@ export function PaginaPrincipal(props) {
         </section>
 
         <section className="swapdeal-image-container">
-          <h2 className="swapdeal-image-container--text">Conócelo Ahora.</h2>
+          <div className="swapdeal-image-container__color"></div>
+          <h2 className="swapdeal-image-container--text">Comienza Ahora.</h2>
         </section>
 
         <section className="main-principal-section-3">
