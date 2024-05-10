@@ -4,7 +4,7 @@ import "./Header.css";
 export function Header(props) {
   return (
     <>
-      <header>
+      <header className="header-usual">
         <div className="navbar">
           <div className="logo">
             <a href="">Web Dev Creative</a>
