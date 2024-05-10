@@ -31,10 +31,10 @@
       rgb(94, 0, 0)
     )
     0 0 / 1000% no-repeat;
-  animation: animate 7s ease infinite;
+  animation: animate-login 7s ease infinite;
   opacity: 0.3; /* Ajusta la opacidad según sea necesario */
 }
-@keyframes animate {
+@keyframes animate-login {
   0% {
     background-position: 0 30%, 0 0;
   }
