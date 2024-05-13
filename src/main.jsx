@@ -7,6 +7,7 @@ import vehicles from "./data/vehicles.js";
 import VehicleView from "./views/VehicleView.jsx";
 import { LoginRegister } from "./views/LoginRegister.jsx";
 import { Inicio } from "./views/Inicio.jsx";
+import { Perfil } from "./views/Perfil.jsx";
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
   {
     path: "/Inicio",
     element: <Inicio />,
+  },
+  {
+    path: "/Perfil",
+    element: <Perfil />,
   },
 ];
 
