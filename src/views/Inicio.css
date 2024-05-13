@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+.inicio-main {
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+    background-color: #fff;
+    padding-bottom: 20rem;
+}

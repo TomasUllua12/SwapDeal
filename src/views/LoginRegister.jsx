@@ -6,27 +6,27 @@ export function LoginRegister(props) {
   return (
     <>
       <body>
-        <div className="background"></div>
-        <div className="wrapper"></div>
-        <div className="overlay">
+        <div className="login-background"></div>
+        <div className="login-wrapper"></div>
+        <div className="login-overlay">
           <Link to={"/"}>
             <img
-              className="logo"
+              className="login-overlay-logo"
               src="../../public/assets/icons/LogoynombreSwapDealBlanco.svg"
               alt="Logo SwapDeal"
             />
           </Link>
-          <div className="container">
-            <div className="main">
+          <div className="login-container">
+            <div className="login-main">
               <input type="checkbox" id="chk" aria-hidden="true" />
 
               <div className="login">
-                <form className="form">
-                  <label htmlFor="chk" aria-hidden="true">
+                <form className="login-form">
+                  <label className="login-label" htmlFor="chk" aria-hidden="true">
                     Iniciar sesión
                   </label>
                   <input
-                    className="input"
+                    className="login-input"
                     type="email"
                     autoComplete="off"
                     name="email"
@@ -34,7 +34,7 @@ export function LoginRegister(props) {
                     required=""
                   />
                   <input
-                    className="input"
+                    className="login-input"
                     type="password"
                     name="pswd"
                     placeholder="Password"
@@ -47,12 +47,12 @@ export function LoginRegister(props) {
               </div>
 
               <div className="register">
-                <form className="form">
-                  <label htmlFor="chk" aria-hidden="true">
+                <form className="login-form">
+                  <label className="login-label" htmlFor="chk" aria-hidden="true">
                     Creá tu cuenta
                   </label>
                   <input
-                    className="input"
+                    className="login-input"
                     type="text"
                     autoComplete="off"
                     name="txt"
@@ -60,7 +60,7 @@ export function LoginRegister(props) {
                     required=""
                   />
                   <input
-                    className="input"
+                    className="login-input"
                     type="email"
                     autoComplete="off"
                     name="email"
@@ -68,7 +68,7 @@ export function LoginRegister(props) {
                     required=""
                   />
                   <input
-                    className="input"
+                    className="login-input"
                     type="password"
                     name="pswd"
                     placeholder="Password"

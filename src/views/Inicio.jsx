@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import ShowHide from "../components/ShowHide";
 import vehicles from "../data/vehicles";
 import { Header } from "../components/Header";
+import "./Inicio.css"
 
 export function Inicio(props) {
   const vehicleList = vehicles.map((v) => {
@@ -13,9 +14,13 @@ export function Inicio(props) {
   return (
     <>
       <Header />
-      <div className="container">{vehicleList}</div>
-      <ShowHide />
-      <div className="espacio"></div>
+      <main className="inicio-main">
+        <div className="inicio-main-container">
+          <div className="container">{vehicleList}</div>
+          <ShowHide />
+          <div className="espacio"></div>
+        </div>
+      </main>
       <FooterWave />
     </>
   );
