@@ -8,6 +8,10 @@ import VehicleView from "./views/VehicleView.jsx";
 import { LoginRegister } from "./views/LoginRegister.jsx";
 import { Inicio } from "./views/Inicio.jsx";
 import { Perfil } from "./views/Perfil.jsx";
+import { Categorias } from "./views/Categorias.jsx";
+import { Ayuda } from "./views/Ayuda.jsx";
+import { Permutas } from "./views/Permutas.jsx";
+
 
 const routes = [
   {
@@ -25,6 +29,18 @@ const routes = [
   {
     path: "/Perfil",
     element: <Perfil />,
+  },
+  {
+    path: "/Categorias",
+    element: <Categorias/>,
+  },
+  {
+    path: "/Ayuda",
+    element: <Ayuda />,
+  },
+  {
+    path: "/Permutas",
+    element: <Permutas />,
   },
 ];
 
