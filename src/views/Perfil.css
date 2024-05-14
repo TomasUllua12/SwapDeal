@@ -9,17 +9,14 @@
 }
 
 .fondo-perfil{
-    width: 140px;
-    height: auto;
+
     align-self: center;
+    width: 100%;
+    height: auto;
 } 
 
 .foto-fondo { grid-area: 1 / 1 / 2 / 4; }
 
-.fondo-perfil{
-    width: 100%;
-    height: auto;
-}
 
 .cartera {  display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -134,6 +131,7 @@
 .foto-perfil { 
     grid-area: foto-perfil;
 }
+
 
 .agregado { grid-area: 3 / 2 / 4 / 3; }
 
