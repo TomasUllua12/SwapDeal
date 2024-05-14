@@ -40,16 +40,24 @@ export function Header(props) {
           </div>
           <ul className="header-links">
             <li>
-              <a href="">Inicio</a>
+              <Link to="/Inicio">
+                <a href="">Inicio</a>
+              </Link>
             </li>
             <li>
+              <Link to="/Categorias">
               <a href="">Categorías</a>
+              </Link>
             </li>
             <li>
-              <a href="">Permutas</a>
+              <Link to="/Permutas">
+                <a href="">Permutas</a>
+              </Link>
             </li>
             <li>
-              <a href="">Ayuda</a>
+              <Link to="/Ayuda">
+                <a href="">Ayuda</a>
+              </Link>
             </li>
           </ul>
           <Link to="/Perfil">
