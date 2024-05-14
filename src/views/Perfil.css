@@ -131,7 +131,9 @@
 
 .reputacion { grid-area: reputacion; }
 
-.foto-perfil { grid-area: foto-perfil; }
+.foto-perfil { 
+    grid-area: foto-perfil;
+}
 
 .agregado { grid-area: 3 / 2 / 4 / 3; }
 
