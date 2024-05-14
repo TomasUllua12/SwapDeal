@@ -39,8 +39,8 @@ a:hover {
 
 .header-usual {
   position: relative;
-  padding: 0 2rem 15rem;
-  background: linear-gradient(var(--fourth-orange) 10%, var(--third-orange) 30%, var(--just-white) 95%, var(--just-white) 100%);
+  padding: 0 2rem 1rem;
+  background: linear-gradient(var(--fifth-orange) 20%, var(--fourth-orange) 60%,  var(--second-orange) 100%);
 }
 
 .header-logo {
