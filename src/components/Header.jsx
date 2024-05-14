@@ -52,9 +52,11 @@ export function Header(props) {
               <a href="">Ayuda</a>
             </li>
           </ul>
-          <a href="" className="action_btn">
-            Mi perfil
-          </a>
+          <Link to="/Perfil">
+            <a href="" className="action_btn">
+              Mi perfil
+            </a>
+          </Link>
           <div className="toggle_btn">
             <i class="fa-solid fa-bars"></i>
           </div>
