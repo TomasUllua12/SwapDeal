@@ -6,7 +6,7 @@ export function Categorias(props) {
   return (
     <>
       <Header />
-      
+      <div className="HOLA"></div>
       <FooterWave />
     </>
   );
