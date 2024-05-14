@@ -42,7 +42,9 @@ export function Perfil(props) {
                 <div class="informacion-usuario">
                     <div class="nombre-usuario">simon</div>
                     <div class="reputacion">5 estrellas</div>
-                    <div class="foto-perfil"></div>
+                    <div class="foto-perfil">
+                        <img src='../../public/assets/img/images.jpeg'></img>
+                    </div>
                 </div>
                 <div class="agregado"></div>
                 <div class="agregado2"></div>
