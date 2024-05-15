@@ -1,0 +1,20 @@
+.main-categorias {
+  width: auto;
+  height: auto;
+  background-color: #fff;
+  padding-bottom: 25%;
+}
+.main-categorias-title {
+  font-size: 2rem;
+  color: rgb(117, 0, 0);
+  padding-top: 80px;
+  padding-left: 20%;
+  font-weight: bold;
+  font-family: "Montserrat";
+}
+.main-categorias-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
