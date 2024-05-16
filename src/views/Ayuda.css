@@ -1,4 +1,28 @@
-.hola{
-    height: 60vh;
+.secciones-ayuda{
     width: auto;
+    height: auto;
+
+    background-color: #fcfcfc;
+    padding-bottom: 25%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ayuda-title{
+    font-size: 2rem;
+    color: rgb(117, 0, 0);
+    padding-top: 80px;
+    padding-left: 20%;
+    font-weight: bold;
+    font-family: "Montserrat";
+
+    justify-content: left;
+}
+
+.preguntas-frecuentes{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 20%;
+    margin-top: 30px;
 }

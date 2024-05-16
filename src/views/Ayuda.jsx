@@ -2,6 +2,7 @@ import React from 'react'
 import { Header } from "../components/Header"
 import FooterWave from "../components/Footers/FooterWave";
 import "./Ayuda.css"
+import MostrarPreguntas from '../components/Consultas';
 
 export function Ayuda(props) {
     
@@ -10,8 +11,22 @@ export function Ayuda(props) {
         <>
             <Header></Header>
 
+        
+            <div className='secciones-ayuda'>
+                
+                <h2 className="ayuda-title">Ayuda</h2>
 
-            <div className='hola'>holaaa</div>
+                <div className='preguntas-frecuentes'>
+                    <MostrarPreguntas />
+                </div>
+                <div className='acciones-recomendadas'>
+
+                </div>
+                <div className='enviar-consulta'>
+
+                </div>
+            </div>
+
 
             <FooterWave />
         </>
