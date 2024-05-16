@@ -26,3 +26,10 @@
     padding-left: 20%;
     margin-top: 30px;
 }
+.acciones-recomendadas{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 20%;
+    margin-top: 30px;
+}

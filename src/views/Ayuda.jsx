@@ -3,6 +3,7 @@ import { Header } from "../components/Header"
 import FooterWave from "../components/Footers/FooterWave";
 import "./Ayuda.css"
 import MostrarPreguntas from '../components/Preguntas';
+import MostrarAcciones from '../components/Acciones';
 
 export function Ayuda(props) {
     

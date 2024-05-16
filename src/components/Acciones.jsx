@@ -10,10 +10,13 @@ function MostrarAcciones(){
     }
 
     return (
-        <div className="acciones-recomendadas">
-            <button className="acciones-recomendadas" onClick={handleClick}>Acciones recomendadas</button>
-            {show && <p className="lis-preguntas">
-                        1- Como funciona la app?<br></br>
+        <div className="mostrar-acciones">
+            <button className="ver-acciones" onClick={handleClick}>Acciones recomendadas</button>
+            {show && <p className="lis-acciones">
+                        -Hacer doble verificaciones<br></br>
+                        -Revisar perfil usuarios<br></br>
+                        -Subir articulos en buen estado<br></br>
+                        -Ver pasos de permutas
                         
                     </p>}
         </div>
@@ -22,4 +25,4 @@ function MostrarAcciones(){
 }
 
 
-export default MostrarPreguntas;
+export default MostrarAcciones;
