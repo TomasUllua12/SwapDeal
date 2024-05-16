@@ -11,9 +11,17 @@ function MostrarPreguntas(){
 
     return (
         <div className="mostrar-pregunta">
-            <button onClick={handleClick}>Hide
-            Text</button>
-            {show && <h2>HIDE ME!</h2>}
+            <button className="ver-preguntas" onClick={handleClick}>Ver preguntas frecuentes</button>
+            {show && <p className="lis-preguntas">
+                        1- Como funciona la app?<br></br>
+                        -yfdnbgsdcngbdfvsdctn<br></br>
+                        2- Como puedo registrarme?<br></br>
+                        -grvCEMN SFVSDCASX<br></br>
+                        3- Como hago una permutacion?<br></br>
+                        -ytbavdmdnfgbsfvdc<br></br>
+                        4- Como gano puntos?<br></br>
+                        -hbsnbsgfvdfbd
+                    </p>}
         </div>
     );
 
