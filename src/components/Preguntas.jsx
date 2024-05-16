@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Consultas.css";
+import "./Preguntas.css";
 
 function MostrarPreguntas(){
     const [show, setShow] = useState(true);

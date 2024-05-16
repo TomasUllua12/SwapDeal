@@ -2,7 +2,7 @@ import React from 'react'
 import { Header } from "../components/Header"
 import FooterWave from "../components/Footers/FooterWave";
 import "./Ayuda.css"
-import MostrarPreguntas from '../components/Consultas';
+import MostrarPreguntas from '../components/Preguntas';
 
 export function Ayuda(props) {
     
@@ -20,7 +20,7 @@ export function Ayuda(props) {
                     <MostrarPreguntas />
                 </div>
                 <div className='acciones-recomendadas'>
-
+                    <MostrarAcciones />
                 </div>
                 <div className='enviar-consulta'>
 
