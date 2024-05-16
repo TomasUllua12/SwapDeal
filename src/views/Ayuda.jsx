@@ -4,6 +4,8 @@ import FooterWave from "../components/Footers/FooterWave";
 import "./Ayuda.css"
 import MostrarPreguntas from '../components/Preguntas';
 import MostrarAcciones from '../components/Acciones';
+import MostrarBlog from '../components/Blog';
+import MostrarConsulta from '../components/Consulta';
 
 export function Ayuda(props) {
     
@@ -23,8 +25,11 @@ export function Ayuda(props) {
                 <div className='acciones-recomendadas'>
                     <MostrarAcciones />
                 </div>
+                <div className='ver-blog'>
+                    <MostrarBlog />
+                </div>
                 <div className='enviar-consulta'>
-
+                    <MostrarConsulta />
                 </div>
             </div>
 

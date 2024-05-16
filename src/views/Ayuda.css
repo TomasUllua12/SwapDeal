@@ -3,7 +3,7 @@
     height: auto;
 
     background-color: #fcfcfc;
-    padding-bottom: 25%;
+    padding-bottom: 35%;
     display: flex;
     flex-direction: column;
 }
@@ -32,4 +32,21 @@
     align-items: center;
     padding-left: 20%;
     margin-top: 30px;
+}
+
+.ver-blog{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 20%;
+    margin-top: 30px;
+}
+
+.enviar-consulta{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 20%;
+    margin-top: 30px;
+
 }

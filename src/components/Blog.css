@@ -1,11 +1,7 @@
-.mostrar-acciones{
-    color: rgb(0, 0, 0);
-}
-
-.ver-acciones{
+.blog-title{
     height: auto;
     width: 60vw;
-
+    color: #fff;
     background-color: #b60900;
     text-align: left;
     font-size: 2vh;
@@ -13,23 +9,24 @@
     font-family: "Montserrat";
     box-shadow: 2px 2px 5px #3333;
     outline: none !important;
-
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-
+    
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
 
     outline: none; 
     border: none; 
     -webkit-appearance: none; 
     -moz-appearance: none; 
     appearance: none;
+
+
+
 }
 
-.lis-acciones{
-    border-color:#b60900 ;
-    border-style: solid;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding: 1vh;
 
+
+
+.texto-button{
+    padding: 5px;
+    margin-left: 10px;
 }

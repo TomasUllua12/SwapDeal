@@ -1,0 +1,49 @@
+.caja-consulta{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+
+    border-color:#b60900 ;
+    border-style: solid;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 1vh;
+}
+
+.ver-consulta{
+    height: auto;
+    width: 60vw;
+
+    background-color: #b60900;
+    text-align: left;
+    font-size: 2vh;
+    font-weight: bolder;
+    font-family: "Montserrat";
+    box-shadow: 2px 2px 5px #3333;
+    outline: none !important;
+
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+}
+
+
+.email-{
+    color: black
+}
+
+  /* Estilo para el input */
+.consul[type="email"] {
+    background-color: white; /* Fondo blanco para el input */
+    color: black; /* Color del texto del input */
+}
+
+.consul[type="text"] {
+    background-color: white; /* Fondo blanco para el input */
+    color: black; /* Color del texto del input */
+}
+
+.boton-enviar{
+    margin-top: 1vh;
+    background-color:#b60900 ;
+}
