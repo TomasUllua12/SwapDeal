@@ -19,7 +19,7 @@ export function Perfil(props) {
               <h3>Nombre del Usuario</h3>
               <div>
                 <h4>Reputación</h4>
-                <p>153 permutaciones concretadas en los últimos 3 meses</p>f
+                <p>153 permutaciones concretadas en los últimos 3 meses</p>
               </div>
             </div>
           </section>
