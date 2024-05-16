@@ -1,138 +1,122 @@
-
-.container {  display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 0.6fr 1.4fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-
-    background-color: #ff1a00;
+.main-perfil {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: #eee;
+  padding-bottom: 10vh;
 }
 
-.fondo-perfil{
+.main-perfil-foto {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background-color: #ffa4a4fd;
+  border-radius: 300px;
+  margin-left: 7%;
+  margin-top: 3%;
+  box-shadow: inset 0 0 0 10px #fff;
+  margin: 50px auto; /* Esto centrará el elemento horizontalmente */
+  left: 0;
+  right: 70vw;
+  background-image: url("../../public/assets/img/user-perfil.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
-    align-self: center;
+.main-perfil-banner {
+  width: 100%;
+  height: 200px;
+  background-color: black;
+  background-image: url("../../public/assets/img/perfilbanner.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.main-perfil-banner__image {
+  width: 100%;
+  height: 200px;
+  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+.main-perfil-container {
+  display: flex;
+}
+.main-perfil-data {
+  width: 30vw;
+  height: 80vh;
+  background-color: #eee;
+}
+.main-perfil-data-container {
+  width: 80%;
+  height: 62%;
+  margin: 170px auto 20px auto;
+  padding: 20px 70px 70px 70px;
+  display: flex; /* Convertir el contenedor en flexbox */
+  flex-direction: column;
+  align-items: center;
+}
+.main-perfil-data-container h3 {
+    font-family: "Montserrat";
+    color: black;
+    font-size: 2.5rem;
+}
+.main-perfil-data-container h4 {
+    font-family: "Montserrat";
+    color: black;
+    padding-top: 30px;
+    font-size: 1.5rem;
+}
+.main-perfil-data-container p {
+    padding-top: 10px;
+    font-family: "Montserrat";
+    color: #797979;
+    font-size: 1.2rem;
+}
+
+.main-perfil-articulos {
+  width: 70vw;
+  height: 80vh;
+  background-color: #eee;
+}
+.main-perfil-articulos-container {
+  width: 80%;
+  height: 80%;
+  background-color: #fff;
+  margin: 70px auto;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .main-perfil-container {
+    flex-direction: column;
+  }
+
+  .main-perfil-data {
     width: 100%;
     height: auto;
-} 
+  }
+  .main-perfil-articulos {
+    width: 100%;
+    height: 600px;
+  }
 
-.foto-fondo { grid-area: 1 / 1 / 2 / 4; }
-
-
-.cartera {  display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.5fr 1.5fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        "cartera-intercambio . . . cantidad-articulos"
-        "articulo1 articulo2 articulo3 articulo4 flecha-mas"
-        ". . . . .";
-    grid-area: 2 / 2 / 3 / 4;
-
-    background-color: #ffa167;
-    margin-right: 5%;
+  .main-perfil-foto {
+    width: 250px;
+    height: 250px;
+    margin: 150px auto; /* Esto centrará el elemento horizontalmente */
+    left: 0;
+    right: 0;
+    transform: translateY(-50%); /* Esto corrige la centración vertical */
+  }
 }
 
-.cartera-intercambio { grid-area: cartera-intercambio; }
-
-.cantidad-articulos { grid-area: cantidad-articulos; }
-
-.articulo1 {  display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        "categoria1"
-        "producto1"
-        "boton-ver-1";
-    grid-area: articulo1;
+@media (max-width: 1024px) {
+  .main-perfil-foto {
+    width: 200px;
+    height: 200px;
+    top: 50px;
+  }
 }
-
-.categoria1 { grid-area: categoria1; }
-
-.producto1 { grid-area: producto1; }
-
-.boton-ver-1 { grid-area: boton-ver-1; }
-
-.articulo2 {  display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        "categoria2"
-        "producto2"
-        "boton-ver-2";
-    grid-area: articulo2;
-}
-
-.categoria2 { grid-area: categoria2; }
-
-.producto2 { grid-area: producto2; }
-
-.boton-ver-2 { grid-area: boton-ver-2; }
-
-.articulo3 {  display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        "categoria3"
-        "producto3"
-        "boton-verde-3";
-    grid-area: articulo3;
-}
-
-.categoria3 { grid-area: categoria3; }
-
-.producto3 { grid-area: producto3; }
-
-.boton-verde-3 { grid-area: boton-verde-3; }
-
-.articulo4 {  display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        "categoria4"
-        "producto4"
-        "boton-ver-4";
-    grid-area: articulo4;
-}
-
-.categoria4 { grid-area: categoria4; }
-
-.producto4 { grid-area: producto4; }
-
-.boton-ver-4 { grid-area: boton-ver-4; }
-
-
-.flecha-mas { grid-area: flecha-mas; }
-
-.informacion-usuario {  display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-        ". foto-perfil ."
-        ". nombre-usuario ."
-        ". reputacion .";
-    grid-area: 2 / 1 / 3 / 2;
-}
-
-.nombre-usuario { grid-area: nombre-usuario; }
-
-.reputacion { grid-area: reputacion; }
-
-.foto-perfil { 
-    grid-area: foto-perfil;
-}
-
-
-.agregado { grid-area: 3 / 2 / 4 / 3; }
-
-.agregado2 { grid-area: 3 / 3 / 4 / 4; }
