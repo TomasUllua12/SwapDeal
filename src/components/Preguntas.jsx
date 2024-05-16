@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Preguntas.css";
 
 function MostrarPreguntas(){
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     const handleClick = (event) => {
         setShow(!show);
