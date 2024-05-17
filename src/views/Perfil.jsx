@@ -2,6 +2,7 @@ import React from "react";
 import "./Perfil.css";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
+import { Articulo } from "../components/Articulo";
 
 export function Perfil(props) {
   return (
@@ -24,7 +25,14 @@ export function Perfil(props) {
             </div>
           </section>
           <section className="main-perfil-articulos">
-            <div className="main-perfil-articulos-container"></div>
+            <div className="main-perfil-articulos-container">
+              <Articulo/>
+              <Articulo/>
+              <Articulo/>
+              <Articulo/>
+              <Articulo/>
+              <Articulo/>
+            </div>
           </section>
         </div>
       </div>
