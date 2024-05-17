@@ -26,12 +26,26 @@ export function Perfil(props) {
           </section>
           <section className="main-perfil-articulos">
             <div className="main-perfil-articulos-container">
-              <Articulo/>
-              <Articulo/>
-              <Articulo/>
-              <Articulo/>
-              <Articulo/>
-              <Articulo/>
+              <div className="scrollable-content">
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+                <Articulo />
+              </div>
             </div>
           </section>
         </div>

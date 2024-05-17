@@ -57,21 +57,21 @@
   align-items: center;
 }
 .main-perfil-data-container h3 {
-    font-family: "Montserrat";
-    color: black;
-    font-size: 2.5rem;
+  font-family: "Montserrat";
+  color: black;
+  font-size: 2.5rem;
 }
 .main-perfil-data-container h4 {
-    font-family: "Montserrat";
-    color: black;
-    padding-top: 30px;
-    font-size: 1.5rem;
+  font-family: "Montserrat";
+  color: black;
+  padding-top: 30px;
+  font-size: 1.5rem;
 }
 .main-perfil-data-container p {
-    padding-top: 10px;
-    font-family: "Montserrat";
-    color: #797979;
-    font-size: 1.2rem;
+  padding-top: 10px;
+  font-family: "Montserrat";
+  color: #797979;
+  font-size: 1.2rem;
 }
 
 .main-perfil-articulos {
@@ -80,17 +80,65 @@
   background-color: #eee;
 }
 .main-perfil-articulos-container {
-  display: flex;
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
   width: 80%;
-  height: auto;
+  height: 80%; /* Ajusta la altura según tu necesidad */
   background-color: #f8f8f8;
   margin: 70px auto;
   border-radius: 30px;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
   padding: 30px;
-  gap: 10px; /* Espacio entre los elementos, opcional */
+  overflow: hidden; /* Oculta el overflow en el contenedor principal */
+  position: relative; /* Posiciona el contenedor relativo para contener el absoluto */
 }
+.scrollable-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(92% + 12px); /* Aumenta el ancho para evitar que el scroll esté al borde */
+  height: 100%;
+  overflow-y: auto; /* Añade el scrollbar vertical */
+  padding-right: 20px; /* Espacio para scrollbar a la derecha */
+  position: absolute;  
+}
+/* Estilos para la scrollbar en Webkit */
+.scrollable-content::-webkit-scrollbar {
+  width: 10px; /* Ancho de la scrollbar */
+}
+.scrollable-content::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color de fondo del track */
+  border-radius: 10px;
+  margin-top: 30px; /* Espacio superior para hacer la scrollbar más corta */
+  margin-bottom: 50px; /* Espacio inferior para hacer la scrollbar más corta */
+}
+.scrollable-content::-webkit-scrollbar-thumb {
+  background: #ffc5ae; /* Color del thumb */
+  border-radius: 10px;
+}
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+  background: #ffa07a; /* Color del thumb al pasar el mouse */
+}
+
+@media (max-width: 425px) {
+  .main-perfil-articulos-container {
+    width: 70%; /* Ajusta el ancho al 100% para pantallas pequeñas */
+    padding: 20px; /* Ajusta el padding si es necesario */
+  }
+  .scrollable-content {
+    width: calc(90%); /* Ajusta el ancho según el ancho de la scrollbar */
+     /* Ajusta la posición izquierda del contenedor interno */
+    padding-right: 10px; /* Ajusta el espacio para la scrollbar */
+  }
+  .scrollable-content::-webkit-scrollbar {
+    width: 8px; /* Reduce el ancho de la scrollbar para pantallas pequeñas */
+  }
+  .scrollable-content::-webkit-scrollbar-track {
+    margin-top: 20px; /* Ajusta el margen superior para pantallas pequeñas */
+    margin-bottom: 50px; /* Ajusta el margen inferior para pantallas pequeñas */
+  }
+  .scrollable-content::-webkit-scrollbar-thumb {
+    border-radius: 5px; /* Ajusta el radio de la scrollbar para pantallas pequeñas */
+  }
+}
+
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
