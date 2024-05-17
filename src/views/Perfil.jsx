@@ -7,7 +7,7 @@ import { Articulo } from "../components/Articulo";
 export function Perfil(props) {
   return (
     <>
-      <Header></Header>
+      <Header/>
 
       <div className="main-perfil">
         <div className="main-perfil-foto"></div>
