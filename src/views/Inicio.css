@@ -11,3 +11,28 @@
     background-color: #fff;
     padding-bottom: 20rem;
 }
+
+
+.secciones-grid {  
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  grid-template-rows: 1fr 0.8fr 1.2fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "categorias-mas-intercambiada seguirdad-swapdeal"
+    "informacion-sobre-app comentarios-positivos"
+    "mundo-cambiante cantidad-permutas";
+}
+
+.mundo-cambiante { grid-area: mundo-cambiante; }
+
+.cantidad-permutas { grid-area: cantidad-permutas; }
+
+.comentarios-positivos { grid-area: comentarios-positivos; }
+
+.seguirdad-swapdeal { grid-area: seguirdad-swapdeal; }
+
+.categorias-mas-intercambiada { grid-area: categorias-mas-intercambiada; }
+
+.informacion-sobre-app { grid-area: informacion-sobre-app; }
