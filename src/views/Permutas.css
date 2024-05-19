@@ -1,5 +1,86 @@
 .main-permutas {
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-permutas-solicitudes {
+  width: 100%;
+  height: auto;
+  background-color: #eeeeee8c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-permutas-solicitudes-title {
+  font-size: 2rem;
+  color: rgb(117, 0, 0);
+  padding-top: 80px;
+  padding-left: 20%;
+  font-weight: bold;
+  font-family: "Montserrat";
+}
+.main-permutas-solicitudes__container {
+    width: 50%;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-permutas-permutas {
+  width: 100%;
+  height: auto;
+  background-color: #eeeeee8c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-permutas-permutas-title {
+  font-size: 2rem;
+  color: rgb(117, 0, 0);
+  padding-top: 80px;
+  padding-left: 20%;
+  font-weight: bold;
+  font-family: "Montserrat";
+}
+.main-permutas-permutas__container {
+    width: 50%;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-permutas-historial {
+  width: 100%;
+  height: auto;
+  background-color: #eeeeee8c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10vh;
+}
+.main-permutas-historial-title {
+  font-size: 2rem;
+  color: rgb(117, 0, 0);
+  padding-top: 80px;
+  padding-left: 20%;
+  font-weight: bold;
+  font-family: "Montserrat";
+}
+.main-permutas-historial__container {
+    width: 50%;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 }
