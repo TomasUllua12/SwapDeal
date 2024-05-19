@@ -42,9 +42,6 @@ export function Perfil(props) {
                 <Articulo />
                 <Articulo />
                 <Articulo />
-                <Articulo />
-                <Articulo />
-                <Articulo />
               </div>
             </div>
           </section>
