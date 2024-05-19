@@ -47,9 +47,9 @@
   opacity: 0.8;
   background: linear-gradient(
       150deg,
-     /* var(--sixth-orange),
+      var(--sixth-orange),
       var(--fourth-orange),
-      var(--just-black)*/
+      var(--just-black)
     )
     0 0 / 1000% no-repeat;
   animation: animation-header 10s ease infinite;
