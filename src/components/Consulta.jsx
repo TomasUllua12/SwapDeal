@@ -20,7 +20,7 @@ function MostrarConsulta(){
 
 
                 <label  for="asunto"><p className="email-">Asunto:</p></label>
-                <input className="consul" type="text" id="asunto" name="asunto" placeholder="Ingrese el ausnto del email..."></input>
+                <input className="consul" type="text" id="asunto" name="asunto" placeholder="Ingrese el asunto del email..."></input>
 
                 <label  for="consulta"><p className="email-">Consulta:</p></label>
                 <input className="consul" type="text" id="consulta" name="consulta" placeholder="Ingrese su consulta..."></input>

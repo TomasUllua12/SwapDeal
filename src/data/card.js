@@ -15,6 +15,10 @@ const cards = [
       name: "Baño",
       color: "#294000"
     },
+    {
+      name: "Deporte",
+      color: "#380100"
+    },
   ];
   
   export default cards;
