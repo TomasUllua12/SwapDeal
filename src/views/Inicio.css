@@ -14,6 +14,9 @@
 
 
 .secciones-grid {  
+
+  width: 100vw;
+  height: 80vh;
   display: grid;
   grid-template-columns: 1.7fr 1fr;
   grid-template-rows: 1fr 0.8fr 1.2fr;
@@ -23,9 +26,19 @@
     "categorias-mas-intercambiada seguirdad-swapdeal"
     "informacion-sobre-app comentarios-positivos"
     "mundo-cambiante cantidad-permutas";
+
+    background-color: black;
 }
 
-.mundo-cambiante { grid-area: mundo-cambiante; }
+.video-mundo{
+  width: 100%;
+  height: 20vh;
+}
+
+.mundo-cambiante { 
+  grid-area: mundo-cambiante;
+  background-color: #fff;
+}
 
 .cantidad-permutas { grid-area: cantidad-permutas; }
 

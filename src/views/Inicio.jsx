@@ -22,7 +22,20 @@ export function Inicio(props) {
 
         <div className="grid-informacion">
           <div className="secciones-grid">
-            <div className="mundo-cambiante">mundo girando</div>
+            <div className="mundo-cambiante">
+            
+            <video
+            autoPlay
+            playsInline
+            muted
+            loop
+            className="video-mundo">
+            <source
+              src="../../../public/assets/vids/Cyber_World_Network.mp4"
+              type="video/mp4"/>
+            Tu navegador no admite la etiqueta de video HTML5.
+            </video>
+            </div>
             <div className="cantidad-permutas">permutas en la ultima hora 10</div>
             <div className="comentarios-positivos">esta aplicacion me dejo obtener mis cosas preferidas</div>
             <div className="seguirdad-swapdeal">swap deal cuenta con verificacion constante</div>
