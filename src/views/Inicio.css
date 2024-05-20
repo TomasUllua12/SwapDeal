@@ -6,6 +6,10 @@
 
 
 
+
+
+
+
 .inicio-main {
     width: 100%;
     height: 100%;
@@ -137,10 +141,6 @@
   padding-top: 4%;
   font-weight: 500;
   font-size: 2vh;
-}
-
-.mes{
-
 }
 
 
@@ -309,3 +309,340 @@
   position: absolute;  
   bottom: 40px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 320px) {
+  .inicio-main {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    padding-bottom: 20rem;
+
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 0.8fr 1.2fr 1.2fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "fondo-video"
+      "informacion-secciones"
+      "seccion-articulos-recomendados"; 
+}
+
+.background-video-inicio{
+  width: auto;
+  height: auto;
+
+  margin-top: 20px;
+  top: 0;
+  left: 0;
+  object-fit: cover; /* Ajusta el tamaño del video para que cubra todo el contenedor */
+  opacity: 1;
+}
+
+.fondo-video { 
+  grid-area: fondo-video; 
+  width: auto;
+  height: auto;
+}
+
+.header-color{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 50vh;
+  object-fit: cover; /* Ajusta el tamaño del video para que cubra todo el contenedor */
+  opacity: 0.8;
+  background: linear-gradient(
+      150deg,
+      var(--sixth-orange),
+      var(--fourth-orange),
+      var(--just-black)
+    )
+    0 0 / 1000% no-repeat;
+  animation: animation-header 10s ease infinite;
+  z-index: +1;
+  grid-area: fondo-video;
+  margin-top: 9.2%;
+}
+
+
+.informacion-secciones { 
+  grid-area: informacion-secciones; 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+
+
+.mundo-cambiante { 
+  /*border: 2px solid #ff1a00;*/
+  border-radius: 7px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+  width: auto;
+  height: auto;
+  flex: 1 1 30%;
+  margin: 1%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  background-color: #b60900;
+}
+
+.video-mundo{
+  width: auto;
+  height: auto;
+  margin-right: 1%;
+}
+
+
+
+.texto-mundo{
+  text-align: center;
+  color: #fff;
+  width: auto;
+  height: auto;
+  font-weight: bolder;
+  padding-right: 1vw;
+}
+
+
+.texto-swap{
+  text-align: center;
+  color: #fff;
+  width: auto;
+  height: auto;
+  font-weight: bolder;
+}
+
+
+.cantidad-permutas { 
+  color: #000000;
+  height: 35vh;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+  border-radius: 7px;
+  flex: 1 1 30%;
+  margin: 1%;
+  text-align: center;
+}
+
+.permutas-en{
+  color: #fff;
+  background-color: #b60900 ;
+  width: 100%;
+  height: 10%;
+  font-weight: bolder;
+  font-size: 2vh;
+  padding-top: 1%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  
+}
+
+.numeros-permutas{
+  padding-top: 4%;
+  font-weight: 500;
+  font-size: 2vh;
+}
+
+.comentarios-positivos { 
+  color: #000000;
+  
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+  border-radius: 7px;
+  flex: 1 1 30%;
+  margin: 1%;
+  text-align: center;
+  height: auto;
+}
+
+.comen{
+  color: #fff;
+  background-color: #b60900 ;
+  width: 100%;
+  height: 14%;
+  font-weight: bolder;
+  font-size: 2vh;
+  padding-top: 1%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.caja-comentarios{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: auto;
+  gap: 5px;
+}
+
+.comentario1{
+  font-size: 2vh;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+}
+
+
+.comentario2{
+  font-size: 2vh;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+  padding-bottom: 3%;
+}
+
+
+
+.seguirdad-swapdeal { 
+  color: #000000;
+  
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+  border-radius: 7px;
+  flex: 1 1 30%;
+  margin: 1%;
+  text-align: center;
+}
+
+
+.verificacion{
+  color: #fff;
+  background-color: #b60900 ;
+  width: 100%;
+  height: 14%;
+  font-weight: bolder;
+  font-size: 2vh;
+  padding-top: 1%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.protocolo{
+  padding-top: 5%;
+  font-size: 2vh;
+}
+
+.categorias-mas-intercambiada { 
+  color: #000000;
+  
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+  border-radius: 7px;
+  flex: 1 1 30%;
+  margin: 1%;
+  text-align: center;
+}
+
+.categoria-mas{
+  color: #fff;
+  background-color: #b60900 ;
+  width: 100%;
+  height: 14%;
+  font-weight: bolder;
+  font-size: 2vh;
+  padding-top: 1%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.contenedor-categoria{
+  height: auto;
+  width: auto;
+  align-items: center;
+}
+
+.informacion-sobre-app { 
+  
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+  border-radius: 7px;
+  flex: 1 1 30%;
+  margin: 1%;
+  text-align: center;
+
+  color: #fff;
+  background-color: #b60900 ;
+  width: 100%;
+  height: 8%;
+  font-weight: bolder;
+  font-size: 2vh;
+  padding-top: 1%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+
+}
+
+
+.mejores-practicas{
+    color: #fff;
+    outline: none; 
+    border: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none;
+}
+
+
+
+.seccion-articulos-recomendados { 
+  grid-area: seccion-articulos-recomendados; 
+}
+
+.articulos-recomendados{
+  color: #000000;
+  font-weight: bolder;
+  font-size: 2vh;
+}
+
+.main-perfil-articulos-container {
+  width: 80%;
+  height: 85%; /* Ajusta la altura según tu necesidad */
+  background-color: #f8f8f8;
+  margin: 70px auto;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+  padding: 30px;
+  overflow: hidden; /* Oculta el overflow en el contenedor principal */
+  position: relative; /* Posiciona el contenedor relativo para contener el absoluto */
+}
+.scrollable-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(92% + 12px); /* Aumenta el ancho para evitar que el scroll esté al borde */
+  height: 80%;
+  overflow-y: auto; /* Añade el scrollbar vertical */
+  padding-right: 20px; /* Espacio para scrollbar a la derecha */
+  position: absolute;  
+  bottom: 40px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
