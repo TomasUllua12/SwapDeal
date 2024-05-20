@@ -1,0 +1,11 @@
+.ArticuloView {
+    max-width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .ArticuloView img {
+    display: block;
+    max-width: 100%;
+  }
+  

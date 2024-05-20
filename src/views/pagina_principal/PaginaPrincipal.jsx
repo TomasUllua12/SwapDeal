@@ -42,10 +42,10 @@ export function PaginaPrincipal(props) {
         <section className="main-principal-section-1">
           <div className="main-principal-section-1--title">
             <h2 className="main-principal-section-1--title-text">
-              Escoge el plan que mejor se ajuste a ti.
+              Sección de información 1
             </h2>
             <p className="main-principal-section-1--title-description">
-              Cualquier plan te da acceso completo a nuestra plataforma.
+              Subtitulo de sección de información 1
             </p>
           </div>
         </section>
@@ -105,11 +105,10 @@ export function PaginaPrincipal(props) {
         <section className="main-principal-section-3">
           <div className="main-principal-section-3--title">
             <h2 className="main-principal-section-3--title-text">
-              Visibilizamos todas las tasas de cambio.
+              Sección de información 3
             </h2>
             <p className="main-principal-section-3--description">
-              Traemos información en tiempo real de las casas de cambio y las
-              monedas más importantes del mundo.
+              Subtitulo de sección de información 3
             </p>
           </div>
         </section>
