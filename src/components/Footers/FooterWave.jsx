@@ -28,7 +28,7 @@ export function FooterWave(props) {
           </li>
           <li className="menu__item">
             <a className="menu__link" href="#">
-              Chat
+              Permutas
             </a>
           </li>
           <li className="menu__item">
