@@ -105,8 +105,8 @@ export function Inicio(props) {
         <div className="seccion-articulos-recomendados">
           <div className="main-perfil-articulos-container">
           <div className="articulos-recomendados">
-                ARTICULOS RECOMENDADOS
-              </div>
+                ARTICULOS RECOMENDADOS<br></br><br></br>
+          </div>
                 <div className="scrollable-content">
                   <Articulo />
                   <Articulo />
