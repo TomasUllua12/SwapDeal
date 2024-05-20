@@ -3,7 +3,9 @@
   width: 100%;
   height: auto;
   background-color: #eee;
-  padding-bottom: 10vh;
+  padding-bottom: 30vh;
+  z-index: -1;
+  margin-bottom: 3vh;
 }
 
 .main-perfil-foto {
