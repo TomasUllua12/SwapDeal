@@ -54,45 +54,33 @@ export function PaginaPrincipal(props) {
           <span className="main-principal-section-2--swapdeal-logo"></span>
           <div className="main-principal-section-2--title">
             <h2 className="main-principal-section-2--title-text">
-              Creamos un producto sin comparación.
+              Sección de información 2
             </h2>
             <p className="main-principal-section-2--title-description">
-              Confiable y diseñado para su uso diario.
+              Subtitulo de sección de información 2
             </p>
           </div>
 
           <section className="main-principal-section-2--cards">
             <article className="--card">
               <span className="--card__icon clock"></span>
-              <p className="--card-title">Tiempo real</p>
-              <p className="--card-body">
-                Nuestro API toma información minuto a minuto sobre las tasas que
-                más determinan el comportamiento.
-              </p>
+              <p className="--card-title">Info 1</p>
+              <p className="--card-body">Párrafo de información</p>
             </article>
             <article className="--card">
               <span className="--card__icon eye"></span>
-              <p className="--card-title">No hay tasas escondidas</p>
-              <p className="--card-body">
-                Ni en la compra o al momento de exit, Batabit siempre te muestra
-                el costo real de lo que estás adquiriendo.
-              </p>
+              <p className="--card-title">Info 2</p>
+              <p className="--card-body">Párrafo de información</p>
             </article>
             <article className="--card">
               <span className="--card__icon money"></span>
-              <p className="--card-title">Compara monedas</p>
-              <p className="--card-body">
-                No más rumores, con Babtabit sabrás el valor real de cada moneda
-                en el mercado actual.
-              </p>
+              <p className="--card-title">Info 3</p>
+              <p className="--card-body">Párrafo de información</p>
             </article>
             <article className="--card">
               <span className="--card__icon tick"></span>
-              <p className="--card-title">Información confiable</p>
-              <p className="--card-body">
-                Nuestras fuentes están 100% verificadas y continuamos auditando
-                su contenido mientras se actualizan.
-              </p>
+              <p className="--card-title">Info 4</p>
+              <p className="--card-body">Párrafo de información</p>
             </article>
           </section>
         </section>

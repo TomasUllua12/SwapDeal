@@ -1,5 +1,12 @@
 import React from "react";
 import "./FooterWavePrincipal.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faLinkedin,
+  faFacebook,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
 
 export function FooterWavePrincipal(props) {
   return (
@@ -17,23 +24,43 @@ export function FooterWavePrincipal(props) {
         ></img>
         <ul className="menu">
           <li className="menu__item">
-            <a className="menu__link" href="#">
-              1
+            <a
+              className="menu__link"
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
             </a>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="#">
-              2
+            <a
+              className="menu__link"
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
             </a>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="#">
-              3
+            <a
+              className="menu__link"
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faFacebook} />
             </a>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="#">
-              4
+            <a
+              className="menu__link"
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faYoutube} />
             </a>
           </li>
         </ul>
