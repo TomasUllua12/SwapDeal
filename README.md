@@ -1,8 +1,38 @@
-# React + Vite
+# SwapDeal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![SwapDeal Logo](logo.svg)
 
-Currently, two official plugins are available:
+SwapDeal es una plataforma web para la permuta de bienes y servicios. Permite a los usuarios intercambiar directamente sin necesidad de dinero.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Características
+
+- **Intercambio de bienes**: Publica y encuentra artículos para intercambiar.
+- **Intercambio de servicios**: Ofrece y solicita servicios diversos.
+- **Sistema de valoración**: Valora los intercambios y construye tu reputación.
+- **Mensajería interna**: Comunícate con otros usuarios directamente desde la plataforma.
+- **Filtros de búsqueda**: Encuentra exactamente lo que necesitas con nuestros filtros avanzados.
+
+## Instalación
+
+1. Clona este repositorio:
+    ```bash
+    git clone https://github.com/TomasUllua12/SwapDeal.git
+    ```
+2. Navega al directorio del proyecto:
+    ```bash
+    cd swapdeal
+    ```
+3. Instala las dependencias:
+    ```bash
+    npm install
+    ```
+4. Inicia el servidor:
+    ```bash
+    npm start
+    ```
+
+---
+
+Este README proporciona una guía completa para entender, instalar, usar y contribuir al proyecto SwapDeal. Asegúrate de reemplazar `https://github.com/tuusuario/swapdeal.git` con la URL real de tu repositorio y `correo@example.com` con tu dirección de contacto real.
+
+Además, guarda el logo SVG como `logo.svg` en el mismo directorio donde se encuentra tu archivo README.md para que se muestre correctamente.
