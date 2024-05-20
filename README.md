@@ -33,6 +33,3 @@ SwapDeal es una plataforma web para la permuta de bienes y servicios. Permite a 
 
 ---
 
-Este README proporciona una guía completa para entender, instalar, usar y contribuir al proyecto SwapDeal. Asegúrate de reemplazar `https://github.com/tuusuario/swapdeal.git` con la URL real de tu repositorio y `correo@example.com` con tu dirección de contacto real.
-
-Además, guarda el logo SVG como `logo.svg` en el mismo directorio donde se encuentra tu archivo README.md para que se muestre correctamente.
