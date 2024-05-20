@@ -2,6 +2,7 @@ import React from "react";
 import "./Permutas.css";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
+import { Solicitud } from "../components/Permutas/Solicitud";
 
 export function Permutas(props) {
   return (
@@ -12,7 +13,11 @@ export function Permutas(props) {
           Solicitudes de Permuta
         </h2>
         <section className="main-permutas-solicitudes">
-          <div className="main-permutas-solicitudes__container"></div>
+          <div className="main-permutas-solicitudes__container">
+            <Solicitud/>
+            <Solicitud/>
+            <Solicitud/>
+          </div>
         </section>
         <h2 className="main-permutas-permutas-title">Permutas</h2>
         <section className="main-permutas-permutas">

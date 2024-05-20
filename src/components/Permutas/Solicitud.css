@@ -1,0 +1,101 @@
+:root {
+  --just-white: #fff;
+  --just-black: #000000;
+  --light-orange: #ffa167;
+  --first-orange: #ff6200;
+  --second-orange: #ff1a00;
+  --third-orange: #b60900;
+  --fourth-orange: #930300;
+  --fifth-orange: #590200;
+  --sixth-orange: #380100;
+}
+
+.expandable-container {
+  height: auto;
+  margin: 20px;
+  border-radius: 20px;
+  border: solid 2px #ff7a7a;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.expandable-container .header {
+  background: linear-gradient(
+    -1985deg,
+    var(--first-orange) 20%,
+    var(--second-orange) 60%,
+    var(--third-orange) 100%
+  );
+  cursor: pointer;
+  padding: 10px;
+}
+
+.expandable-container .header h2 {
+  margin: 0;
+  color: #fff;
+  font-family: "Montserrat";
+  font-weight: 500;
+}
+
+.content {
+  font-size: 1.2rem;
+  font-family: "Montserrat";
+  font-weight: 500;
+  color: black;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.7s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content.expanded {
+  margin: 10px;
+  max-height: 500px; /* Ajusta según el contenido que tengas */
+}
+
+.content.collapsed {
+  max-height: 0;
+}
+
+.solicitud-permuta-completa {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.solicitud-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.solicitud-buttons button {
+  margin: 5px;
+  padding: 10px 20px; /* Agrega algo de padding para hacer los botones más grandes */
+  font-size: 1.2rem; /* Tamaño de la fuente */
+  border: none; /* Elimina el borde */
+  cursor: pointer; /* Cambia el cursor cuando se pasa sobre el botón */
+  transition: transform 0.3s ease, color 0.3s ease; /* Transiciones suaves */
+}
+.solicitud-buttons .confirmar {
+  background: linear-gradient(
+    -1985deg,
+    var(--first-orange) 20%,
+    var(--second-orange) 60%,
+    var(--third-orange) 100%
+  );
+  color: white;
+}
+.solicitud-buttons .rechazar {
+  background: #707070;
+  color: white;
+}
+.solicitud-buttons .confirmar:hover {
+  transform: scale(1.05); /* Agranda el botón un poco */
+  background: #0b8000;
+}
+.solicitud-buttons .rechazar:hover {
+  transform: scale(1.05); /* Agranda el botón un poco */
+  background: #800000;
+}

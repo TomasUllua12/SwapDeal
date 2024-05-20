@@ -5,6 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import vehicles from "./data/vehicles.js";
 import VehicleView from "./views/VehicleView.jsx";
+import articulos from "./data/articulos.js";
 import { LoginRegister } from "./views/LoginRegister.jsx";
 import { Inicio } from "./views/Inicio.jsx";
 import { Perfil } from "./views/Perfil.jsx";
@@ -43,7 +44,14 @@ const routes = [
     element: <Permutas />,
   },
 ];
-
+/*
+articulos.forEach((articulo) => {
+  routes.push({
+    path: articulo.title,
+    element: <ArticuloView articulo={articulo} />,
+  });
+});
+*/
 vehicles.forEach((vehicle) => {
   routes.push({
     path: vehicle.name,

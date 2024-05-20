@@ -9,7 +9,6 @@
 .main-permutas-solicitudes {
   width: 100%;
   height: auto;
-  background-color: #eeeeee8c;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +24,7 @@
 }
 .main-permutas-solicitudes__container {
     width: 50%;
-    height: 400px;
+    height: auto;
     background-color: #fff;
     border-radius: 20px;
     margin: 20px;
