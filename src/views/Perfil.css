@@ -4,7 +4,6 @@
   height: auto;
   background-color: #eee;
   padding-bottom: 30vh;
-  z-index: -1;
   margin-bottom: 3vh;
 }
 
@@ -92,6 +91,17 @@
   padding: 30px;
   overflow: hidden; /* Oculta el overflow en el contenedor principal */
   position: relative; /* Posiciona el contenedor relativo para contener el absoluto */
+}
+.cartera-de-inventario {
+  color: var(--fourth-orange);
+  font-family: "Montserrat";
+  font-size: 2rem;
+  padding-left: 25px;
+}
+.icono-signo-mas {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../public/assets/icons/signo-mas.svg);
 }
 .scrollable-content {
   display: flex;

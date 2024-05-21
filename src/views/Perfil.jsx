@@ -7,7 +7,7 @@ import { Articulo } from "../components/Articulo";
 export function Perfil(props) {
   return (
     <>
-      <Header/>
+      <Header />
 
       <div className="main-perfil">
         <div className="main-perfil-foto"></div>
@@ -26,6 +26,10 @@ export function Perfil(props) {
           </section>
           <section className="main-perfil-articulos">
             <div className="main-perfil-articulos-container">
+              <div className="cartera-de-inventario">
+                <h3>Cartera de Inventario</h3>
+                <span className="icono-signo-mas"></span>
+              </div>
               <div className="scrollable-content">
                 <Articulo />
                 <Articulo />
