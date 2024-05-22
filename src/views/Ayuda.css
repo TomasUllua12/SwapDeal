@@ -8,15 +8,9 @@
     flex-direction: column;
 }
 
-@media screen and (max-width: 450px) {
-    .secciones-ayuda {
-      padding-bottom: 45%; /* Cambia el padding para pantallas más pequeñas */
-    }
-}
-
 .ayuda-title{
     font-size: 2rem;
-    color: rgb(117, 0, 0);
+    color: #380100;
     padding-top: 80px;
     padding-left: 20%;
     font-weight: bold;
@@ -31,22 +25,45 @@
     align-items: center;
     padding-left: 20%;
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.preguntass{
+    color: #380100;
+    margin-right: 85%;
+    margin-bottom: 2%;
+}
+
 .acciones-recomendadas{
     display: flex;
     justify-content: left;
     align-items: center;
     padding-left: 20%;
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.ver-blog{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-left: 20%;
-    margin-top: 30px;
+
+.acciones{
+    color: #380100;
+    margin-right: 82%;
+    margin-bottom: 1%;
 }
+
+.lis-acciones{
+    color: black;
+    margin-right: 80%;
+    box-shadow: 2px 2px 5px #3333;
+    padding: 2%;
+    border-radius: 20px;
+}
+
 
 .enviar-consulta{
     display: flex;

@@ -1,40 +1,38 @@
-import React from 'react'
-import { Header } from "../components/Header"
+import React from 'react';
+import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
-import "./Ayuda.css"
-import MostrarPreguntas from '../components/Preguntas';
-import MostrarAcciones from '../components/Acciones';
-import MostrarBlog from '../components/Blog';
-import MostrarConsulta from '../components/Consulta';
+import "./Ayuda.css";
+import preguntas from "../data/preguntas";
+import { MostrarPreguntas } from '../components/Preguntas'; // Asegúrate de importar el componente correcto
 
 export function Ayuda(props) {
-    
+    const pregun = preguntas.map((v, index) => {
+        return <MostrarPreguntas key={index} pregun={v.pregun} respuesta={v.respuesta} />;
+    });
 
     return (
         <>
             <Header></Header>
-
-        
             <div className='secciones-ayuda'>
-                
                 <h2 className="ayuda-title">Ayuda</h2>
-
                 <div className='preguntas-frecuentes'>
-                    <MostrarPreguntas />
+                    <h2 className='preguntass'>Preguntas frecuentes</h2>
+                    {pregun}
                 </div>
                 <div className='acciones-recomendadas'>
-                    <MostrarAcciones />
-                </div>
-                <div className='ver-blog'>
-                    <MostrarBlog />
+                    <h2 className='acciones'>Acciones recomendadas</h2>
+                    <p className='lis-acciones'>1- Hacer doble verificacion<br></br>
+                                                2- Ver el perfil de los otros usuarios<br></br>
+                                                3- Hacer las permutas en lugares seguros<br></br>
+                                                4- Siempre ser cordial
+                    </p>
                 </div>
                 <div className='enviar-consulta'>
-                    <MostrarConsulta />
+                    <h2 className='consul'>Envianos tu consulta</h2>
+                    
                 </div>
             </div>
-
-
             <FooterWave />
         </>
-    )
+    );
 }

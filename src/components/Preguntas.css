@@ -1,20 +1,20 @@
 .mostrar-pregunta{
     color: rgb(0, 0, 0);
+    margin-right: 24%;
+    margin-bottom: 1%;
 }
 
 .ver-preguntas{
     height: auto;
     width: 60vw;
 
-    background-color: #b60900;
+    background-color: #dadada;
     text-align: left;
     font-size: 2vh;
     font-weight: bolder;
     font-family: "Montserrat";
     box-shadow: 2px 2px 5px #3333;
-
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    color: #590200;
 
 
     outline: none !important; 
@@ -25,10 +25,10 @@
 }
 
 .lis-preguntas{
-    border-color:#b60900 ;
+    margin-top: 5px;
+    border-color:#dadada ;
     border-style: solid;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 20px;
     padding: 1vh;
 
 }
