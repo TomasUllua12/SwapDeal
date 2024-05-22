@@ -8,7 +8,7 @@ import cards from "../data/card";
 export function Categorias(props) {
   
   const cardList = cards.map((v) => {
-    return <CardCategoria title={v.name} color={v.color}/>;
+    return <CardCategoria title={v.name} color={v.color} img={v.img}/>;
   });
 
   return (

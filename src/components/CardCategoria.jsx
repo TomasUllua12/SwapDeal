@@ -5,7 +5,16 @@ import { Link } from "react-router-dom";
 export function CardCategoria({
   title = "titulo por defecto",
   color = "#470000",
+  img = "",
 }) {
+  const divStyle = {
+    backgroundImage: `url(${img})`,
+    borderRadius: "0 0 20px 20px",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
+
   return (
     <>
       <div className="categoria-card">
@@ -18,7 +27,7 @@ export function CardCategoria({
           </div>
         </Link>
 
-        <div className="categoria-card-image"></div>
+        <div className="categoria-card-image" style={divStyle}></div>
       </div>
     </>
   );

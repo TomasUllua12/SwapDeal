@@ -1,23 +1,23 @@
 const cards = [
     {
       name: "Cocina",
-      color: "#470000"
+      color: "#470000",
+      img: "../../public/assets/img/categorias/cocina.jpg"
     },
     {
       name: "Tecnología",
-      color: "#870000"
+      color: "#870000",
+      img: "../../public/assets/img/categorias/tecnologia.jpg"
     },
     {
       name: "Hogar",
-      color: "#994000"
+      color: "#994000",
+      img: "../../public/assets/img/categorias/hogar.jpg"
     },
     {
       name: "Baño",
-      color: "#294000"
-    },
-    {
-      name: "Deporte",
-      color: "#380100"
+      color: "#294000",
+      img: "../../public/assets/img/categorias/bano.jpg"
     },
   ];
   
