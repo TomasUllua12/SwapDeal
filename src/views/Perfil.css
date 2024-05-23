@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   height: auto;
-  background-color: #eee;
-  padding-bottom: 30vh;
+  background-color: #ffffff;
+  padding-bottom: 15vh;
   margin-bottom: 3vh;
 }
 
@@ -14,20 +14,20 @@
   background-color: #ffa4a4fd;
   border-radius: 300px;
   margin-left: 7%;
-  margin-top: 3%;
-  box-shadow: inset 0 0 0 10px #fff;
+  top: 100px;
+  box-shadow: inset 0 0 0 10px #ffffff;
   margin: 50px auto; /* Esto centrará el elemento horizontalmente */
   left: 0;
   right: 70vw;
-  background-image: url("../../public/assets/img/user-perfil.svg");
-  background-position: center;
+  background-image: url("../../public/assets/img/perfilFoto.jpg");
+  background-position: right;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .main-perfil-banner {
   width: 100%;
-  height: 200px;
+  height: 300px;
   background-color: black;
   background-image: url("../../public/assets/img/perfilbanner.svg");
   background-position: center;
@@ -37,8 +37,8 @@
 }
 .main-perfil-banner__image {
   width: 100%;
-  height: 200px;
-  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.3);
+  height: 300px;
+  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .main-perfil-container {
@@ -47,7 +47,7 @@
 .main-perfil-data {
   width: 30vw;
   height: 80vh;
-  background-color: #eee;
+  background-color: #ffffff;
 }
 .main-perfil-data-container {
   width: 80%;
@@ -79,15 +79,16 @@
 .main-perfil-articulos {
   width: 70vw;
   height: auto;
-  background-color: #eee;
+  background-color: #ffffff;
 }
 .main-perfil-articulos-container {
   width: 80%;
   height: 85%; /* Ajusta la altura según tu necesidad */
-  background-color: #f8f8f8;
+  background-color: #f3f3f3;
   margin: 70px auto;
   border-radius: 30px;
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
+  border: solid #ebebeb 1px;
   padding: 30px;
   overflow: hidden; /* Oculta el overflow en el contenedor principal */
   position: relative; /* Posiciona el contenedor relativo para contener el absoluto */
@@ -95,13 +96,8 @@
 .cartera-de-inventario {
   color: var(--fourth-orange);
   font-family: "Montserrat";
-  font-size: 2rem;
+  font-size: 1.7rem;
   padding-left: 25px;
-}
-.icono-signo-mas {
-  width: 20px;
-  height: 20px;
-  background-image: url(../../public/assets/icons/signo-mas.svg);
 }
 .scrollable-content {
   display: flex;
@@ -118,17 +114,17 @@
   width: 10px; /* Ancho de la scrollbar */
 }
 .scrollable-content::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color de fondo del track */
+  background: #e7e7e7; /* Color de fondo del track */
   border-radius: 10px;
   margin-top: 30px; /* Espacio superior para hacer la scrollbar más corta */
   margin-bottom: 50px; /* Espacio inferior para hacer la scrollbar más corta */
 }
 .scrollable-content::-webkit-scrollbar-thumb {
-  background: #ffc5ae; /* Color del thumb */
+  background: #d88585; /* Color del thumb */
   border-radius: 10px;
 }
 .scrollable-content::-webkit-scrollbar-thumb:hover {
-  background: #ffa07a; /* Color del thumb al pasar el mouse */
+  background: #790808; /* Color del thumb al pasar el mouse */
 }
 
 @media (max-width: 425px) {
@@ -153,36 +149,3 @@
   }
 }
 
-
-/* Media query para pantallas pequeñas */
-@media (max-width: 768px) {
-  .main-perfil-container {
-    flex-direction: column;
-  }
-
-  .main-perfil-data {
-    width: 100%;
-    height: auto;
-  }
-  .main-perfil-articulos {
-    width: 100%;
-    height: 600px;
-  }
-
-  .main-perfil-foto {
-    width: 250px;
-    height: 250px;
-    margin: 150px auto; /* Esto centrará el elemento horizontalmente */
-    left: 0;
-    right: 0;
-    transform: translateY(-50%); /* Esto corrige la centración vertical */
-  }
-}
-
-@media (max-width: 1024px) {
-  .main-perfil-foto {
-    width: 200px;
-    height: 200px;
-    top: 50px;
-  }
-}
