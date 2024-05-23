@@ -1,5 +1,5 @@
 .secciones-ayuda{
-    width: auto;
+    width: 100%;
     height: auto;
 
     background-color: #fcfcfc;
@@ -7,6 +7,21 @@
     display: flex;
     flex-direction: column;
 }
+
+.main-ayuda-banner {
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    background-image: url("../../public/assets/img/ayuda-fondo.jpg");
+    background-position: center 93%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .main-ayuda-banner__image {
+    width: 100%;
+    height: 300px;
+    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.1);
+  }
 
 .ayuda-title{
     font-size: 2rem;
