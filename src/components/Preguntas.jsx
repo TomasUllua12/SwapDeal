@@ -2,19 +2,29 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Preguntas.css";
 
-export function MostrarPreguntas({ pregun = "pregun", respuesta = "respuesta" }) {
-    const [show, setShow] = useState(false);
+export function MostrarPreguntas({ children }) {
+  const [isExpanded, setIsExpanded] = useState(false);
 
-    const handleClick = (event) => {
-        setShow(!show);
-    };
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
 
-    return (
-        <div className="mostrar-pregunta">
-            <button className="ver-preguntas" onClick={handleClick}>{pregun}</button>
-            {show && <p className="lis-preguntas">{respuesta}</p>}
+  return (
+    <>
+      <div className="pregunta-expandable-container">
+        <div className="header" onClick={toggleExpand}>
+          <h2>
+            ¿Pregunta frecuente número #?
+          </h2>
         </div>
-    );
+        <div className={`content ${isExpanded ? "expanded" : "collapsed"}`}>
+          <p>
+            <b>Nueva solicitud</b> de permuta por parte de: <b>Simon Feeney</b>
+          </p>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default MostrarPreguntas;

@@ -1,160 +1,159 @@
-.secciones-ayuda{
-    width: 100%;
-    height: auto;
-
-    background-color: #fcfcfc;
-    padding-bottom: 15%;
-    display: flex;
-    flex-direction: column;
+.secciones-ayuda {
+  width: 100%;
+  height: auto;
+  background-color: #fcfcfc;
+  padding-bottom: 15%;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-ayuda-banner {
-    width: 100%;
-    height: 300px;
-    background-color: black;
-    background-image: url("../../public/assets/img/ayuda-fondo.jpg");
-    background-position: center 93%;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
-  .main-ayuda-banner__image {
-    width: 100%;
-    height: 300px;
-    box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.1);
-  }
-
-.ayuda-title{
-    font-size: 2rem;
-    color: #380100;
-    padding-top: 80px;
-    padding-left: 20%;
-    font-weight: bold;
-    font-family: "Montserrat";
-
-    justify-content: left;
+  width: 100%;
+  height: 300px;
+  background-color: black;
+  background-image: url("../../public/assets/img/ayuda-fondo.jpg");
+  background-position: center 93%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.main-ayuda-banner__image {
+  width: 100%;
+  height: 300px;
+  box-shadow: inset 0 0 40px 10px rgba(0, 0, 0, 0.2);
+}
+.ayuda-title {
+  font-size: 2.5rem;
+  color: #ffffff;
+  padding-top: 100px;
+  padding-left: 20%;
+  font-weight: bold;
+  font-family: "Montserrat";
+  justify-content: left;
 }
 
-.preguntas-frecuentes{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-left: 20%;
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.ayuda-preguntas-frecuentes {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20%;
+}
+.preguntas-frecuentes {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preguntas--h2 {
+  font-size: 2rem;
+  color: #727272;
+  margin-top: 10%;
+  font-family: "Montserrat Medium";
 }
 
-.preguntass{
-    color: #380100;
-    margin-right: 86%;
-    margin-bottom: 2%;
+.acciones-recomendadas {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 20%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.acciones-recomendadas{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-left: 20%;
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.acciones {
+  color: #380100;
+  margin-right: 84%;
+  margin-bottom: 1%;
 }
 
-
-.acciones{
-    color: #380100;
-    margin-right: 84%;
-    margin-bottom: 1%;
+.lis-acciones {
+  color: black;
+  margin-right: 80%;
+  box-shadow: 2px 2px 5px #3333;
+  padding: 2%;
+  border-radius: 20px;
 }
 
-.lis-acciones{
-    color: black;
-    margin-right: 80%;
-    box-shadow: 2px 2px 5px #3333;
-    padding: 2%;
-    border-radius: 20px;
+.enviar-consulta {
+  width: 925px;
+  margin-left: 300px;
+  display: flex;
+  border-radius: 20px;
+  justify-content: left;
+  align-items: center;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 5px #3333;
+  padding-top: 1%;
+  padding-bottom: 2%;
 }
 
-
-.enviar-consulta{
-    width: 925px;
-    margin-left: 300px;
-    display: flex;
-    border-radius: 20px;
-    justify-content: left;
-    align-items: center;
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2px 2px 5px #3333;
-    padding-top: 1%;
-    padding-bottom: 2%;
+.consul {
+  color: #380100;
+  margin-right: 80%;
+  margin-bottom: 1%;
 }
 
-.consul{
-    color: #380100;
-    margin-right: 80%;
-    margin-bottom: 1%;
+.email {
+  color: #000000;
+  margin-right: 70%;
+  margin-top: 2%;
 }
 
-.email{
-    color: #000000;
-    margin-right: 70%;
-    margin-top: 2%;
+.inpu-mail {
+  background-color: #fff;
+  margin-right: 57%;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: 2px 2px 5px #3333;
+  color: #000000;
 }
 
-.inpu-mail{
-    background-color: #fff;
-    margin-right: 57%;
-    border-radius: 20px;
-    padding: 5px;
-    box-shadow: 2px 2px 5px #3333;
-    color: #000000;
+.asunto {
+  color: #000000;
+  margin-right: 70%;
+  margin-top: 2%;
 }
 
-.asunto{
-    color: #000000;
-    margin-right: 70%;
-    margin-top: 2%;
+.inpu-asunto {
+  background-color: #fff;
+  margin-right: 41.5%;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: 2px 2px 5px #3333;
+  color: #000000;
+  padding-right: 150px;
 }
 
-.inpu-asunto{
-    background-color: #fff;
-    margin-right: 41.5%;
-    border-radius: 20px;
-    padding: 5px;
-    box-shadow: 2px 2px 5px #3333;
-    color: #000000;
-    padding-right: 150px;
+.ti-consul {
+  color: #000000;
+  margin-right: 70%;
+  margin-top: 2%;
 }
 
-.ti-consul{
-    color: #000000;
-    margin-right: 70%;
-    margin-top: 2%;
+.inpu-consul {
+  background-color: #fff;
+  margin-right: 5%;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: 2px 2px 5px #3333;
+  color: #000000;
+  padding-right: 500px;
+  padding-bottom: 150px;
+  padding-top: 7px;
 }
 
-.inpu-consul{
-    background-color: #fff;
-    margin-right: 5%;
-    border-radius: 20px;
-    padding: 5px;
-    box-shadow: 2px 2px 5px #3333;
-    color: #000000;
-    padding-right: 500px;
-    padding-bottom: 150px;
-    padding-top: 7px;
+.enviar {
+  margin-top: 5%;
+  background-color: #b60900;
+  margin-left: 55%;
 }
-
-.enviar{
-    margin-top: 5%;
-    background-color: #b60900;
-    margin-left: 55%;
-}
-

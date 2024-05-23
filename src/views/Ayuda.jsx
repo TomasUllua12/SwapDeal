@@ -6,25 +6,26 @@ import preguntas from "../data/preguntas";
 import { MostrarPreguntas } from "../components/Preguntas"; // Asegúrate de importar el componente correcto
 
 export function Ayuda(props) {
-  const pregun = preguntas.map((v, index) => {
-    return (
-      <MostrarPreguntas key={index} pregun={v.pregun} respuesta={v.respuesta} />
-    );
-  });
-
   return (
     <>
       <div className="secciones-ayuda">
         <section className="main-ayuda-banner">
           <div className="main-ayuda-banner__image">
             <Header />
+            <h2 className="ayuda-title">Ayuda</h2>
           </div>
         </section>
-        <h2 className="ayuda-title">Ayuda</h2>
-        <div className="preguntas-frecuentes">
-          <h2 className="preguntass">Preguntas frecuentes</h2>
-          {pregun}
-        </div>
+
+        <section className="ayuda-preguntas-frecuentes">
+          <h2 className="preguntas--h2">Preguntas frecuentes</h2>
+          <div className="preguntas-frecuentes">
+            <MostrarPreguntas/>
+            <MostrarPreguntas/>
+            <MostrarPreguntas/>
+            <MostrarPreguntas/>
+          </div>
+        </section>
+
         <div className="acciones-recomendadas">
           <h2 className="acciones">Acciones recomendadas</h2>
           <p className="lis-acciones">
@@ -34,6 +35,7 @@ export function Ayuda(props) {
             4- Siempre ser cordial
           </p>
         </div>
+
         <div className="enviar-consulta">
           <h2 className="consul">Envianos tu consulta</h2>
           <h3 className="email">E-mail:</h3>

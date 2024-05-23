@@ -13,7 +13,9 @@ export function Solicitud({ children }) {
     <>
       <div className="expandable-container">
         <div className="header" onClick={toggleExpand}>
-          <h2>🆕 <b>¡NUEVA!</b> Solicitud de Permuta 🔁</h2>
+          <h2>
+            🆕 <b>¡NUEVA!</b> Solicitud de Permuta 🔁
+          </h2>
         </div>
         <div className={`content ${isExpanded ? "expanded" : "collapsed"}`}>
           <p>
