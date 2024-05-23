@@ -33,7 +33,7 @@
 
 .preguntass{
     color: #380100;
-    margin-right: 85%;
+    margin-right: 86%;
     margin-bottom: 2%;
 }
 
@@ -52,7 +52,7 @@
 
 .acciones{
     color: #380100;
-    margin-right: 82%;
+    margin-right: 84%;
     margin-bottom: 1%;
 }
 
@@ -66,10 +66,80 @@
 
 
 .enviar-consulta{
+    width: 925px;
+    margin-left: 300px;
     display: flex;
+    border-radius: 20px;
     justify-content: left;
     align-items: center;
-    padding-left: 20%;
     margin-top: 30px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px #3333;
+    padding-top: 1%;
+    padding-bottom: 2%;
 }
+
+.consul{
+    color: #380100;
+    margin-right: 80%;
+    margin-bottom: 1%;
+}
+
+.email{
+    color: #000000;
+    margin-right: 70%;
+    margin-top: 2%;
+}
+
+.inpu-mail{
+    background-color: #fff;
+    margin-right: 57%;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 2px 2px 5px #3333;
+    color: #000000;
+}
+
+.asunto{
+    color: #000000;
+    margin-right: 70%;
+    margin-top: 2%;
+}
+
+.inpu-asunto{
+    background-color: #fff;
+    margin-right: 41.5%;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 2px 2px 5px #3333;
+    color: #000000;
+    padding-right: 150px;
+}
+
+.ti-consul{
+    color: #000000;
+    margin-right: 70%;
+    margin-top: 2%;
+}
+
+.inpu-consul{
+    background-color: #fff;
+    margin-right: 5%;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 2px 2px 5px #3333;
+    color: #000000;
+    padding-right: 500px;
+    padding-bottom: 150px;
+    padding-top: 7px;
+}
+
+.enviar{
+    margin-top: 5%;
+    background-color: #b60900;
+    margin-left: 55%;
+}
+

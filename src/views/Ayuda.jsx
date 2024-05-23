@@ -29,7 +29,14 @@ export function Ayuda(props) {
                 </div>
                 <div className='enviar-consulta'>
                     <h2 className='consul'>Envianos tu consulta</h2>
-                    
+                    <h3 className='email'>E-mail:</h3>
+                    <input placeholder='Ejemplo@gmail.com' className='inpu-mail'></input>
+                    <h3 className='asunto'>Asunto</h3>
+                    <input placeholder='Escriba el asunto...' className='inpu-asunto'></input>
+                    <h3 className='ti-consul'>Consulta</h3>
+                    <input placeholder='Escriba su consulta...' className='inpu-consul'></input>
+                    <button type='submit'className='enviar'>Enviar consulta</button>
+
                 </div>
             </div>
             <FooterWave />
