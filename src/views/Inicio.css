@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 450px;
+  height: 300px;
 }
 .header-inicio {
   position: relative;
@@ -36,6 +36,7 @@
   object-fit: cover;
   opacity: 1;
   z-index: 0;
+  filter: grayscale(80%) contrast(100%);
 }
 .header-color {
   position: absolute;
@@ -44,14 +45,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.8;
-  background: linear-gradient(
-      150deg,
-      var(--sixth-orange),
-      var(--fourth-orange),
-      var(--just-black)
-    )
-    0 0 / 1000% no-repeat;
+  opacity: 0.5;
+  background: linear-gradient(150deg, #cc2929, #eb553b, #ee6464) 0 0 / 1000%
+    no-repeat;
   animation: animation-header 10s ease infinite;
   z-index: 1;
 }
