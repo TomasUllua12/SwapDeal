@@ -4,12 +4,6 @@
     padding: 0;
   }
 
-
-
-
-
-
-
 .inicio-main {
     width: 100%;
     height: auto;
@@ -21,26 +15,34 @@
     flex-wrap: wrap;
 }
 
+.fondo-video {  
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 450px;
+}
+.header-inicio {
+  position: relative; /* Asegura que el Header esté en el flujo del documento */
+  z-index: 2; /* Mayor que header-color y background-video-inicio */
+  color: white; /* Para asegurarnos de que el texto del Header sea visible */
+}
 .background-video-inicio{
-  width: 100vw;
-  height: 50vh;
-
-  margin-top: 0px;
+  position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover; /* Ajusta el tamaño del video para que cubra todo el contenedor */
   opacity: 1;
+  z-index: 0;
 }
-
-.fondo-video {  
-}
-
 .header-color{
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 50vh;
+  height: 100%;
   object-fit: cover; /* Ajusta el tamaño del video para que cubra todo el contenedor */
   opacity: 0.8;
   background: linear-gradient(
@@ -51,9 +53,12 @@
     )
     0 0 / 1000% no-repeat;
   animation: animation-header 10s ease infinite;
-  z-index: +1;
-  margin-top: 9.2%;
+  z-index: 1;
 }
+
+
+
+
 
 
 .informacion-secciones {  
