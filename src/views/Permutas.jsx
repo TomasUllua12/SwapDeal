@@ -7,7 +7,12 @@ import { Solicitud } from "../components/Permutas/Solicitud";
 export function Permutas(props) {
   return (
     <>
-      <Header />
+      <section className="main-permutas-banner">
+        <div className="main-permutas-banner__image">
+          <Header />
+          <h2 className="permutas-title">Permutas</h2>
+        </div>
+      </section>
       <main className="main-permutas">
         <h2 className="main-permutas-solicitudes-title">
           Solicitudes de Permuta
