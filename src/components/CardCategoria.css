@@ -1,11 +1,12 @@
 .categoria-card {
   width: 60vw;
-  height: 150px;
+  height: 170px;
   border-radius: 20px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-  background-color: rgb(199, 199, 199);
+  background-color: rgb(100, 4, 4);
   text-align: left;
   margin-top: 30px;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 .categoria-card-links {
   text-decoration: none;
@@ -17,6 +18,7 @@
   border-radius: 20px 20px 0 0;
   padding-left: 30px;
   align-content: center;
+  background-color: rgb(255, 255, 255);
 }
 .categoria-card-header-title {
   font-size: 1.4rem;
@@ -24,6 +26,10 @@
   font-family: "Montserrat";
 }
 .categoria-card-image {
-  height: 110px;
+  height: 130px;
   width: 100%;
+}
+
+.categoria-card:hover {
+  transform: scale(1.05);
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import "./FooterWave.css";
+import { Link } from "react-router-dom";
 
 export function FooterWave(props) {
   return (
@@ -17,24 +18,32 @@ export function FooterWave(props) {
         ></img>
         <ul className="menu">
           <li className="menu__item">
-            <a className="menu__link" href="#">
-              Inicio
-            </a>
+            <Link to="/Inicio">
+              <a className="menu__link" href="#">
+                Inicio
+              </a>
+            </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="#">
-              Categorías
-            </a>
+            <Link to="/Categorias">
+              <a className="menu__link" href="#">
+                Categorías
+              </a>
+            </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="#">
-              Permutas
-            </a>
+            <Link to="/Permutas">
+              <a className="menu__link" href="#">
+                Permutas
+              </a>
+            </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="#">
-              Ayuda
-            </a>
+            <Link to="/Ayuda">
+              <a className="menu__link" href="#">
+                Ayuda
+              </a>
+            </Link>
           </li>
         </ul>
         <p>

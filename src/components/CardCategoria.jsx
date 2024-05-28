@@ -13,6 +13,7 @@ export function CardCategoria({
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    filter: "opacity(75%)",
   };
 
   return (
@@ -20,14 +21,12 @@ export function CardCategoria({
       <div className="categoria-card">
         <Link to={"/Inicio"} className="categoria-card-links">
           <div
-            className="categoria-card-header"
-            style={{ backgroundColor: color }}
-          >
+            className="categoria-card-header"  style={{ backgroundColor: color }}>
             <h3 className="categoria-card-header-title">{title}</h3>
           </div>
-        </Link>
 
-        <div className="categoria-card-image" style={divStyle}></div>
+          <div className="categoria-card-image" style={divStyle}></div>
+        </Link>
       </div>
     </>
   );
