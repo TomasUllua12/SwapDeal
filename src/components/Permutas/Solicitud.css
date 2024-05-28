@@ -88,14 +88,15 @@
   color: white;
 }
 .solicitud-buttons .rechazar {
-  background: #707070;
-  color: white;
+  border: solid 2px #fa9797;
+  background-color: white;
+  color: black;
 }
 .solicitud-buttons .confirmar:hover {
   transform: scale(1.05); /* Agranda el botón un poco */
   background: #0b8000;
 }
 .solicitud-buttons .rechazar:hover {
-  transform: scale(1.05); /* Agranda el botón un poco */
+  color: white;
   background: #800000;
 }

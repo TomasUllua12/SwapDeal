@@ -7,6 +7,7 @@
   margin: 10px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .articulo-categoria-container {
@@ -63,6 +64,11 @@
   align-items: center; /* Centra el contenido verticalmente */
   border: 2px solid #ff7b00;
 }
+
+.articulo-container:hover {
+  transform: scale(1.05);
+}
+
 
 @media (max-width: 425px) {
   .articulo-container {

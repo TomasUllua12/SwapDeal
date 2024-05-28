@@ -52,7 +52,7 @@
     background-color: #fff;
     border-radius: 20px;
     margin: 20px;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .main-permutas-permutas {
@@ -78,7 +78,7 @@
     background-color: #fff;
     border-radius: 20px;
     margin: 20px;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .main-permutas-historial {
@@ -105,5 +105,5 @@
     background-color: #fff;
     border-radius: 20px;
     margin: 20px;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
