@@ -29,6 +29,10 @@ export function Perfil(props) {
             </div>
           </section>
           <section className="main-perfil-articulos">
+            <div className="main-perfil-articulos-buttons">
+              <button className="perfil-button-editar-perfil">Editar Perfil</button>
+              <button className="perfil-button-cargar-articulo">Cargar Artículo</button>
+            </div>
             <div className="main-perfil-articulos-container">
               <div className="cartera-de-inventario">
                 <h3>Cartera de Inventario</h3>
