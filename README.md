@@ -1,6 +1,6 @@
 # SwapDeal
 
-![SwapDeal Logo](logo.svg)
+![SwapDeal Logo](client/logo.svg)
 
 SwapDeal es una plataforma web para la permuta de bienes y servicios. Permite a los usuarios intercambiar directamente sin necesidad de dinero.
 
