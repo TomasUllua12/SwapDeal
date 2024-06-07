@@ -12,6 +12,7 @@ import { Perfil } from "./views/Perfil.jsx";
 import { Categorias } from "./views/Categorias.jsx";
 import { Ayuda } from "./views/Ayuda.jsx";
 import { Permutas } from "./views/Permutas.jsx";
+import { CargarArticulo } from "./views/CargarArticulo.jsx";
 
 
 const routes = [
@@ -42,6 +43,10 @@ const routes = [
   {
     path: "/Permutas",
     element: <Permutas />,
+  },
+  {
+    path: "/Perfil/CargarArticulo",
+    element: <CargarArticulo />,
   },
 ];
 /*

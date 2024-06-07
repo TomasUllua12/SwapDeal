@@ -4,7 +4,8 @@ import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
 import { Articulo } from "../components/Articulo";
 import axios from "axios";
-import {useState, useEffect}  from 'react';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export function Perfil(props) {
   const [data, setData] = useState(null);
@@ -57,9 +58,11 @@ export function Perfil(props) {
               <button className="perfil-button-editar-perfil">
                 Editar Perfil
               </button>
-              <button className="perfil-button-cargar-articulo">
-                Cargar Artículo
-              </button>
+              <Link to={"/Perfil/CargarArticulo"}>
+                <button className="perfil-button-cargar-articulo">
+                  Cargar Artículo
+                </button>
+              </Link>
             </div>
             <div className="main-perfil-articulos-container">
               <div className="cartera-de-inventario">
