@@ -9,8 +9,8 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
-    database: "usuarios"
+    password: "123456",
+    database: "swap_deal"
 });
 
 db.connect((err) => {
@@ -21,9 +21,9 @@ db.connect((err) => {
     console.log('Connected to the MySQL server.');
 });
 
-// Ruta para obtener todos los usuarios
-app.get("/usuarios", (req, res) => {
-    db.query('SELECT * FROM usuarios', (err, result) => {
+// Ruta para obtener todos los usuario
+app.get("/usuario", (req, res) => {
+    db.query('SELECT * FROM usuario', (err, result) => {
         if (err) {
             console.log(err);
             res.status(500).send(err);
@@ -34,9 +34,9 @@ app.get("/usuarios", (req, res) => {
 });
 
 // Ruta para obtener un usuario por ID
-app.get("/usuarios/:id", (req, res) => {
-    const userId = req.params.id;
-    db.query('SELECT * FROM usuarios WHERE id = ?', [userId], (err, result) => {
+app.get("/usuario/:documento", (req, res) => {
+    const userId = req.params.documento;
+    db.query('SELECT * FROM usuario WHERE documento = ?', [userId], (err, result) => {
         if (err) {
             console.log(err);
             res.status(500).send(err);

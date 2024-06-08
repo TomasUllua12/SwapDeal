@@ -12,7 +12,7 @@ export function Perfil(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/usuarios/1")
+      .get("http://localhost:3002/usuario/39935249")
       .then((response) => {
         setData(response.data);
       })
@@ -41,7 +41,7 @@ export function Perfil(props) {
               <h3>{data.nombre}</h3>
               <div>
                 <h4>Reputación 📓</h4>
-                <p>153 permutaciones concretadas en los últimos 3 meses</p>
+                <p>{data.reputacion}</p>
                 <h4>Sobre mí 😄</h4>
                 <p>
                   Soy Heung-Min Son, un hombre entusiasta que quiere usar
