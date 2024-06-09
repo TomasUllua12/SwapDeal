@@ -12,7 +12,7 @@ export function Perfil(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/usuario/39935249")
+      .get("http://localhost:3002/usuario/44973086")
       .then((response) => {
         setData(response.data);
       })
@@ -26,6 +26,12 @@ export function Perfil(props) {
     return <div>Loading...</div>;
   }
 
+  const obtenerReputacion = (reputacion) => {
+    const estrellas = '⭐'.repeat(reputacion);
+    const circulos = '🔘'.repeat(5 - reputacion);
+    return estrellas + circulos;
+  };
+
   return (
     <>
       <div className="main-perfil">
@@ -38,18 +44,16 @@ export function Perfil(props) {
         <div className="main-perfil-container">
           <section className="main-perfil-data">
             <div className="main-perfil-data-container">
-              <h3>{data.nombre}</h3>
+              <h3>{data.nombre + " " + data.apellido}</h3>
               <div>
                 <h4>Reputación 📓</h4>
-                <p>{data.reputacion}</p>
+                <p className="emojis">{obtenerReputacion(data.reputacion)}</p>
                 <h4>Sobre mí 😄</h4>
                 <p>
-                  Soy Heung-Min Son, un hombre entusiasta que quiere usar
-                  SwapDeal para intercambiar mis pertenencias, buscando nuevos
-                  objetos y experiencias a través del trueque en línea.
+                  {data.descripcion}
                 </p>
                 <h4>Fecha de unión a SwapDeal 🗓️</h4>
-                <p>Heung-Min Son se unió el 04 de Abril del 2022</p>
+                <p>{data.nombre + " " + data.apellido + " se unió el " + data.fecha_union}</p>
               </div>
             </div>
           </section>
