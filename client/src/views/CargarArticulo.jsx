@@ -13,9 +13,9 @@ export function CargarArticulo(props) {
                 <div className='formu-carga'>
 
                     <div className='espacio-fo'>
-                        <div class="image-upload-container" id="upload-container">
-                            <input type="file" accept="image/*" id="image-input" />
-                            
+                        <div className="image-upload-container" id="upload-container">
+                            <label htmlFor="image-input" className="upload-label">Seleccione las imagenes del artículo</label>
+                            <input type="file" accept="image/*" id="image-input" className="upload-input" />
                         </div>
                     </div>
 
@@ -45,19 +45,24 @@ export function CargarArticulo(props) {
 
                         <div className="uso">
                             <label htmlFor="usage-time">Tiempo de uso:</label>
-                            <input className='inpu-ti' type="text" id="usage-time" name="usage-time" required  placeholder="Ingresa el tiempo de uso" />
+                            <input className='inpu-us' type="text" id="usage-time" name="usage-time" required  placeholder="Ingresa el tiempo de uso" />
                         </div>
 
                         <div className="descrip">
-                            <label htmlFor="description">Descripción:</label>
-                            <input className='inpu-ti' type="text" id="usage-time" name="usage-time" required  placeholder="Ingresa el tiempo de uso" />
+                            <label htmlFor="description">Descripción:</label> 
+                            <input  className='inpu-des' type="text" id="usage-time" name="usage-time"   placeholder="Ingresa la descripcion del articulo" required/>
                         </div>
                         
-
+                        
 
                     </div>
+                    
 
                 </div>
+
+                <button type="submit" className="envia">
+                        Cargar Articulo
+                    </button>
                 
             </div>
         </>

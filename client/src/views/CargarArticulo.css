@@ -18,9 +18,9 @@
     height: auto;
     width: 90vw;
     margin-left: 5vw;
-    margin-bottom: 5vw;
+    margin-bottom: 1vw;
     margin-top: 1vh;
-    border: 2px solid #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
     border-radius: 5px;
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -34,13 +34,31 @@
     padding: 5%;
     grid-area: foto;
     border-radius: 5px;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center;
+    border: 1px #000000 dashed;
+    margin: 2%;
 }
+
+.image-upload-container{
+    
+}
+
+.image-input{
+    padding: 2%;
+}
+
+
+
+
 .titu{
     color: #000000;
 }
 
 .formulario{
-    padding: 5%;
+    margin-left: 5%;
+    padding: 2%;
     grid-area: formu;
     border-radius: 5px;
     display: flex;
@@ -49,8 +67,19 @@
 
 input::placeholder {
     color: #000000; /* Color del texto del placeholder */
-    background-color: #ffffff; /* Fondo transparente para el placeholder */
+    background-color: #ffffff;
     padding: 1%;
+}
+
+.upload-input {
+    position: absolute;
+    left: -9999px; /* Mueve el input fuera del área visible */
+}
+
+.upload-label {
+    color: #000000;
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.07);
+    padding: 0%;
 }
 
 .cate{
@@ -65,11 +94,35 @@ input::placeholder {
     background-color: #ffffff;
     color: #000000;
     width: 80%;
+    margin-left: 61px;
+    border-radius: 7px;
+}
+
+.inpu-us{
+    background-color: #ffffff;
+    color: #000000;
+    width: 80%;
+    margin-left: 15px;
+    border-radius: 7px;
+}
+
+.inpu-des{
+    background-color: #ffffff;
+    color: #000000;
+    width: 80%;
+    margin-left: 30px;
+    border-radius: 7px;
+    padding-bottom: 10%;
 }
 
 .caja{
     background-color: #ffffff;
     color: #000000;
+    border: 2px black solid;
+    margin-left: 10px;
+    border-radius: 7px;
+    margin-left: 40px;
+    width: 80%;
 }
 
 .optio{
@@ -87,6 +140,14 @@ input::placeholder {
     background-color: #ffffff;
     color: #000000;
     margin-top: 2%;
+}
+
+.envia{
+    height: 5%;
+    font-size: 12px;
+    background-color: #b60900;
+    align-self: self-end;
+    margin-right: 8%;
 }
 
 
