@@ -41,9 +41,6 @@
     margin: 2%;
 }
 
-.image-upload-container{
-    
-}
 
 .image-input{
     padding: 2%;
@@ -63,12 +60,6 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-}
-
-input::placeholder {
-    color: #000000; /* Color del texto del placeholder */
-    background-color: #ffffff;
-    padding: 1%;
 }
 
 .upload-input {
