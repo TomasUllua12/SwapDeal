@@ -16,8 +16,8 @@ export function Perfil(props) {
   }
 
   const obtenerReputacion = (reputacion) => {
-    const estrellas = '⭐'.repeat(reputacion);
-    const circulos = '🔘'.repeat(5 - reputacion);
+    const estrellas = "⭐".repeat(reputacion);
+    const circulos = "🔘".repeat(5 - reputacion);
     return estrellas + circulos;
   };
 
@@ -40,16 +40,20 @@ export function Perfil(props) {
                 <h4>Sobre mí 😄</h4>
                 <p>{user.descripcion}</p>
                 <h4>Fecha de unión a SwapDeal 🗓️</h4>
-                <p>{user.nombre} se unió el {user.fecha_union}</p>
+                <p>
+                  {user.nombre} se unió el {user.fecha_union}
+                </p>
               </div>
             </div>
           </section>
           <section className="main-perfil-articulos">
             <div className="main-perfil-articulos-buttons">
-              <button className="perfil-button-editar-perfil">
-                Editar Perfil
-              </button>
-                <Link to={"/Perfil/CargarArticulo"}>
+              <Link to={"/Perfil/EditarPerfil"}>
+                <button className="perfil-button-editar-perfil">
+                  Editar Perfil
+                </button>
+              </Link>
+              <Link to={"/Perfil/CargarArticulo"}>
                 <button className="perfil-button-cargar-articulo">
                   Cargar Artículo
                 </button>
@@ -78,7 +82,3 @@ export function Perfil(props) {
     </>
   );
 }
-
-
-
-
