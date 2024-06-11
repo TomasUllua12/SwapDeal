@@ -13,6 +13,7 @@ import { Categorias } from "./views/Categorias.jsx";
 import { Ayuda } from "./views/Ayuda.jsx";
 import { Permutas } from "./views/Permutas.jsx";
 import { CargarArticulo } from "./views/CargarArticulo.jsx";
+import { UserProvider } from './context/UserContext.jsx'; // Importa el UserProvider
 
 
 const routes = [
@@ -68,6 +69,8 @@ const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </React.StrictMode>
 );
