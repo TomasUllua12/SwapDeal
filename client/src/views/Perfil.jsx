@@ -36,7 +36,7 @@ export function Perfil(props) {
               <h3> {user.nombre}</h3>
               <div>
                 <h4>Reputación 📓</h4>
-                <p className="emojis">{obtenerReputacion(data.reputacion)}</p>
+                <p className="emojis">{obtenerReputacion(user.reputacion)}</p>
                 <h4>Sobre mí 😄</h4>
                 <p>{user.descripcion}</p>
                 <h4>Fecha de unión a SwapDeal 🗓️</h4>
