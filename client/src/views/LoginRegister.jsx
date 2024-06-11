@@ -20,7 +20,7 @@ export function LoginRegister(props) {
       });
       if (response.data) {
         setUser(response.data); // Guarda la información del usuario en el contexto
-        navigate("/Inicio");
+        navigate("/Inicio"); // Redirige al perfil después del inicio de sesión
       } else {
         setErrorMessage("Credenciales inválidas"); // Establece el mensaje de error
       }
@@ -29,6 +29,7 @@ export function LoginRegister(props) {
       setErrorMessage("Error durante el inicio de sesión"); // Establece el mensaje de error
     }
   };
+
 
   return (
     <>
