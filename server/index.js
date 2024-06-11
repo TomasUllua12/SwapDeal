@@ -49,6 +49,22 @@ app.get("/usuario/:documento", (req, res) => {
 });
 
 
+app.post("/login", (req, res) => {
+    const { email, password } = req.body;
+    db.query('SELECT * FROM usuario WHERE email = ? AND password = ?', [email, password], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send("Error durante el inicio de sesión");
+        } else if (result.length > 0) {
+            const user = result[0];
+            res.send(user);
+        } else {
+            res.status(401).send({ message: "Credenciales inválidas" });
+        }
+    });
+});
+
+
 app.listen(3002, () => {
     console.log("corriendo en el puerto 3002");
 });
