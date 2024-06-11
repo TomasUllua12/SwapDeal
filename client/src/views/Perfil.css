@@ -75,6 +75,12 @@
   color: #797979;
   font-size: 1.2rem;
 }
+.main-perfil-data-container .emojis {
+  padding-top: 10px;
+  font-family: "Montserrat";
+  color: #797979;
+  font-size: 1.5rem;
+}
 
 .main-perfil-articulos {
   width: 70vw;

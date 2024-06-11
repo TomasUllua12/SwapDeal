@@ -15,6 +15,11 @@ export function Perfil(props) {
     return <div>Loading...</div>;
   }
 
+  const obtenerReputacion = (reputacion) => {
+    const estrellas = '⭐'.repeat(reputacion);
+    const circulos = '🔘'.repeat(5 - reputacion);
+    return estrellas + circulos;
+  };
 
   return (
     <>
@@ -31,7 +36,7 @@ export function Perfil(props) {
               <h3> {user.nombre}</h3>
               <div>
                 <h4>Reputación 📓</h4>
-                <p>{user.reputacion}</p>
+                <p className="emojis">{obtenerReputacion(data.reputacion)}</p>
                 <h4>Sobre mí 😄</h4>
                 <p>{user.descripcion}</p>
                 <h4>Fecha de unión a SwapDeal 🗓️</h4>
