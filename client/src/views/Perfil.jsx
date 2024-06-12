@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Articulo } from "../components/Articulo";
 import axios from "axios";
 import UserContext from "../context/UserContext.jsx"; // Importa el contexto de usuario
+import articulos from "../data/articulos.js";
 
 export function Perfil(props) {
   const { user } = useContext(UserContext); // Obtiene la información del usuario del contexto
@@ -65,13 +66,9 @@ export function Perfil(props) {
                 <span className="icono-signo-mas"></span>
               </div>
               <div className="scrollable-content">
-                <Articulo />
-                <Articulo />
-                <Articulo />
-                <Articulo />
-                <Articulo />
-                <Articulo />
-                <Articulo />
+                {articulos.map((articulo) => (
+                  <Articulo title={articulo.title} />
+                ))}
               </div>
             </div>
           </section>

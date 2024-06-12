@@ -55,14 +55,14 @@ const routes = [
     element: <EditarPerfil />,
   },
 ];
-/*
+
 articulos.forEach((articulo) => {
   routes.push({
     path: articulo.title,
     element: <ArticuloView articulo={articulo} />,
   });
 });
-*/
+
 vehicles.forEach((vehicle) => {
   routes.push({
     path: vehicle.name,
