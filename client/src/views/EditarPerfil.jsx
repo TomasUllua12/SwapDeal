@@ -83,7 +83,7 @@ const handleSubmit = async (e) => {
     
             <div className="formas">
                 <label>Descripción:</label>
-                <textarea rows="8" cols="51" maxlength="300" className="descrip" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+                <textarea rows="8" cols="51" maxlength="300" className="descripc" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
             </div>
 
             <button type="submit" className="cambiar">Guardar Cambios</button>

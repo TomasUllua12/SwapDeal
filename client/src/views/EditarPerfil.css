@@ -90,11 +90,14 @@
 
 
 
-.descrip{
+.descripc{
     resize: none;
     border: 2px solid #000;
     border-radius: 5px;
     margin-left: 8%;
+    margin-top: 2vh;
+    background-color: #ffffff;
+    color: #000;
 }
 
 .cambiar{
