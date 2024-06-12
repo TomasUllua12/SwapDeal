@@ -65,6 +65,23 @@ app.post("/login", (req, res) => {
 });
 
 
+// Ruta para actualizar el perfil del usuario
+app.put("/usuario/:documento", (req, res) => {
+    const userId = req.params.documento;
+    const { nombre, apellido, email, password, reputacion, descripcion } = req.body;
+    db.query('UPDATE usuario SET nombre=?, apellido=?, email=?, password=?, reputacion=?, descripcion=? WHERE documento=?',
+        [nombre, apellido, email, password, reputacion, descripcion, userId],
+        (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).send("Error updating user profile");
+            } else {
+                res.send("User profile updated successfully");
+            }
+        }
+    );
+});
+
 app.listen(3002, () => {
     console.log("corriendo en el puerto 3002");
 });
