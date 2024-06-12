@@ -5,7 +5,7 @@ import UserContext from "../context/UserContext.jsx";
 import { Link } from "react-router-dom";
 
 export function EditarPerfil(props) {
-  const { user, setUser } = useContext(UserContext); // Obtén la información del usuario del contexto
+const { user, setUser } = useContext(UserContext); // Obtén la información del usuario del contexto
 const [nombre, setNombre] = useState(user.nombre);
 const [apellido, setApellido] = useState(user.apellido);
 const [email, setEmail] = useState(user.email);
