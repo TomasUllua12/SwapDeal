@@ -26,17 +26,16 @@ export function Perfil(props) {
     const fetchArticulos = async () => {
         try {
             const response = await axios.get(`http://localhost:3002/usuario/${user.documento}/articulo`);
+            console.log("Artículos recibidos:", response.data); // Logging adicional
             setArticulos(response.data);
         } catch (error) {
             console.error("Error fetching articles:", error);
         }
     };
-
     if (user) {
         fetchArticulos();
     }
 }, [user]);
-
 
   return (
     <>

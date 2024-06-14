@@ -15,6 +15,7 @@ import { Permutas } from "./views/Permutas.jsx";
 import { CargarArticulo } from "./views/CargarArticulo.jsx";
 import { EditarPerfil } from "./views/EditarPerfil.jsx";
 import { UserProvider } from './context/UserContext.jsx'; // Importa el UserProvider
+import  ArticuloView  from "./views/ArticuloView.jsx";
 
 
 const routes = [
@@ -54,6 +55,10 @@ const routes = [
     path: "/Perfil/EditarPerfil",
     element: <EditarPerfil />,
   },
+  {
+    path: "/ArticuloView/:id",
+    element: <ArticuloView />,
+  }
 ];
 /*
 articulos.forEach((articulo) => {

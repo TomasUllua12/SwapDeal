@@ -112,17 +112,13 @@ const upload = multer({
 // Ruta para cargar un artículo
 app.post("/articulo", upload.single('imagen'), (req, res) => {
     const { titulo, descripcion, tiempo_uso, categoria, id_usuario } = req.body;
-
     if (!req.file) {
         return res.status(400).send("Imagen es requerida");
     }
-
-    // Ruta relativa para guardar en la base de datos
     const imagen = `/public/assets/productos/${req.file.filename}`;
-
     const query = 'INSERT INTO articulo (titulo, descripcion, imagen, tiempo_uso, categoria, id_usuario) VALUES (?, ?, ?, ?, ?, ?)';
     const values = [titulo, descripcion, imagen, tiempo_uso, categoria, id_usuario];
-
+    console.log("Datos recibidos para el artículo:", values); // Logging adicional
     db.query(query, values, (err, result) => {
         if (err) {
             console.error("Error en la consulta de base de datos:", err);
@@ -132,6 +128,8 @@ app.post("/articulo", upload.single('imagen'), (req, res) => {
         }
     });
 });
+
+
 
 // Ruta para obtener los artículos de un usuario específico
 app.get("/usuario/:documento/articulo", (req, res) => {
@@ -145,6 +143,7 @@ app.get("/usuario/:documento/articulo", (req, res) => {
         }
     });
 });
+
 
 app.get("/usuario/:documento/articulo/:id", (req, res) => {
     const userId = req.params.documento;
@@ -164,7 +163,7 @@ app.get("/usuario/:documento/articulo/:id", (req, res) => {
 });
 
 // Servir archivos estáticos de la carpeta public
-app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')));
 
 app.listen(3002, () => {
     console.log("corriendo en el puerto 3002");

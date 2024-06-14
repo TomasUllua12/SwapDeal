@@ -20,14 +20,14 @@ export function CargarArticulo(props) {
         formData.append('categoria', categoria);
         formData.append('tiempo_uso', tiempoUso);
         formData.append('imagen', imagen);
-        formData.append('id_usuario', user.documento); // Asigna el ID del usuario logueado
-
+        formData.append('id_usuario', user.documento);
         try {
             const response = await axios.post("http://localhost:3002/articulo", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
+            console.log("Respuesta del servidor:", response.data); // Logging adicional
             alert("Artículo cargado exitosamente");
         } catch (error) {
             console.error("Error al cargar el artículo:", error);

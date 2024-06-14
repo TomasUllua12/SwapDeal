@@ -12,7 +12,7 @@ function Articulo({ articulo }) {
                 <img  src={articulo.imagen} alt={articulo.titulo} />
             </section>
             <section className="articulo-button-container">
-                <Link className="articulo-button-container-link" to={`/Articulo/${articulo.id}`}>
+                <Link className="articulo-button-container-link" to={`/ArticuloView/${articulo.id}`}>
                     Ver Artículo
                 </Link>
             </section>
