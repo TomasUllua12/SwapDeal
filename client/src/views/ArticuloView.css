@@ -1,11 +1,50 @@
-.ArticuloView {
-    max-width: 90%;
-    margin: auto;
-    text-align: center;
-  }
-  
-  .ArticuloView img {
-    display: block;
-    max-width: 100%;
-  }
-  
+/* src/views/ArticuloView.css */
+
+.articulo-view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f4f4f9;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+.articulo-view-header {
+  margin-bottom: 20px;
+}
+
+.articulo-view-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.articulo-view-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.articulo-view-image {
+  max-width: 300px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.articulo-view-details {
+  flex: 1;
+}
+
+.articulo-view-description {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.articulo-view-uso {
+  font-size: 1rem;
+  color: #777;
+}

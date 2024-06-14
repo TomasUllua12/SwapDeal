@@ -68,3 +68,15 @@ app.post("/login", (req, res) => {
 app.listen(3002, () => {
     console.log("corriendo en el puerto 3002");
 });
+
+// Ruta para obtener todos los artículos
+app.get("/articulo", (req, res) => {
+    db.query('SELECT * FROM articulo', (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send(err);
+        } else {
+            res.send(result);
+        }
+    });
+});

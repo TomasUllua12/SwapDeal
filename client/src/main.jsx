@@ -15,6 +15,7 @@ import { Permutas } from "./views/Permutas.jsx";
 import { CargarArticulo } from "./views/CargarArticulo.jsx";
 import { EditarPerfil } from "./views/EditarPerfil.jsx";
 import { UserProvider } from './context/UserContext.jsx'; // Importa el UserProvider
+import { ArticuloView } from "./views/ArticuloView.jsx";
 
 
 const routes = [
@@ -54,14 +55,11 @@ const routes = [
     path: "/Perfil/EditarPerfil",
     element: <EditarPerfil />,
   },
+  {
+    path: "/Articulo/:title",
+    element: <ArticuloView />,
+  },
 ];
-
-articulos.forEach((articulo) => {
-  routes.push({
-    path: articulo.title,
-    element: <ArticuloView articulo={articulo} />,
-  });
-});
 
 vehicles.forEach((vehicle) => {
   routes.push({

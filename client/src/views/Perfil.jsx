@@ -5,13 +5,23 @@ import FooterWave from "../components/Footers/FooterWave";
 import { Link } from "react-router-dom";
 import { Articulo } from "../components/Articulo";
 import axios from "axios";
-import UserContext from "../context/UserContext.jsx"; // Importa el contexto de usuario
-import articulos from "../data/articulos.js";
+import UserContext from "../context/UserContext.jsx";
 
-export function Perfil(props) {
-  const { user } = useContext(UserContext); // Obtiene la información del usuario del contexto
+export function Perfil() {
+  const { user } = useContext(UserContext);
+  const [articulos, setArticulos] = useState([]);
 
-  // Manejar el caso en el que los datos aún no se han cargado
+  useEffect(() => {
+    axios
+      .get("http://localhost:3002/articulo")
+      .then((response) => {
+        setArticulos(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching articles:", error);
+      });
+  }, []);
+
   if (!user) {
     return <div>Loading...</div>;
   }
@@ -34,7 +44,7 @@ export function Perfil(props) {
         <div className="main-perfil-container">
           <section className="main-perfil-data">
             <div className="main-perfil-data-container">
-              <h3> {user.nombre}</h3>
+              <h3>{user.nombre}</h3>
               <div>
                 <h4>Reputación 📓</h4>
                 <p className="emojis">{obtenerReputacion(user.reputacion)}</p>
@@ -67,14 +77,20 @@ export function Perfil(props) {
               </div>
               <div className="scrollable-content">
                 {articulos.map((articulo) => (
-                  <Articulo title={articulo.title} />
+                  <Articulo
+                    key={articulo.id}
+                    title={articulo.title}
+                    categoria={articulo.categoria}
+                    descrip={articulo.descrip}
+                    image={articulo.image}
+                    uso={articulo.uso}
+                  />
                 ))}
               </div>
             </div>
           </section>
         </div>
       </div>
-
       <FooterWave />
     </>
   );

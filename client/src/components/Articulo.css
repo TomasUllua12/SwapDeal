@@ -45,7 +45,7 @@
   align-items: center;
 }
 
-.articulo-button-container a {
+.articulo-button-container-link {
   background-color: rgb(255, 218, 203);
   color: #ff5100;
   font-family: "Montserrat";
@@ -68,7 +68,12 @@
 .articulo-container:hover {
   transform: scale(1.05);
 }
-
+.articulo-button-container-link:hover {
+  transform: scale(1.05);
+  background-color: rgb(255, 112, 56);
+  color: #ffffff;
+  border: 2px solid #ff7b00;
+}
 
 @media (max-width: 425px) {
   .articulo-container {
@@ -96,7 +101,7 @@
     font-size: 0.8rem;
   }
 
-  .articulo-button-container a {
+  .articulo-button-container-link {
     width: 100px;
     height: 35px;
     margin-bottom: 5px;
