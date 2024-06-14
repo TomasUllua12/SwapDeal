@@ -25,7 +25,7 @@ export function Perfil(props) {
   useEffect(() => {
     const fetchArticulos = async () => {
         try {
-            const response = await axios.get(`http://localhost:3002/usuario/${user.documento}/articulos`);
+            const response = await axios.get(`http://localhost:3002/usuario/${user.documento}/articulo`);
             setArticulos(response.data);
         } catch (error) {
             console.error("Error fetching articles:", error);

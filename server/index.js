@@ -134,7 +134,7 @@ app.post("/articulo", upload.single('imagen'), (req, res) => {
 });
 
 // Ruta para obtener los artículos de un usuario específico
-app.get("/usuario/:documento/articulos", (req, res) => {
+app.get("/usuario/:documento/articulo", (req, res) => {
     const userId = req.params.documento;
     db.query('SELECT * FROM articulo WHERE id_usuario = ?', [userId], (err, result) => {
         if (err) {
@@ -146,7 +146,7 @@ app.get("/usuario/:documento/articulos", (req, res) => {
     });
 });
 
-app.get("/usuario/:documento/articulos/:id", (req, res) => {
+app.get("/usuario/:documento/articulo/:id", (req, res) => {
     const userId = req.params.documento;
     const articuloId = req.params.id;
 
