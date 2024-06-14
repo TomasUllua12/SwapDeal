@@ -31,10 +31,12 @@
 .articulo-image-container {
   width: 100%;
   height: 50%;
-  background-image: url(https://images.fravega.com/f500/ed2799546993d2087a7d15c47648f824.jpg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  width: 100%; /* O cualquier ancho específico que desees */
+  max-width: 600px; /* Ajusta según sea necesario */
+  overflow: hidden; /* Opcional: oculta el desbordamiento */
 }
 
 .articulo-button-container {

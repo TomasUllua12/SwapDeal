@@ -133,6 +133,35 @@ app.post("/articulo", upload.single('imagen'), (req, res) => {
     });
 });
 
+// Ruta para obtener los artículos de un usuario específico
+app.get("/usuario/:documento/articulo", (req, res) => {
+    const userId = req.params.documento;
+    db.query('SELECT * FROM articulo WHERE id_usuario = ?', [userId], (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+app.get("/usuario/:documento/articulo/:id", (req, res) => {
+    const userId = req.params.documento;
+    const articuloId = req.params.id;
+
+    // Consulta a la base de datos para obtener el artículo específico por su ID
+    db.query('SELECT * FROM articulo WHERE id_usuario = ? AND id = ?', [userId, articuloId], (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send(err);
+        } else if (result.length > 0) {
+            res.send(result[0]); // Devuelve el artículo encontrado
+        } else {
+            res.status(404).send({ message: `Artículo ${articuloId} no encontrado para el usuario ${userId}` });
+        }
+    });
+});
 
 // Servir archivos estáticos de la carpeta public
 app.use('/public', express.static(path.join(__dirname, 'public')));

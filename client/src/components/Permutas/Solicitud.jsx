@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Solicitud.css";
-import { Articulo } from "../Articulo";
+import Articulo from "../Articulo";
 
 export function Solicitud({ children }) {
   const [isExpanded, setIsExpanded] = useState(false);

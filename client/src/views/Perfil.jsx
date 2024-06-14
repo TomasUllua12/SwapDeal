@@ -3,12 +3,13 @@ import "./Perfil.css";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
 import { Link } from "react-router-dom";
-import { Articulo } from "../components/Articulo";
+import Articulo from "../components/Articulo";
 import axios from "axios";
 import UserContext from "../context/UserContext.jsx"; // Importa el contexto de usuario
 
 export function Perfil(props) {
   const { user } = useContext(UserContext); // Obtiene la información del usuario del contexto
+  const [articulos, setArticulos] = useState([]);
 
   // Manejar el caso en el que los datos aún no se han cargado
   if (!user) {
@@ -20,6 +21,22 @@ export function Perfil(props) {
     const circulos = "🔘".repeat(5 - reputacion);
     return estrellas + circulos;
   };
+
+  useEffect(() => {
+    const fetchArticulos = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3002/usuario/${user.documento}/articulo`);
+            setArticulos(response.data);
+        } catch (error) {
+            console.error("Error fetching articles:", error);
+        }
+    };
+
+    if (user) {
+        fetchArticulos();
+    }
+}, [user]);
+
 
   return (
     <>
@@ -64,15 +81,11 @@ export function Perfil(props) {
                 <h3>Cartera de Inventario</h3>
                 <span className="icono-signo-mas"></span>
               </div>
-              <div className="scrollable-content">
-                <Articulo />
-                <Articulo />
-                <Articulo />
-                <Articulo />
-                <Articulo />
-                <Articulo />
-                <Articulo />
-              </div>
+                <div className="scrollable-content">
+                  {articulos.map((articulo) => (
+                    <Articulo key={articulo.id} articulo={articulo} />
+                  ))}
+                </div>
             </div>
           </section>
         </div>
