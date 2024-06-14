@@ -5,12 +5,22 @@
     display: flex;
     flex-direction: column;
 }
+.volver-carga{
+    color: #ffffff;
+    background-color: #b60900;
+    padding: 1vh;
+    border-radius: 5px;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 5%;
+}
 
 .text-cargar{
     color: #000000;
     font-size: 3vh;
     margin-top: 5vh;
     margin-left: 5vw;
+    margin-bottom: 1vh;
 }
 
 .formu-carga{
@@ -19,7 +29,7 @@
     width: 90vw;
     margin-left: 5vw;
     margin-bottom: 1vw;
-    margin-top: 1vh;
+    margin-top: 2vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
     border-radius: 5px;
     display: grid; 

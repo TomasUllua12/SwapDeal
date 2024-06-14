@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
+const multer = require("multer"); 
+const path = require("path");
 
 app.use(cors());
 app.use(express.json());
@@ -21,7 +23,7 @@ db.connect((err) => {
     console.log('Connected to the MySQL server.');
 });
 
-// Ruta para obtener todos los usuario
+// Ruta para obtener todos los usuarios
 app.get("/usuario", (req, res) => {
     db.query('SELECT * FROM usuario', (err, result) => {
         if (err) {
@@ -48,7 +50,7 @@ app.get("/usuario/:documento", (req, res) => {
     });
 });
 
-
+// Ruta para el inicio de sesión
 app.post("/login", (req, res) => {
     const { email, password } = req.body;
     db.query('SELECT * FROM usuario WHERE email = ? AND password = ?', [email, password], (err, result) => {
@@ -63,7 +65,6 @@ app.post("/login", (req, res) => {
         }
     });
 });
-
 
 // Ruta para actualizar el perfil del usuario
 app.put("/usuario/:documento", (req, res) => {
@@ -81,6 +82,60 @@ app.put("/usuario/:documento", (req, res) => {
         }
     );
 });
+
+// Configuración de Multer para la carga de archivos
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, '..', 'client', 'public', 'assets', 'productos'));
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ 
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        const filetypes = /jpeg|jpg|png/;
+        const mimetype = filetypes.test(file.mimetype);
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+
+        if (mimetype && extname) {
+            cb(null, true);
+        } else {
+            cb(new Error("Solo se permiten archivos de imagen (jpeg, jpg, png)"));
+        }
+    }
+});
+
+
+// Ruta para cargar un artículo
+app.post("/articulo", upload.single('imagen'), (req, res) => {
+    const { titulo, descripcion, tiempo_uso, categoria, id_usuario } = req.body;
+
+    if (!req.file) {
+        return res.status(400).send("Imagen es requerida");
+    }
+
+    // Ruta relativa para guardar en la base de datos
+    const imagen = `/public/assets/productos/${req.file.filename}`;
+
+    const query = 'INSERT INTO articulo (titulo, descripcion, imagen, tiempo_uso, categoria, id_usuario) VALUES (?, ?, ?, ?, ?, ?)';
+    const values = [titulo, descripcion, imagen, tiempo_uso, categoria, id_usuario];
+
+    db.query(query, values, (err, result) => {
+        if (err) {
+            console.error("Error en la consulta de base de datos:", err);
+            res.status(500).send("Error al cargar el artículo");
+        } else {
+            res.send("Artículo cargado exitosamente");
+        }
+    });
+});
+
+
+// Servir archivos estáticos de la carpeta public
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.listen(3002, () => {
     console.log("corriendo en el puerto 3002");
