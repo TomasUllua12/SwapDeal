@@ -161,6 +161,20 @@ app.get("/usuario/:documento/articulo/:id", (req, res) => {
     });
 });
 
+
+// Ruta para eliminar un artículo
+app.delete("/articulo/:id", (req, res) => {
+    const articuloId = req.params.id;
+    db.query('DELETE FROM articulo WHERE id = ?', [articuloId], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send("Error al eliminar el artículo");
+        } else {
+            res.send("Artículo eliminado exitosamente");
+        }
+    });
+});
+
 // Ruta para obtener todos los artículos excepto los del usuario logueado
 app.get("/articulos/excluyendo/:documento", (req, res) => {
     const userId = req.params.documento;
