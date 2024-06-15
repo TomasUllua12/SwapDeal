@@ -202,6 +202,31 @@ app.get("/articulo/:id", (req, res) => {
     });
 });
 
+
+// Ruta para actualizar un artículo
+app.put("/articulo/:id", upload.single('imagen'), (req, res) => {
+    const articuloId = req.params.id;
+    const { titulo, descripcion, tiempo_uso, categoria, id_usuario, imagen: existingImagen } = req.body;
+    let imagen = existingImagen; // Imagen existente por defecto
+
+    // Si se subió una nueva imagen, actualizamos el valor de imagen
+    if (req.file) {
+        imagen = `/public/assets/productos/${req.file.filename}`;
+    }
+
+    const query = 'UPDATE articulo SET titulo=?, descripcion=?, tiempo_uso=?, categoria=?, imagen=? WHERE id=?';
+    const values = [titulo, descripcion, tiempo_uso, categoria, imagen, articuloId];
+
+    db.query(query, values, (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send("Error al actualizar el artículo");
+        } else {
+            res.send("Artículo actualizado exitosamente");
+        }
+    });
+});
+
 // Servir archivos estáticos de la carpeta public
 app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')));
 

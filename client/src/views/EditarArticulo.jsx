@@ -39,10 +39,10 @@ function EditarArticulo() {
         formData.append('descripcion', descripcion);
         formData.append('categoria', categoria);
         formData.append('tiempo_uso', tiempoUso);
+        formData.append('id_usuario', user.documento);  // Asegúrate de enviar el ID del usuario
+        formData.append('imagen', existingImagen); // Pasar la imagen existente
         if (imagen) {
-            formData.append('imagen', imagen);
-        } else {
-            formData.append('imagen', existingImagen); // Pasar la imagen existente si no se carga una nueva
+            formData.append('imagen', imagen); // Sobrescribir si hay una nueva imagen
         }
         try {
             const response = await axios.put(`http://localhost:3002/articulo/${id}`, formData, {
@@ -123,26 +123,27 @@ function EditarArticulo() {
                             id="usage-time"
                             name="usage-time"
                             required
-                            placeholder="Ingresa el tiempo de uso"
+                            placeholder="Ej. 3 meses de uso"
                             value={tiempoUso}
                             onChange={(e) => setTiempoUso(e.target.value)}
                         />
                     </div>
-                    <div className="descrip">
+                    <div className="descripcion">
                         <label htmlFor="description">Descripción:</label>
-                        <input
-                            className='inpu-des'
-                            type="text"
+                        <textarea
+                            className='descrip'
                             id="description"
                             name="description"
-                            placeholder="Ingresa la descripción del artículo"
                             required
+                            placeholder="Escribe una descripción del artículo"
                             value={descripcion}
                             onChange={(e) => setDescripcion(e.target.value)}
-                        />
+                        ></textarea>
+                    </div>
+                    <div className="boton-publicar">
+                        <button className='boton-publi' type="submit">Guardar cambios</button>
                     </div>
                 </div>
-                <button type="submit" className="envia">Actualizar Artículo</button>
             </form>
         </div>
     );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom"; 
 import "./ArticuloView.css";
 import UserContext from "../context/UserContext.jsx";
 
@@ -30,7 +30,7 @@ function ArticuloView() {
     };
 
     fetchArticulo();
-}, [id]);
+  }, [id]);
 
   if (!articulo) {
     return <div>Loading...</div>;
@@ -52,13 +52,23 @@ function ArticuloView() {
         <p>Reputación: {obtenerReputacion(articulo.reputacion_propietario)}</p>
       </div>
       {isOwner ? (
+        <>
         <Link to={`/EditarArticulo/${id}`}>
           <button className="editar-articulo">Editar Artículo</button>
         </Link>
+        <Link to="/Perfil">
+            <a href="" className="action_btn">
+              volver a mi perfil
+            </a>
+          </Link>
+        </>
       ) : (
+        <>
         <Link to={`/SolicitudPermuta/${articulo.id}`}>
           <button className="permutar-articulo">Permutar Artículo</button>
         </Link>
+        <button className="volver-button" onClick={() => window.history.back()}>Volver</button>
+        </>
       )}
     </div>
   );
