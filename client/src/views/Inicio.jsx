@@ -5,20 +5,19 @@ import ShowHide from "../components/ShowHide";
 import { Header } from "../components/Header";
 import "./Inicio.css";
 import Articulo from "../components/Articulo";
-import vehicles from "../data/vehicles"; // Si necesitas vehicles, mantenlo aquí
-import cards from "../data/card"; // Si necesitas cards, mantenlo aquí
-import axios from "axios"; // Asegúrate de importar axios si lo necesitas para realizar peticiones HTTP
-import UserContext from "../context/UserContext.jsx"; // Importa el contexto de usuario
+import vehicles from "../data/vehicles";
+import cards from "../data/card";
+import axios from "axios";
+import UserContext from "../context/UserContext.jsx";
 
 export function Inicio(props) {
-
   const [articulos, setArticulos] = useState([]);
-  const { user } = useContext(UserContext); // Obtiene la información del usuario del contexto
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const fetchArticulos = async () => {
         try {
-            const response = await axios.get(`http://localhost:3002/usuario/${user.documento}/articulo`);
+            const response = await axios.get(`http://localhost:3002/articulos/excluyendo/${user.documento}`);
             setArticulos(response.data);
         } catch (error) {
             console.error("Error fetching articles:", error);
@@ -29,12 +28,6 @@ export function Inicio(props) {
         fetchArticulos();
     }
 }, [user]);
-
-
-
-  const vehicleList = vehicles.map((v) => {
-    return <Card title={v.name} description={v.description} />;
-  });
 
   return (
     <>

@@ -148,7 +148,6 @@ app.get("/usuario/:documento/articulo", (req, res) => {
 app.get("/usuario/:documento/articulo/:id", (req, res) => {
     const userId = req.params.documento;
     const articuloId = req.params.id;
-
     // Consulta a la base de datos para obtener el artículo específico por su ID
     db.query('SELECT * FROM articulo WHERE id_usuario = ? AND id = ?', [userId, articuloId], (err, result) => {
         if (err) {
@@ -161,6 +160,38 @@ app.get("/usuario/:documento/articulo/:id", (req, res) => {
         }
     });
 });
+
+// Ruta para obtener todos los artículos excepto los del usuario logueado
+app.get("/articulos/excluyendo/:documento", (req, res) => {
+    const userId = req.params.documento;
+    const query = 'SELECT * FROM articulo WHERE id_usuario != ?';
+    db.query(query, [userId], (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+
+// Ruta para obtener un artículo por su ID
+app.get("/articulo/:id", (req, res) => {
+    const articuloId = req.params.id;
+    db.query('SELECT * FROM articulo WHERE id = ?', [articuloId], (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send(err);
+        } else if (result.length > 0) {
+            res.send(result[0]);
+        } else {
+            res.status(404).send({ message: `Artículo ${articuloId} no encontrado` });
+        }
+    });
+});
+
+
 
 // Servir archivos estáticos de la carpeta public
 app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')));

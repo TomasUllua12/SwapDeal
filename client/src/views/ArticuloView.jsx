@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./ArticuloView.css";
-import UserContext from "../context/UserContext.jsx"; // Importa el UserContext
+import UserContext from "../context/UserContext.jsx";
 
 function ArticuloView() {
   const { id } = useParams();
-  const { user } = useContext(UserContext); // Usa el contexto de usuario
+  const { user } = useContext(UserContext);
   const [articulo, setArticulo] = useState(null);
 
   const obtenerReputacion = (reputacion) => {
@@ -15,19 +15,27 @@ function ArticuloView() {
   };
 
   useEffect(() => {
-    if (user && user.documento) {
-      fetch(`http://localhost:3002/usuario/${user.documento}/articulo/${id}`)
-        .then(response => response.json())
-        .then(data => setArticulo(data))
-        .catch(error => console.error('Error fetching the article:', error));
-    } else {
-      console.error('User not defined or documento missing');
-    }
-  }, [id, user]);
+    const fetchArticulo = async () => {
+      try {
+        const response = await fetch(`http://localhost:3002/articulo/${id}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setArticulo(data);
+      } catch (error) {
+        console.error('Error fetching the article:', error);
+      }
+    };
+
+    fetchArticulo();
+  }, [id]);
 
   if (!articulo) {
     return <div>Loading...</div>;
   }
+
+  const isOwner = articulo.id_usuario === user.documento;
 
   return (
     <div className="ArticuloView">
@@ -38,6 +46,15 @@ function ArticuloView() {
       <p>{articulo.tiempo_uso}</p>
       <p>Usuario propietario: {user.nombre} {user.apellido}</p>
       <p className="reputacion">Reputación usuario: {obtenerReputacion(user.reputacion)}</p>
+      {isOwner ? (
+        <Link to={`/ArticuloView/${articulo.id}/editar`}>
+          <button className="editar-articulo">Editar Artículo</button>
+        </Link>
+      ) : (
+        <Link to={`/SolicitudPermuta/${articulo.id}`}>
+          <button className="permutar-articulo">Permutar Artículo</button>
+        </Link>
+      )}
     </div>
   );
 }
