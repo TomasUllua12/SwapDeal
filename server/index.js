@@ -176,10 +176,21 @@ app.get("/articulos/excluyendo/:documento", (req, res) => {
 });
 
 
-// Ruta para obtener un artículo por su ID
+// Ruta para obtener un artículo por su ID con la información del propietario
 app.get("/articulo/:id", (req, res) => {
     const articuloId = req.params.id;
-    db.query('SELECT * FROM articulo WHERE id = ?', [articuloId], (err, result) => {
+    const query = `
+        SELECT 
+            articulo.*, 
+            usuario.nombre AS nombre_propietario, 
+            usuario.apellido AS apellido_propietario, 
+            usuario.email AS correo_propietario, 
+            usuario.reputacion AS reputacion_propietario 
+        FROM articulo 
+        JOIN usuario ON articulo.id_usuario = usuario.documento 
+        WHERE articulo.id = ?`;
+
+    db.query(query, [articuloId], (err, result) => {
         if (err) {
             console.log(err);
             res.status(500).send(err);
@@ -190,8 +201,6 @@ app.get("/articulo/:id", (req, res) => {
         }
     });
 });
-
-
 
 // Servir archivos estáticos de la carpeta public
 app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')));

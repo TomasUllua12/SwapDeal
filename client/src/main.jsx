@@ -16,6 +16,8 @@ import { CargarArticulo } from "./views/CargarArticulo.jsx";
 import { EditarPerfil } from "./views/EditarPerfil.jsx";
 import { UserProvider } from './context/UserContext.jsx'; // Importa el UserProvider
 import  ArticuloView  from "./views/ArticuloView.jsx";
+import  EditarArticulo  from "./views/EditarArticulo.jsx";
+
 
 
 const routes = [
@@ -58,6 +60,10 @@ const routes = [
   {
     path: "/ArticuloView/:id",
     element: <ArticuloView />,
+  },
+  {
+    path: "/EditarArticulo/:id",
+    element: <EditarArticulo />,
   }
 ];
 /*

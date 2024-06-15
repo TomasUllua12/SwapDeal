@@ -22,6 +22,7 @@ function ArticuloView() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
+        console.log('Datos del artículo:', data); // Verificar los datos recibidos
         setArticulo(data);
       } catch (error) {
         console.error('Error fetching the article:', error);
@@ -29,7 +30,7 @@ function ArticuloView() {
     };
 
     fetchArticulo();
-  }, [id]);
+}, [id]);
 
   if (!articulo) {
     return <div>Loading...</div>;
@@ -44,10 +45,14 @@ function ArticuloView() {
       <p>{articulo.categoria}</p>
       <img src={articulo.imagen} alt={`${articulo.titulo} image`} />
       <p>{articulo.tiempo_uso}</p>
-      <p>Usuario propietario: {user.nombre} {user.apellido}</p>
-      <p className="reputacion">Reputación usuario: {obtenerReputacion(user.reputacion)}</p>
+      <div className="VendedorInfo">
+        <h2>Información del Vendedor</h2>
+        <p>Nombre: {articulo.nombre_propietario} {articulo.apellido_propietario}</p>
+        <p>Correo: {articulo.correo_propietario}</p>
+        <p>Reputación: {obtenerReputacion(articulo.reputacion_propietario)}</p>
+      </div>
       {isOwner ? (
-        <Link to={`/ArticuloView/${articulo.id}/editar`}>
+        <Link to={`/EditarArticulo/${id}`}>
           <button className="editar-articulo">Editar Artículo</button>
         </Link>
       ) : (
