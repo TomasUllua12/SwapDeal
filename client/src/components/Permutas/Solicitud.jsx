@@ -25,7 +25,7 @@ export function Solicitud({ children }) {
             <div className="solicitud-mi-producto">
               <div className="solicitud-mi-producto__container">
                 <p>Hubo interés por tu siguiente producto:</p>
-                <Articulo />
+                
               </div>
             </div>
             <div className="solicitud-buttons">
@@ -35,7 +35,7 @@ export function Solicitud({ children }) {
             <div className="solicitud-su-producto">
               <div className="solicitud-su-producto__container">
                 <p>Simón ofrece el siguiente producto:</p>
-                <Articulo />
+                
               </div>
             </div>
           </div>

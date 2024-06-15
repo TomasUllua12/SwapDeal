@@ -7,6 +7,13 @@ import Articulo from "../components/Articulo";
 import axios from "axios";
 import UserContext from "../context/UserContext.jsx"; // Importa el contexto de usuario
 
+// Función para formatear la fecha
+function formatDate(fecha) {
+  const date = new Date(fecha);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return date.toLocaleDateString('es-ES', options);
+}
+
 export function Perfil(props) {
   const { user } = useContext(UserContext); // Obtiene la información del usuario del contexto
   const [articulos, setArticulos] = useState([]);
@@ -56,9 +63,7 @@ export function Perfil(props) {
                 <h4>Sobre mí 😄</h4>
                 <p>{user.descripcion}</p>
                 <h4>Fecha de unión a SwapDeal 🗓️</h4>
-                <p>
-                  {user.nombre} se unió el {user.fecha_union}
-                </p>
+                <p>{user.nombre} se unió el {formatDate(user.fecha_union)}</p>
               </div>
             </div>
           </section>
