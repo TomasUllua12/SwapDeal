@@ -21,7 +21,6 @@ export function Permutas(props) {
           <div className="main-permutas-solicitudes__container">
             <Solicitud/>
             <Solicitud/>
-            <Solicitud/>
           </div>
         </section>
         <h2 className="main-permutas-permutas-title">Permutas</h2>

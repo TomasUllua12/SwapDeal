@@ -48,7 +48,6 @@ function ArticuloView() {
       <div className="VendedorInfo">
         <h2>Información del usuario</h2>
         <p>Nombre: {articulo.nombre_propietario} {articulo.apellido_propietario}</p>
-        <p>Correo: {articulo.correo_propietario}</p>
         <p>Reputación: {obtenerReputacion(articulo.reputacion_propietario)}</p>
       </div>
       {isOwner ? (
