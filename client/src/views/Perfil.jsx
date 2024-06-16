@@ -57,6 +57,7 @@ export function Perfil(props) {
           <section className="main-perfil-data">
             <div className="main-perfil-data-container">
               <h3> {user.nombre}</h3>
+              <h3> {user.apellido}</h3>
               <div>
                 <h4>Reputación 📓</h4>
                 <p className="emojis">{obtenerReputacion(user.reputacion)}</p>

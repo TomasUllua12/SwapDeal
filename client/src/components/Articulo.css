@@ -71,6 +71,11 @@
   transform: scale(1.05);
 }
 
+.articulo-container img {
+  max-width: 100%;
+  height: auto;
+}
+
 
 @media (max-width: 425px) {
   .articulo-container {

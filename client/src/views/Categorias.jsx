@@ -5,9 +5,17 @@ import { Header } from "../components/Header";
 import { CardCategoria } from "../components/CardCategoria";
 import cards from "../data/card";
 
-export function Categorias(props) {
-  const cardList = cards.map((v) => {
-    return <CardCategoria title={v.name} color={v.color} img={v.img} />;
+export function Categorias() {
+  const cardList = cards.map((v, index) => {
+    return (
+      <CardCategoria
+        key={index}
+        title={v.name}
+        color={v.color}
+        img={v.img}
+        link={`/categoria/${encodeURIComponent(v.name)}`} // Codificación correcta de URLs
+      />
+    );
   });
 
   return (

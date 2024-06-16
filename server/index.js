@@ -217,6 +217,21 @@ app.get("/articulo/:id", (req, res) => {
 });
 
 
+// Ruta para obtener los artículos de una categoría específica excepto los del usuario logueado
+app.get("/articulos/categoria/:categoria/excluyendo/:documento", (req, res) => {
+    const { categoria, documento } = req.params;
+    const query = 'SELECT * FROM articulo WHERE categoria = ? AND id_usuario != ?';
+    db.query(query, [categoria, documento], (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+
 // Ruta para actualizar un artículo
 app.put("/articulo/:id", upload.single('imagen'), (req, res) => {
     const articuloId = req.params.id;

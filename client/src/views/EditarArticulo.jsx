@@ -115,7 +115,7 @@ function EditarArticulo() {
 
     return (
         <div className='body-editarArticulo'>
-            <p className='text-editar'>Editar información del artículo</p>
+            <p className='text-editar'>Edita información del artículo</p>
             {loading && <p>Loading...</p>}
             {!loading && (
                 <form className='formu-editar' onSubmit={handleSubmit}>
