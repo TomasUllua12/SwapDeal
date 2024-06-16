@@ -220,8 +220,10 @@ app.get("/articulo/:id", (req, res) => {
 // Ruta para obtener los artículos de una categoría específica excepto los del usuario logueado
 app.get("/articulos/categoria/:categoria/excluyendo/:documento", (req, res) => {
     const { categoria, documento } = req.params;
+    const formattedCategoria = categoria.replace(/-/g, ' '); // Reemplaza guiones con espacios
+
     const query = 'SELECT * FROM articulo WHERE categoria = ? AND id_usuario != ?';
-    db.query(query, [categoria, documento], (err, result) => {
+    db.query(query, [formattedCategoria, documento], (err, result) => {
         if (err) {
             console.log(err);
             res.status(500).send(err);

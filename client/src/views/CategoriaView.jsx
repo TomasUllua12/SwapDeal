@@ -9,14 +9,14 @@ import "./CategoriaView.css";
 
 function CategoriaView() {
 const { categoria } = useParams();
-  const decodedCategoria = decodeURIComponent(categoria); // Decodifica el parámetro
+  const decodedCategoria = decodeURIComponent(categoria).replace(/-/g, ' '); // Decodifica el parámetro y reemplaza guiones con espacios
 const [articulos, setArticulos] = useState([]);
 const { user } = useContext(UserContext);
 
 useEffect(() => {
     const fetchArticulos = async () => {
     try {
-        const response = await axios.get(`http://localhost:3002/articulos/categoria/${decodedCategoria}/excluyendo/${user.documento}`);
+        const response = await axios.get(`http://localhost:3002/articulos/categoria/${encodeURIComponent(decodedCategoria)}/excluyendo/${user.documento}`);
         setArticulos(response.data);
     } catch (error) {
         console.error("Error fetching articles:", error);
@@ -32,17 +32,14 @@ return (
     <>
     <Header />
     <main className="categoria-main">
-        
         <div className="categoria-banner">
         <h2 className="categoria-title">{decodedCategoria}</h2>
         </div>
-
-        <div className="scrollable-cont">
+        <div className="scrollable-content">
         {articulos.map((articulo) => (
             <Articulo key={articulo.id} articulo={articulo} />
         ))}
         </div>
-
     </main>
     <FooterWave />
     </>
