@@ -46,7 +46,7 @@ function ArticuloView() {
       <img src={articulo.imagen} alt={`${articulo.titulo} image`} />
       <p>{articulo.tiempo_uso}</p>
       <div className="VendedorInfo">
-        <h2>Información del Vendedor</h2>
+        <h2>Información del usuario</h2>
         <p>Nombre: {articulo.nombre_propietario} {articulo.apellido_propietario}</p>
         <p>Correo: {articulo.correo_propietario}</p>
         <p>Reputación: {obtenerReputacion(articulo.reputacion_propietario)}</p>
