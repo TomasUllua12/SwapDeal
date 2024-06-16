@@ -69,9 +69,9 @@ app.post("/login", (req, res) => {
 // Ruta para actualizar el perfil del usuario
 app.put("/usuario/:documento", (req, res) => {
     const userId = req.params.documento;
-    const { nombre, apellido, email, password, reputacion, descripcion } = req.body;
-    db.query('UPDATE usuario SET nombre=?, apellido=?, email=?, password=?, reputacion=?, descripcion=? WHERE documento=?',
-        [nombre, apellido, email, password, reputacion, descripcion, userId],
+    const { nombre, apellido, email, password,telefono, reputacion, descripcion } = req.body;
+    db.query('UPDATE usuario SET nombre=?, apellido=?, email=?, password=?, telefono=?, reputacion=?, descripcion=? WHERE documento=?',
+        [nombre, apellido, email, password, telefono, reputacion, descripcion, userId],
         (err, result) => {
             if (err) {
                 console.log(err);

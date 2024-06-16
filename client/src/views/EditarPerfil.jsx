@@ -10,6 +10,7 @@ const [nombre, setNombre] = useState(user.nombre);
 const [apellido, setApellido] = useState(user.apellido);
 const [email, setEmail] = useState(user.email);
 const [password, setPassword] = useState(user.password);
+const [telefono, setTelefono] = useState(user.telefono);
 const [reputacion, setReputacion] = useState(user.reputacion);
 const [descripcion, setDescripcion] = useState(user.descripcion);
 
@@ -21,6 +22,7 @@ const handleSubmit = async (e) => {
             apellido,
             email,
             password,
+            telefono,
             reputacion,
             descripcion,
             fecha_union: user.fecha_union,
@@ -31,14 +33,15 @@ const handleSubmit = async (e) => {
         apellido: apellido,
         email: email,
         password: password,
+        telefono:telefono,
         reputacion: reputacion,
         descripcion: descripcion,
         fecha_union: user.fecha_union // No estamos modificando la fecha de unión en este formulario
     });
     if (response.data) {
-        setUser({ ...user, nombre, apellido, email, password, reputacion, descripcion });
+        setUser({ ...user, nombre, apellido, email, password, telefono, reputacion, descripcion });
         // Actualiza la información del usuario en el contexto
-        localStorage.setItem('user', JSON.stringify({ ...user, nombre, apellido, email, password, reputacion, descripcion }));
+        localStorage.setItem('user', JSON.stringify({ ...user, nombre, apellido, email, password, telefono, reputacion, descripcion }));
         // Actualiza la información del usuario en el localStorage
         alert("Perfil actualizado exitosamente");
     } else {
@@ -79,6 +82,11 @@ const handleSubmit = async (e) => {
             <div className="formas">
                 <label>Contraseña:</label>
                 <input type="password" className="contra" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+
+            <div className="formas">
+                <label>Telefono:</label>
+                <input type="text" className="telefono" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
             </div>
     
             <div className="formas">
