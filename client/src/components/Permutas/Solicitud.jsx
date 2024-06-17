@@ -1,73 +1,115 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Articulo from "../Articulo";
 import "./Solicitud.css";
-import Articulo from "../Articulo"; // Importa el componente de Articulo
 
-export function Solicitud({ solicitud, onAceptar, onRechazar, userId }) {
-  const { id, id_articulo_solicitado, id_articulo_ofrecido, id_usuario_solicitante, id_usuario_solicitado, estado, fecha } = solicitud;
-  const [usuarioSolicitante, setUsuarioSolicitante] = useState({});
-  const [usuarioSolicitado, setUsuarioSolicitado] = useState({});
-  const [articuloSolicitado, setArticuloSolicitado] = useState({});
-  const [articuloOfrecido, setArticuloOfrecido] = useState({});
-  const isSolicitante = userId === id_usuario_solicitante;
+function Solicitud({ solicitud, onAceptar, onRechazar, userId }) {
+const { id, id_articulo_solicitado, id_articulo_ofrecido, id_usuario_solicitante, id_usuario_solicitado, estado } = solicitud;
+const [usuarioSolicitante, setUsuarioSolicitante] = useState({});
+const [usuarioSolicitado, setUsuarioSolicitado] = useState({});
+const [articuloSolicitado, setArticuloSolicitado] = useState({});
+const [articuloOfrecido, setArticuloOfrecido] = useState({});
+const isSolicitante = userId === id_usuario_solicitante;
 
-  useEffect(() => {
+
+useEffect(() => {
     const fetchData = async () => {
-      try {
-        const userSolicitanteResponse = await fetch(`http://localhost:3002/usuario/${id_usuario_solicitante}`);
-        const userSolicitadoResponse = await fetch(`http://localhost:3002/usuario/${id_usuario_solicitado}`);
-        const articuloSolicitadoResponse = await fetch(`http://localhost:3002/articulo/${id_articulo_solicitado}`);
-        const articuloOfrecidoResponse = await fetch(`http://localhost:3002/articulo/${id_articulo_ofrecido}`);
+        try {
+            const [userSolicitanteResponse, userSolicitadoResponse, articuloSolicitadoResponse, articuloOfrecidoResponse] = await Promise.all([
+                fetch(`http://localhost:3002/usuario/${id_usuario_solicitante}`),
+                fetch(`http://localhost:3002/usuario/${id_usuario_solicitado}`),
+                fetch(`http://localhost:3002/articulo/${id_articulo_solicitado}`),
+                fetch(`http://localhost:3002/articulo/${id_articulo_ofrecido}`)
+            ]);
 
-        if (!userSolicitanteResponse.ok || !userSolicitadoResponse.ok || !articuloSolicitadoResponse.ok || !articuloOfrecidoResponse.ok) {
-          throw new Error('Network response was not ok');
+            if (!userSolicitanteResponse.ok || !userSolicitadoResponse.ok || !articuloSolicitadoResponse.ok || !articuloOfrecidoResponse.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const [userSolicitanteData, userSolicitadoData, articuloSolicitadoData, articuloOfrecidoData] = await Promise.all([
+                userSolicitanteResponse.json(),
+                userSolicitadoResponse.json(),
+                articuloSolicitadoResponse.json(),
+                articuloOfrecidoResponse.json()
+            ]);
+
+            setUsuarioSolicitante(userSolicitanteData);
+            setUsuarioSolicitado(userSolicitadoData);
+            setArticuloSolicitado(articuloSolicitadoData);
+            setArticuloOfrecido(articuloOfrecidoData);
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-
-        const userSolicitanteData = await userSolicitanteResponse.json();
-        const userSolicitadoData = await userSolicitadoResponse.json();
-        const articuloSolicitadoData = await articuloSolicitadoResponse.json();
-        const articuloOfrecidoData = await articuloOfrecidoResponse.json();
-
-        setUsuarioSolicitante(userSolicitanteData);
-        setUsuarioSolicitado(userSolicitadoData);
-        setArticuloSolicitado(articuloSolicitadoData);
-        setArticuloOfrecido(articuloOfrecidoData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
     };
 
     fetchData();
-  }, [id_usuario_solicitante, id_usuario_solicitado, id_articulo_solicitado, id_articulo_ofrecido]);
+}, [id_usuario_solicitante, id_usuario_solicitado, id_articulo_solicitado, id_articulo_ofrecido]);
 
-  return (
-    <div className={`expandable-container ${isSolicitante ? 'solicitud-enviada' : 'solicitud-recibida'}`}>
-      <div className="header">
-        <h2>🆕 <b>¡NUEVA!</b> Solicitud de Permuta 🔁</h2>
-      </div>
-      <div className="content expanded">
-        <p><b>{isSolicitante ? 'Solicitud enviada' : 'Solicitud recibida'}</b> de permuta {isSolicitante ? 'por ti' : `por parte de: ${usuarioSolicitante.nombre} ${usuarioSolicitante.apellido}`}</p>
-        <div className="solicitud-permuta-completa">
-          <div className="solicitud-mi-producto">
-            <div className="solicitud-mi-producto__container">
-              <p>{isSolicitante ? 'Ofreciste el siguiente producto:' : 'Hubo interés por tu siguiente producto:'}</p>
-              <Articulo articulo={isSolicitante ? articuloOfrecido : articuloSolicitado} />
-            </div>
-          </div>
-          <div className="solicitud-su-producto">
-            <div className="solicitud-su-producto__container">
-              <p>{isSolicitante ? 'Solicitaste el siguiente producto:' : 'El usuario ofrece el siguiente producto:'}</p>
-              <Articulo articulo={isSolicitante ? articuloSolicitado : articuloOfrecido} />
-            </div>
-          </div>
-          {!isSolicitante && estado === "pendiente" && (
-            <div className="solicitud-buttons">
-              <button className="confirmar-button" onClick={() => onAceptar(id)}>Aceptar</button>
-              <button className="rechazar-button" onClick={() => onRechazar(id)}>Rechazar</button>
-            </div>
-          )}
+const handleAceptar = async () => {
+    try {
+        const response = await fetch(`http://localhost:3002/solicitudPermuta/${id}/aceptar`, {
+            method: 'POST'
+        });
+        if (!response.ok) {
+            throw new Error('Error al aceptar la solicitud de permuta');
+        }
+        onAceptar(id);
+        alert('Permuta realizada con éxito');
+    } catch (error) {
+        console.error('Error al aceptar la solicitud de permuta:', error);
+        alert('Hubo un problema al aceptar la solicitud de permuta');
+    }
+};
+
+const handleRechazar = async () => {
+    try {
+        const response = await fetch(`http://localhost:3002/solicitudPermuta/${id}/rechazar`, {
+            method: 'POST'
+        });
+        if (!response.ok) {
+            throw new Error('Error al rechazar la solicitud de permuta');
+        }
+        onRechazar(id);
+        alert('Permuta rechazada');
+    } catch (error) {
+        console.error('Error al rechazar la solicitud de permuta:', error);
+        alert('Hubo un problema al rechazar la solicitud de permuta');
+    }
+};
+
+return (
+    <div className="solicitud">
+        <div className="info-solicitante">
+            <h3>Usuario Solicitante:</h3>
+            <p>{usuarioSolicitante.nombre}</p>
         </div>
-      </div>
+        <div className="info-solicitado">
+            <h3>Usuario Solicitado:</h3>
+            <p>{usuarioSolicitado.nombre}</p>
+        </div>
+        <div className="info-articulo-solicitado">
+            <h3>Artículo Solicitado:</h3>
+            <Articulo articulo={articuloSolicitado} />
+        </div>
+        <div className="info-articulo-ofrecido">
+            <h3>Artículo Ofrecido:</h3>
+            <Articulo articulo={articuloOfrecido} />
+        </div>
+        <div className="acciones">
+            {estado === 'pendiente' && isSolicitante && (
+                <>
+                    <button onClick={handleAceptar}>Aceptar</button>
+                    <button onClick={handleRechazar}>Rechazar</button>
+                </>
+            )}
+            {estado === 'aceptada' && (
+                <p>La solicitud de permuta ha sido aceptada.</p>
+            )}
+            {estado === 'rechazada' && (
+                <p>La solicitud de permuta ha sido rechazada.</p>
+            )}
+        </div>
     </div>
-  );
+);
 }
+
+export default Solicitud;

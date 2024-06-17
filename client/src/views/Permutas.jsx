@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
-import { Solicitud } from "../components/Permutas/Solicitud";
+import  Solicitud  from "../components/Permutas/Solicitud";
 import "./Permutas.css";
 
 function Permutas() {
@@ -64,7 +64,7 @@ function Permutas() {
         <section className="main-permutas-solicitudes">
           <div className="main-permutas-solicitudes__container">
             {solicitudes.length === 0 ? (
-              <p>No tienes solicitudes de permuta.</p>
+              <p className="per">No tienes solicitudes de permuta.</p>
             ) : (
               solicitudes.map(solicitud => (
                 <Solicitud

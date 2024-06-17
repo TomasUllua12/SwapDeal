@@ -320,6 +320,160 @@ app.get("/articulo/:id", (req, res) => {
 });
 
 
+
+// Ruta para aceptar una solicitud de permuta
+app.post("/solicitudPermuta/:id/aceptar", async (req, res) => {
+    const idSolicitud = req.params.id;
+    const query = 'SELECT * FROM permuta WHERE id = ?';
+    db.query(query, [idSolicitud], async (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send("Error al buscar la solicitud de permuta");
+            return;
+        }
+
+        if (result.length === 0) {
+            res.status(404).send("Solicitud de permuta no encontrada");
+            return;
+        }
+
+        const { id_articulo_solicitado, id_articulo_ofrecido, id_usuario_solicitante, id_usuario_solicitado } = result[0];
+
+        try {
+            // Obtener información del usuario solicitante y solicitado
+            const [userData1, userData2] = await Promise.all([
+                getUserData(id_usuario_solicitante),
+                getUserData(id_usuario_solicitado)
+            ]);
+
+            // Obtener información de los artículos solicitado y ofrecido
+            const [articuloData1, articuloData2] = await Promise.all([
+                getArticuloData(id_articulo_solicitado),
+                getArticuloData(id_articulo_ofrecido)
+            ]);
+
+            // Actualizar los artículos cambiando el id_usuario
+            const updateArticulos = async () => {
+                await Promise.all([
+                    updateArticuloOwner(id_articulo_solicitado, id_usuario_solicitado),
+                    updateArticuloOwner(id_articulo_ofrecido, id_usuario_solicitante)
+                ]);
+            };
+
+            await updateArticulos();
+
+            // Insertar en la tabla historial
+            const queryInsert = `
+                INSERT INTO historial 
+                (id_usuario, nombre, apellido, email, telefono, titulo_articulo, 
+                id_usuario2, nombre2, apellido2, email2, telefono2, titulo_articulo2) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            `;
+            const values = [
+                userData1.documento, userData1.nombre, userData1.apellido, userData1.email, userData1.telefono, articuloData1.titulo,
+                userData2.documento, userData2.nombre, userData2.apellido, userData2.email, userData2.telefono, articuloData2.titulo
+            ];
+
+            db.query(queryInsert, values, (err, resultInsert) => {
+                if (err) {
+                    console.error(err);
+                    res.status(500).send("Error al insertar en la tabla historial");
+                } else {
+                    // Eliminar la solicitud de permuta
+                    const queryDelete = 'DELETE FROM permuta WHERE id = ?';
+                    db.query(queryDelete, [idSolicitud], (err, resultDelete) => {
+                        if (err) {
+                            console.error(err);
+                            res.status(500).send("Error al eliminar la solicitud de permuta");
+                        } else {
+                            res.send("Permuta aceptada exitosamente");
+                        }
+                    });
+                }
+            });
+        } catch (error) {
+            console.error('Error accepting swap request:', error);
+            res.status(500).send("Error al aceptar la solicitud de permuta");
+        }
+    });
+});
+
+
+
+// Función para actualizar el propietario de un artículo
+function updateArticuloOwner(articuloId, nuevoPropietarioId) {
+    return new Promise((resolve, reject) => {
+        db.query('UPDATE articulo SET id_usuario = ? WHERE id = ?', [nuevoPropietarioId, articuloId], (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve();
+            }
+        });
+    });
+}
+
+// Función auxiliar para obtener datos del usuario y su artículo
+async function getUserDataAndArticulo(userId, articuloId) {
+    const [userData, articuloData] = await Promise.all([
+        getUserData(userId),
+        getArticuloData(articuloId)
+    ]);
+    return { ...userData, ...articuloData };
+}
+
+// Función auxiliar para obtener datos del usuario
+function getUserData(userId) {
+    return new Promise((resolve, reject) => {
+        db.query('SELECT * FROM usuario WHERE documento = ?', [userId], (err, result) => {
+            if (err) {
+                reject(err);
+            } else if (result.length > 0) {
+                resolve(result[0]);
+            } else {
+                reject(new Error(`Usuario con documento ${userId} no encontrado`));
+            }
+        });
+    });
+}
+
+// Función auxiliar para obtener datos del artículo
+function getArticuloData(articuloId) {
+    return new Promise((resolve, reject) => {
+        db.query('SELECT * FROM articulo WHERE id = ?', [articuloId], (err, result) => {
+            if (err) {
+                reject(err);
+            } else if (result.length > 0) {
+                resolve(result[0]);
+            } else {
+                reject(new Error(`Artículo con ID ${articuloId} no encontrado`));
+            }
+        });
+    });
+}
+
+
+
+
+// Ruta para rechazar una solicitud de permuta
+app.post("/solicitudPermuta/:id/rechazar", (req, res) => {
+    const idSolicitud = req.params.id;
+    const query = 'DELETE FROM permuta WHERE id = ?';
+    db.query(query, [idSolicitud], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send("Error al eliminar la solicitud de permuta");
+        } else {
+            res.send("Solicitud de permuta rechazada exitosamente");
+        }
+    });
+});
+
+
+
+
+
+
 // Servir archivos estáticos de la carpeta public
 app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')));
 
