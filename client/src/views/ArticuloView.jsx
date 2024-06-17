@@ -89,14 +89,14 @@ function ArticuloView() {
           <div className="articulo-info-section-square">
             <h1>{articulo.titulo}</h1>
             <h2>{articulo.descripcion}</h2>
-            <p>{articulo.categoria}</p>
+            <p><b>{articulo.categoria}</b></p>
 
-            <p>{articulo.tiempo_uso}</p>
+            <p>Tiempo de Uso: <b>{articulo.tiempo_uso}</b></p>
             <div className="VendedorInfo">
               <h2>Información del usuario</h2>
               <p>
-                Nombre: {articulo.nombre_propietario}{" "}
-                {articulo.apellido_propietario}
+                Nombre: <b>{articulo.nombre_propietario}{" "}
+                {articulo.apellido_propietario}</b>
               </p>
               <p>
                 Reputación: {obtenerReputacion(articulo.reputacion_propietario)}
@@ -108,7 +108,7 @@ function ArticuloView() {
                   <button className="editar-articulo">Editar Artículo</button>
                 </Link>
                 <Link to="/Perfil">
-                  <a href="" className="action_btn">
+                  <a href="" className="action_btn_nuevo">
                     Volver a mi perfil
                   </a>
                 </Link>
