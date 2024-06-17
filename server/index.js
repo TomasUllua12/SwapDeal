@@ -353,14 +353,10 @@ app.post("/solicitudPermuta/:id/aceptar", async (req, res) => {
             ]);
 
             // Actualizar los artículos cambiando el id_usuario
-            const updateArticulos = async () => {
-                await Promise.all([
-                    updateArticuloOwner(id_articulo_solicitado, id_usuario_solicitado),
-                    updateArticuloOwner(id_articulo_ofrecido, id_usuario_solicitante)
-                ]);
-            };
-
-            await updateArticulos();
+            await Promise.all([
+                updateArticuloOwner(id_articulo_solicitado,  id_usuario_solicitante),
+                updateArticuloOwner(id_articulo_ofrecido, id_usuario_solicitado)
+            ]);
 
             // Insertar en la tabla historial
             const queryInsert = `
@@ -398,8 +394,6 @@ app.post("/solicitudPermuta/:id/aceptar", async (req, res) => {
     });
 });
 
-
-
 // Función para actualizar el propietario de un artículo
 function updateArticuloOwner(articuloId, nuevoPropietarioId) {
     return new Promise((resolve, reject) => {
@@ -412,6 +406,20 @@ function updateArticuloOwner(articuloId, nuevoPropietarioId) {
         });
     });
 }
+
+// Ruta para rechazar una solicitud de permuta
+app.post("/solicitudPermuta/:id/rechazar", (req, res) => {
+    const idSolicitud = req.params.id;
+    const query = 'DELETE FROM permuta WHERE id = ?';
+    db.query(query, [idSolicitud], (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send("Error al eliminar la solicitud de permuta");
+        } else {
+            res.send("Solicitud de permuta rechazada exitosamente");
+        }
+    });
+});
 
 // Función auxiliar para obtener datos del usuario y su artículo
 async function getUserDataAndArticulo(userId, articuloId) {
@@ -453,21 +461,6 @@ function getArticuloData(articuloId) {
 }
 
 
-
-
-// Ruta para rechazar una solicitud de permuta
-app.post("/solicitudPermuta/:id/rechazar", (req, res) => {
-    const idSolicitud = req.params.id;
-    const query = 'DELETE FROM permuta WHERE id = ?';
-    db.query(query, [idSolicitud], (err, result) => {
-        if (err) {
-            console.error(err);
-            res.status(500).send("Error al eliminar la solicitud de permuta");
-        } else {
-            res.send("Solicitud de permuta rechazada exitosamente");
-        }
-    });
-});
 
 
 
