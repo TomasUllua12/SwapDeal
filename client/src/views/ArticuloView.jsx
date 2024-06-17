@@ -1,12 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Link } from "react-router-dom"; 
+import { useParams, Link, useNavigate } from "react-router-dom"; 
 import "./ArticuloView.css";
-import UserContext from "../context/UserContext.jsx";
+import UserContext from "../context/UserContext";
+import SeleccionarArticulo from "../components/SeleccionarArticulo";
 
 function ArticuloView() {
   const { id } = useParams();
   const { user } = useContext(UserContext);
   const [articulo, setArticulo] = useState(null);
+  const [seleccionando, setSeleccionando] = useState(false);
+  const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
+  const navigate = useNavigate();
 
   const obtenerReputacion = (reputacion) => {
     const estrellas = "⭐".repeat(reputacion);
@@ -22,7 +26,6 @@ function ArticuloView() {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log('Datos del artículo:', data); // Verificar los datos recibidos
         setArticulo(data);
       } catch (error) {
         console.error('Error fetching the article:', error);
@@ -31,6 +34,35 @@ function ArticuloView() {
 
     fetchArticulo();
   }, [id]);
+
+  const handlePermutar = () => {
+    setSeleccionando(true);
+  };
+
+  const handleSeleccionar = async (idArticuloOfrecido) => {
+    setArticuloSeleccionado(idArticuloOfrecido);
+    try {
+      const response = await fetch("http://localhost:3002/solicitudPermuta", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id_articulo_solicitado: articulo.id,
+          id_articulo_ofrecido: idArticuloOfrecido,
+          id_usuario_solicitante: user.documento,
+          id_usuario_solicitado: articulo.id_usuario
+        })
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      setSeleccionando(false);
+      navigate("/Permutas"); // Navegar a la página de Permutas después de enviar la solicitud
+    } catch (error) {
+      console.error('Error creating swap request:', error);
+    }
+  };
 
   if (!articulo) {
     return <div>Loading...</div>;
@@ -56,16 +88,16 @@ function ArticuloView() {
           <button className="editar-articulo">Editar Artículo</button>
         </Link>
         <Link to="/Perfil">
-            <a href="" className="action_btn">
-              volver a mi perfil
-            </a>
-          </Link>
+          <a href="" className="action_btn">Volver a mi perfil</a>
+        </Link>
         </>
       ) : (
         <>
-        <Link to={`/SolicitudPermuta/${articulo.id}`}>
-          <button className="permutar-articulo">Permutar Artículo</button>
-        </Link>
+        {seleccionando ? (
+          <SeleccionarArticulo onSeleccionar={handleSeleccionar} />
+        ) : (
+          <button className="permutar-articulo" onClick={handlePermutar}>Permutar Artículo</button>
+        )}
         <button className="volver-button" onClick={() => window.history.back()}>Volver</button>
         </>
       )}

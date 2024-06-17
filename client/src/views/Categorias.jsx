@@ -33,3 +33,5 @@ export function Categorias() {
     </>
   );
 }
+
+export default Categorias;

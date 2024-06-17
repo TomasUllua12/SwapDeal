@@ -54,31 +54,37 @@
 .content.expanded {
   margin: 10px;
   max-height: 500px; /* Ajusta según el contenido que tengas */
-}
-
-.content.collapsed {
-  max-height: 0;
+  padding: 60%;
 }
 
 .solicitud-permuta-completa {
   margin-top: 15px;
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Cambiar a columna si hay problemas de espacio */
+  align-items: flex-start; /* Alinear a la izquierda */
+}
+
+.solicitud-mi-producto__container, .solicitud-su-producto__container {
+  margin-bottom: 15px; /* Añadir un margen inferior */
+  width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
 }
 
 .solicitud-buttons {
   display: flex;
-  flex-direction: column;
+  justify-content: center; /* Alinea los botones al centro */
+  margin-top: 10px; /* Agrega margen superior */
 }
+
 .solicitud-buttons button {
-  margin: 5px;
-  padding: 10px 20px; /* Agrega algo de padding para hacer los botones más grandes */
+  margin: 0 5px; /* Espaciado entre botones */
+  padding: 10px 20px; /* Aumenta el padding para hacer los botones más grandes */
   font-size: 1.2rem; /* Tamaño de la fuente */
   border: none; /* Elimina el borde */
   cursor: pointer; /* Cambia el cursor cuando se pasa sobre el botón */
   transition: transform 0.3s ease, color 0.3s ease; /* Transiciones suaves */
 }
-.solicitud-buttons .confirmar {
+
+.solicitud-buttons .confirmar-button {
   background: linear-gradient(
     -1985deg,
     var(--first-orange) 20%,
@@ -87,16 +93,27 @@
   );
   color: white;
 }
-.solicitud-buttons .rechazar {
+
+.solicitud-buttons .rechazar-button {
   border: solid 2px #fa9797;
   background-color: white;
   color: black;
 }
-.solicitud-buttons .confirmar:hover {
+
+.solicitud-buttons .confirmar-button:hover {
   transform: scale(1.05); /* Agranda el botón un poco */
   background: #0b8000;
 }
-.solicitud-buttons .rechazar:hover {
+
+.solicitud-buttons .rechazar-button:hover {
   color: white;
   background: #800000;
+}
+
+.expandable-container.solicitud-enviada {
+  background-color: #e0f7fa; /* Azul claro para enviadas */
+}
+
+.expandable-container.solicitud-recibida {
+  background-color: #ffebee; /* Rojo claro para recibidas */
 }
