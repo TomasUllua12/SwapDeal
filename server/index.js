@@ -234,6 +234,38 @@ app.get("/articulos/categoria/:categoria/excluyendo/:documento", (req, res) => {
 });
 
 
+// Ruta para crear una solicitud de permuta
+app.post("/solicitudPermuta", (req, res) => {
+    const { id_articulo_solicitado, id_articulo_ofrecido, id_usuario_solicitante, id_usuario_solicitado } = req.body;
+    const query = 'INSERT INTO permuta (id_articulo_solicitado, id_articulo_ofrecido, id_usuario_solicitante, id_usuario_solicitado) VALUES (?, ?, ?, ?)';
+    const values = [id_articulo_solicitado, id_articulo_ofrecido, id_usuario_solicitante, id_usuario_solicitado];
+
+    db.query(query, values, (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send("Error al crear la solicitud de permuta");
+        } else {
+            res.send("Solicitud de permuta creada exitosamente");
+        }
+    });
+});
+
+
+// Agrega esta ruta a tu backend para manejar la obtención de solicitudes de permuta
+app.get("/solicitudesPermuta/:documento", (req, res) => {
+    const userId = req.params.documento;
+    const query = 'SELECT * FROM permuta WHERE id_usuario_solicitante = ? OR id_usuario_solicitado = ?';
+    db.query(query, [userId, userId], (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send("Error al obtener las solicitudes de permuta");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+
 // Ruta para actualizar un artículo
 app.put("/articulo/:id", upload.single('imagen'), (req, res) => {
     const articuloId = req.params.id;
@@ -257,6 +289,36 @@ app.put("/articulo/:id", upload.single('imagen'), (req, res) => {
         }
     });
 });
+
+
+// Ruta para obtener un artículo por su ID con la información del propietario
+app.get("/articulo/:id", (req, res) => {
+    const articuloId = req.params.id;
+    const query = `
+        SELECT 
+            articulo.*, 
+            usuario.nombre AS nombre_propietario, 
+            usuario.apellido AS apellido_propietario, 
+            usuario.email AS correo_propietario, 
+            usuario.reputacion AS reputacion_propietario 
+        FROM articulo 
+        JOIN usuario ON articulo.id_usuario = usuario.documento 
+        WHERE articulo.id = ?`;
+
+    db.query(query, [articuloId], (err, results) => {
+        if (err) {
+            console.error('Error al obtener el artículo:', err);
+            res.status(500).json({ error: 'Error al obtener el artículo' });
+        } else {
+            if (results.length > 0) {
+                res.json(results[0]);
+            } else {
+                res.status(404).json({ error: 'Artículo no encontrado' });
+            }
+        }
+    });
+});
+
 
 // Servir archivos estáticos de la carpeta public
 app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')));

@@ -11,7 +11,7 @@ import { Inicio } from "./views/Inicio.jsx";
 import { Perfil } from "./views/Perfil.jsx";
 import { Categorias } from "./views/Categorias.jsx";
 import { Ayuda } from "./views/Ayuda.jsx";
-import { Permutas } from "./views/Permutas.jsx";
+import  Permutas  from "./views/Permutas.jsx";
 import { CargarArticulo } from "./views/CargarArticulo.jsx";
 import { EditarPerfil } from "./views/EditarPerfil.jsx";
 import { UserProvider } from './context/UserContext.jsx'; // Importa el UserProvider
