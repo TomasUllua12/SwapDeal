@@ -51,13 +51,13 @@ export function Solicitud({ solicitud, onAceptar, onRechazar, userId }) {
           <div className="solicitud-mi-producto">
             <div className="solicitud-mi-producto__container">
               <p>{isSolicitante ? 'Ofreciste el siguiente producto:' : 'Hubo interés por tu siguiente producto:'}</p>
-              <Articulo articulo={articuloSolicitado} />
+              <Articulo articulo={isSolicitante ? articuloOfrecido : articuloSolicitado} />
             </div>
           </div>
           <div className="solicitud-su-producto">
             <div className="solicitud-su-producto__container">
               <p>{isSolicitante ? 'Solicitaste el siguiente producto:' : 'El usuario ofrece el siguiente producto:'}</p>
-              <Articulo articulo={articuloOfrecido} />
+              <Articulo articulo={isSolicitante ? articuloSolicitado : articuloOfrecido} />
             </div>
           </div>
           {!isSolicitante && estado === "pendiente" && (
