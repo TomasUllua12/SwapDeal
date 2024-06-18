@@ -85,7 +85,7 @@ function Solicitud({ solicitud, onAceptar, onRechazar, userId }) {
 
     if (!solicitudVisible) {
       return null; // No renderizar nada si la solicitud no es visible
-  }
+}
 
     return (
         <div className={`expandable-container ${isSolicitante ? 'solicitud-enviada' : 'solicitud-recibida'}`}>

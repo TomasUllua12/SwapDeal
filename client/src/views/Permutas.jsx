@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
-import  Solicitud  from "../components/Permutas/Solicitud";
+import Solicitud from "../components/Permutas/Solicitud";
+import PermutaCompletada  from "../components/Permutas/PermutaCompletada";
 import "./Permutas.css";
 
 function Permutas() {
   const [solicitudes, setSolicitudes] = useState([]);
+  const [historial, setHistorial] = useState([]);
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -25,6 +27,20 @@ function Permutas() {
     };
 
     fetchSolicitudes();
+  }, [user.documento]);
+
+  useEffect(() => {
+    const fetchHistorial = async () => {
+      try {
+        const response = await fetch(`http://localhost:3002/historialPermutas/${user.documento}`);
+        const data = await response.json();
+        setHistorial(data);
+      } catch (error) {
+        console.error('Error fetching historial:', error);
+      }
+    };
+
+    fetchHistorial();
   }, [user.documento]);
 
   const handleAceptar = async (idSolicitud) => {
@@ -80,7 +96,15 @@ function Permutas() {
         </section>
         <h2 className="main-permutas-historial-title">Historial de Permutas</h2>
         <section className="main-permutas-historial">
-          <div className="main-permutas-historial__container"></div>
+          <div className="main-permutas-historial__container">
+            {historial.length === 0 ? (
+              <p>No hay permutas completadas.</p>
+            ) : (
+              historial.map(permuta => (
+                <PermutaCompletada key={permuta.id} permuta={permuta} />
+              ))
+            )}
+          </div>
         </section>
       </main>
       <FooterWave />

@@ -466,6 +466,39 @@ function getArticuloData(articuloId) {
 
 
 
+// Ruta para obtener el historial de permutas de un usuario
+app.get("/historialPermutas/:documento", (req, res) => {
+    const userId = req.params.documento;
+    const query = `
+        SELECT 
+            h.id, 
+            h.titulo_articulo, 
+            h.titulo_articulo2, 
+            u1.nombre AS nombre_usuario1, 
+            u1.apellido AS apellido_usuario1, 
+            u2.nombre AS nombre_usuario2, 
+            u2.apellido AS apellido_usuario2 
+        FROM historial h
+        JOIN usuario u1 ON h.id_usuario = u1.documento
+        JOIN usuario u2 ON h.id_usuario2 = u2.documento
+        WHERE h.id_usuario = ? OR h.id_usuario2 = ?;
+    `;
+
+    db.query(query, [userId, userId], (err, result) => {
+        if (err) {
+            console.error('Error al obtener el historial de permutas:', err);
+            res.status(500).send("Error al obtener el historial de permutas");
+        } else {
+            res.send(result);
+        }
+    });
+});
+
+
+
+
+
+
 
 // Servir archivos estáticos de la carpeta public
 app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')));
