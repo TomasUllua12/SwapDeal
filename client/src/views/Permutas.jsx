@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
 import Solicitud from "../components/Permutas/Solicitud";
-import PermutaCompletada  from "../components/Permutas/PermutaCompletada";
+import PermutaCompletada from "../components/Permutas/PermutaCompleta";
 import "./Permutas.css";
 
 function Permutas() {
@@ -33,6 +32,9 @@ function Permutas() {
     const fetchHistorial = async () => {
       try {
         const response = await fetch(`http://localhost:3002/historialPermutas/${user.documento}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
         const data = await response.json();
         setHistorial(data);
       } catch (error) {
@@ -101,7 +103,7 @@ function Permutas() {
               <p>No hay permutas completadas.</p>
             ) : (
               historial.map(permuta => (
-                <PermutaCompletada key={permuta.id} permuta={permuta} />
+                <PermutaCompletada key={permuta.id_historial} permuta={permuta} />
               ))
             )}
           </div>

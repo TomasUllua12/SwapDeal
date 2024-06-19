@@ -95,7 +95,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 10vh;
+  padding-bottom: 25vh;
 }
 .main-permutas-historial-title {
   font-size: 2rem;
@@ -107,7 +107,7 @@
 }
 .main-permutas-historial__container {
     width: 50%;
-    height: 400px;
+    height: auto;
     background-color: #fff;
     border-radius: 20px;
     margin: 20px;
