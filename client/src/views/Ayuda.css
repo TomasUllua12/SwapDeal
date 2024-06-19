@@ -1,8 +1,8 @@
 .secciones-ayuda {
   width: 100%;
   height: auto;
-  background-color: #fcfcfc;
-  padding-bottom: 15%;
+  background-color: #ffffff;
+  padding-bottom: 10%;
   display: flex;
   flex-direction: column;
 }
@@ -54,35 +54,9 @@
   font-family: "Montserrat Medium";
 }
 
-.acciones-recomendadas {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  padding-left: 20%;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.acciones {
-  color: #380100;
-  margin-right: 84%;
-  margin-bottom: 1%;
-}
-
-.lis-acciones {
-  color: black;
-  margin-right: 80%;
-  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-  padding: 2%;
-  border-radius: 20px;
-}
-
 .enviar-consulta {
-  width: 925px;
-  margin-left: 300px;
+  width: 60vw;
+  margin: 0 auto;
   display: flex;
   border-radius: 20px;
   justify-content: left;
@@ -142,12 +116,13 @@
 
 .inpu-consul {
   background-color: #fff;
-  margin-right: 5%;
-  border-radius: 20px;
+  margin: 0 auto;
+  width: 80%;
+  border-radius: 10px;
+  border: solid #c2c2c2 2px;
   padding: 5px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.07);
   color: #000000;
-  padding-right: 500px;
   padding-bottom: 150px;
   padding-top: 7px;
 }
