@@ -481,6 +481,7 @@ app.get("/historialPermutas/:documento", (req, res) => {
             u2.apellido AS apellido_usuario2, 
             u2.email AS email_usuario2, 
             u2.telefono AS telefono_usuario2,
+            h.fecha,  
             CASE
                 WHEN h.id_usuario = ? THEN 1
                 WHEN h.id_usuario2 = ? THEN 2
@@ -502,8 +503,6 @@ app.get("/historialPermutas/:documento", (req, res) => {
         }
     });
 });
-
-
 
 
 
