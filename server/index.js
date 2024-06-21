@@ -463,9 +463,6 @@ function getArticuloData(articuloId) {
 
 
 
-
-
-
 app.get("/historialPermutas/:documento", (req, res) => {
     const userId = req.params.documento;
     const query = `
@@ -481,20 +478,15 @@ app.get("/historialPermutas/:documento", (req, res) => {
             u2.apellido AS apellido_usuario2, 
             u2.email AS email_usuario2, 
             u2.telefono AS telefono_usuario2,
-            h.fecha,  
-            CASE
-                WHEN h.id_usuario = ? THEN 1
-                WHEN h.id_usuario2 = ? THEN 2
-                ELSE 0
-            END AS orden
+            h.fecha
         FROM historial h
         JOIN usuario u1 ON h.id_usuario = u1.documento
         JOIN usuario u2 ON h.id_usuario2 = u2.documento
         WHERE h.id_usuario = ? OR h.id_usuario2 = ?
-        ORDER BY orden ASC;
+        ORDER BY h.fecha DESC;  -- Ordenar por fecha en orden descendente
     `;
 
-    db.query(query, [userId, userId, userId, userId], (err, result) => {
+    db.query(query, [userId, userId], (err, result) => {
         if (err) {
             console.error('Error al obtener el historial de permutas:', err);
             res.status(500).send("Error al obtener el historial de permutas");

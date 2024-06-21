@@ -1,34 +1,36 @@
 .categoria-banner {
-    padding: 20px 0;
     text-align: center;
-    margin-bottom: 10%;
+    margin-bottom: 1%;
+    height: auto;
+    width: 100%;
 }
 
 .categoria-title {
-    font-size: 2.5em;
-    margin-top: 0; /* Ajusta el margen superior para alinear mejor con el contenedor */
+    font-size: 2.5em; /* Ajusta el margen superior para alinear mejor con el contenedor */
     margin-bottom: 20px; /* Añade espacio abajo del título */
     grid-area: categoria-title;
+    margin-right: 70%;
 }
 
 .categoria-main {
     padding-bottom: 100px; /* Ajusta el valor según sea necesario */
     display: grid; 
     grid-template-columns: 1fr; 
-    grid-template-rows: 1fr 1fr; 
+    grid-template-rows: 0.4fr 1.6fr; 
     gap: 0px 0px; 
     grid-template-areas: 
     "categoria-title"
     "scrollable-content"; 
 }
 
-.scrollable-cont {
+.scrollable-contnt {
     display: grid; /* Usamos grid layout para mejor control */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    max-height: 600px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 5px;
     overflow-y: auto;
     grid-area: scrollable-content;
+    margin: 10%;
+    background-color: #ffffff;
 }
 
 

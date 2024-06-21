@@ -35,7 +35,7 @@ return (
         <div className="categoria-banner">
         <h2 className="categoria-title">{decodedCategoria}</h2>
         </div>
-        <div className="scrollable-content">
+        <div className="scrollable-contnt">
         {articulos.map((articulo) => (
             <Articulo key={articulo.id} articulo={articulo} />
         ))}
