@@ -131,6 +131,9 @@ app.post("/articulo", upload.single('imagen'), (req, res) => {
 
 
 
+
+
+
 // Ruta para obtener los artículos de un usuario específico
 app.get("/usuario/:documento/articulo", (req, res) => {
     const userId = req.params.documento;
@@ -496,6 +499,25 @@ app.get("/historialPermutas/:documento", (req, res) => {
     });
 });
 
+
+// Ruta para registrar un nuevo usuario
+app.post("/register", (req, res) => {
+    const { nombre, apellido, email, password, documento, telefono } = req.body;
+    const fecha_union = new Date();
+    const query = 'INSERT INTO usuario (nombre, apellido, email, password, fecha_union, documento, telefono) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const values = [nombre, apellido, email, password, fecha_union, documento, telefono];
+
+    db.query(query, values, (err, result) => {
+        if (err) {
+            console.error('Error al registrar el usuario:', err);
+            res.status(500).send(`Error al registrar el usuario: ${err.message}`);
+        } else {
+            // Devolver los datos del usuario recién registrado
+            const newUser = { nombre, apellido, email, fecha_union, documento, telefono };
+            res.status(201).json(newUser);
+        }
+    });
+});
 
 
 
