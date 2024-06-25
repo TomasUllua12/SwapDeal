@@ -4,18 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../context/UserContext.jsx";
 
+
 export function LoginRegister(props) {
-  const { setUser } = useContext(UserContext);
   const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [documento, setDocumento] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [documento, setDocumento] = useState("");
@@ -37,11 +30,7 @@ export function LoginRegister(props) {
         setUser(response.data);
         localStorage.setItem('user', JSON.stringify(response.data));
         navigate("/Inicio");
-        setUser(response.data);
-        localStorage.setItem('user', JSON.stringify(response.data));
-        navigate("/Inicio");
       } else {
-        setErrorMessage("Credenciales inválidas");
         setErrorMessage("Credenciales inválidas");
       }
     } catch (error) {
@@ -49,6 +38,7 @@ export function LoginRegister(props) {
       setErrorMessage("Error durante el inicio de sesión");
     }
   };
+
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -105,7 +95,6 @@ export function LoginRegister(props) {
                   name="email"
                   placeholder="Email"
                   required
-                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -115,19 +104,16 @@ export function LoginRegister(props) {
                   name="pswd"
                   placeholder="Password"
                   required
-                  required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">Iniciar sesión</button>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
               </form>
             </div>
 
 
             <div className="register">
-              <form className="login-form" onSubmit={handleRegister}>
               <form className="login-form" onSubmit={handleRegister}>
                 <label className="login-label" htmlFor="chk" aria-hidden="true">
                   Creá tu cuenta
@@ -151,32 +137,13 @@ export function LoginRegister(props) {
                   required
                   value={apellido}
                   onChange={(e) => setApellido(e.target.value)}
-                  name="nombre"
-                  placeholder="Nombre"
-                  required
-                  value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
-                />
-                <input
-                  className="login-input"
-                  type="text"
-                  autoComplete="off"
-                  name="apellido"
-                  placeholder="Apellido"
-                  required
-                  value={apellido}
-                  onChange={(e) => setApellido(e.target.value)}
                 />
                 <input
                   className="login-input"
                   type="email"
                   autoComplete="off"
                   name="registerEmail"
-                  name="registerEmail"
                   placeholder="Email"
-                  required
-                  value={registerEmail}
-                  onChange={(e) => setRegisterEmail(e.target.value)}
                   required
                   value={registerEmail}
                   onChange={(e) => setRegisterEmail(e.target.value)}
@@ -185,37 +152,11 @@ export function LoginRegister(props) {
                   className="login-input"
                   type="password"
                   name="registerPassword"
-                  name="registerPassword"
                   placeholder="Password"
                   required
                   value={registerPassword}
                   onChange={(e) => setRegisterPassword(e.target.value)}
-                  required
-                  value={registerPassword}
-                  onChange={(e) => setRegisterPassword(e.target.value)}
                 />
-                <input
-                  className="login-input"
-                  type="text"
-                  autoComplete="off"
-                  name="documento"
-                  placeholder="Documento"
-                  required
-                  value={documento}
-                  onChange={(e) => setDocumento(e.target.value)}
-                />
-                <input
-                  className="login-input"
-                  type="text"
-                  autoComplete="off"
-                  name="telefono"
-                  placeholder="Teléfono"
-                  required
-                  value={telefono}
-                  onChange={(e) => setTelefono(e.target.value)}
-                />
-                <button type="submit">Crear</button>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <input
                   className="login-input"
                   type="text"
