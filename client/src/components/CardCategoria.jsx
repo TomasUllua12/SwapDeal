@@ -1,12 +1,8 @@
 import React from "react";
-import "./CardCategoria.css";
 import { Link } from "react-router-dom";
+import "./CardCategoria.css";
 
-export function CardCategoria({
-  title = "titulo por defecto",
-  color = "#470000",
-  img = "",
-}) {
+export function CardCategoria({ title = "titulo por defecto", color = "#470000", img = "", link = "#" }) {
   const divStyle = {
     backgroundImage: `url(${img})`,
     borderRadius: "0 0 20px 20px",
@@ -17,17 +13,13 @@ export function CardCategoria({
   };
 
   return (
-    <>
-      <div className="categoria-card">
-        <Link to={"/Inicio"} className="categoria-card-links">
-          <div
-            className="categoria-card-header"  style={{ backgroundColor: color }}>
-            <h3 className="categoria-card-header-title">{title}</h3>
-          </div>
-
-          <div className="categoria-card-image" style={divStyle}></div>
-        </Link>
-      </div>
-    </>
+    <div className="categoria-card">
+      <Link to={link} className="categoria-card-links">
+        <div className="categoria-card-header" style={{ backgroundColor: color }}>
+          <h3 className="categoria-card-header-title">{title}</h3>
+        </div>
+        <div className="categoria-card-image" style={divStyle}></div>
+      </Link>
+    </div>
   );
 }

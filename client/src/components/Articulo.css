@@ -22,7 +22,7 @@
   box-shadow: 2px 2px 2px #33333341;
   font-size: 1.2rem;
   font-weight: bold;
-  width: 50%;
+  width: 70%;
   margin: auto;
   margin-top: 10px;
   text-align: center;
@@ -31,10 +31,18 @@
 .articulo-image-container {
   width: 100%;
   height: 50%;
-  background-image: url(https://images.fravega.com/f500/ed2799546993d2087a7d15c47648f824.jpg);
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+  max-width: 600px; /* Ajusta según sea necesario */
+  overflow: hidden; /* Oculta el desbordamiento */
+  display: flex; /* Para centrar la imagen */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  background-color: white; /* Color de fondo si hay espacio vacío */
+}
+.articulo-image-container img {
+  width: 60%;
+  height: 80%;
+  object-fit: contain; /* Ajusta la imagen sin recortar, manteniendo proporciones */
+  border-radius: 10px;
 }
 
 .articulo-button-container {
@@ -67,6 +75,11 @@
 
 .articulo-container:hover {
   transform: scale(1.05);
+}
+
+.articulo-container img {
+  max-width: 100%;
+  height: auto;
 }
 
 

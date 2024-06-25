@@ -55,6 +55,12 @@
     box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
+.per{
+  color: #000;
+  padding: 2%;
+
+}
+
 .main-permutas-permutas {
   width: 100%;
   height: auto;
@@ -89,7 +95,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 10vh;
+  padding-bottom: 25vh;
 }
 .main-permutas-historial-title {
   font-size: 2rem;
@@ -101,7 +107,7 @@
 }
 .main-permutas-historial__container {
     width: 50%;
-    height: 400px;
+    height: auto;
     background-color: #fff;
     border-radius: 20px;
     margin: 20px;

@@ -11,10 +11,14 @@ import { Inicio } from "./views/Inicio.jsx";
 import { Perfil } from "./views/Perfil.jsx";
 import { Categorias } from "./views/Categorias.jsx";
 import { Ayuda } from "./views/Ayuda.jsx";
-import { Permutas } from "./views/Permutas.jsx";
+import  Permutas  from "./views/Permutas.jsx";
 import { CargarArticulo } from "./views/CargarArticulo.jsx";
 import { EditarPerfil } from "./views/EditarPerfil.jsx";
 import { UserProvider } from './context/UserContext.jsx'; // Importa el UserProvider
+import  ArticuloView  from "./views/ArticuloView.jsx";
+import  EditarArticulo  from "./views/EditarArticulo.jsx";
+import CategoriaView from "./views/CategoriaView.jsx"; 
+
 
 
 const routes = [
@@ -54,6 +58,18 @@ const routes = [
     path: "/Perfil/EditarPerfil",
     element: <EditarPerfil />,
   },
+  {
+    path: "/ArticuloView/:id",
+    element: <ArticuloView />,
+  },
+  {
+    path: "/EditarArticulo/:id",
+    element: <EditarArticulo />,
+  },
+  {
+    path: "/categoria/:categoria",
+    element: <CategoriaView />,
+  }
 ];
 /*
 articulos.forEach((articulo) => {

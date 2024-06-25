@@ -20,7 +20,7 @@ export function LoginRegister(props) {
       });
       if (response.data) {
         setUser(response.data); // Guarda la información del usuario en el contexto
-        localStorage.setItem('user', JSON.stringify(response.data)); // Guarda los datos del usuario en localStorage
+        localStorage.setItem("user", JSON.stringify(response.data)); // Guarda los datos del usuario en localStorage
         navigate("/Inicio"); // Redirige al perfil después del inicio de sesión
       } else {
         setErrorMessage("Credenciales inválidas"); // Establece el mensaje de error
@@ -30,8 +30,6 @@ export function LoginRegister(props) {
       setErrorMessage("Error durante el inicio de sesión"); // Establece el mensaje de error
     }
   };
-
-
 
   return (
     <>
@@ -74,7 +72,10 @@ export function LoginRegister(props) {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type="submit">Iniciar sesión</button>
-                {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Mostrar mensaje de error si existe */}
+                {errorMessage && (
+                  <p className="error-message">{errorMessage}</p>
+                )}{" "}
+                {/* Mostrar mensaje de error si existe */}
               </form>
             </div>
 

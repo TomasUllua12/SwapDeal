@@ -26,16 +26,6 @@ export function Ayuda(props) {
           </div>
         </section>
 
-        <div className="acciones-recomendadas">
-          <h2 className="acciones">Acciones recomendadas</h2>
-          <p className="lis-acciones">
-            1- Hacer doble verificacion<br></br>
-            2- Ver el perfil de los otros usuarios<br></br>
-            3- Hacer las permutas en lugares seguros<br></br>
-            4- Siempre ser cordial
-          </p>
-        </div>
-
         <div className="enviar-consulta">
           <h2 className="consul">Envianos tu consulta</h2>
           <h3 className="email">E-mail:</h3>

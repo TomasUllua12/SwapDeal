@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import FooterWave from "../components/Footers/FooterWave";
 import Card from "../components/Card";
 import ShowHide from "../components/ShowHide";
-import vehicles from "../data/vehicles";
 import { Header } from "../components/Header";
 import "./Inicio.css";
-import { Articulo } from "../components/Articulo";
+import Articulo from "../components/Articulo";
+import vehicles from "../data/vehicles";
 import cards from "../data/card";
+import axios from "axios";
+import UserContext from "../context/UserContext.jsx";
 
 export function Inicio(props) {
-  const vehicleList = vehicles.map((v) => {
-    return <Card title={v.name} description={v.description} />;
-  });
+  const [articulos, setArticulos] = useState([]);
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    const fetchArticulos = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3002/articulos/excluyendo/${user.documento}`);
+            setArticulos(response.data);
+        } catch (error) {
+            console.error("Error fetching articles:", error);
+        }
+    };
+
+    if (user) {
+        fetchArticulos();
+    }
+}, [user]);
 
   return (
     <>
@@ -126,26 +142,11 @@ export function Inicio(props) {
               ARTICULOS RECOMENDADOS<br></br>
               <br></br>
             </div>
-            <div className="scrollable-content">
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-              <Articulo />
-            </div>
+              <div className="scrollable-content">
+                  {articulos.map((articulo) => (
+                    <Articulo key={articulo.id} articulo={articulo} />
+                  ))}
+              </div>
           </div>
         </div>
       </main>
