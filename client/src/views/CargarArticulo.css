@@ -32,7 +32,7 @@
     )
     0 0 / 1000% no-repeat;
   animation: animate-login 7s ease infinite;
-  opacity: 0.3; /* Ajusta la opacidad según sea necesario */
+  opacity: 0.7; /* Ajusta la opacidad según sea necesario */
 }
 @keyframes animate-login {
   0% {
@@ -243,4 +243,9 @@
   border-radius: 20px;
   align-self: self-end;
   margin-right: 20vw;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.envia:hover {
+  transform: scale(1.1);
+  border: solid 1px #fff;
 }

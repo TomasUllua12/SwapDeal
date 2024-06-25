@@ -200,4 +200,9 @@
   margin-top: 3%;
   padding: 1vh 2vh 1vh 2vh;
   border-radius: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.cambiar:hover {
+  transform: scale(1.1);
+  border: solid 1px #fff;
 }
