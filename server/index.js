@@ -175,10 +175,10 @@ app.delete("/articulo/:id", (req, res) => {
     });
 });
 
-// Ruta para obtener todos los artículos excepto los del usuario logueado
+// Ruta para obtener todos los artículos excepto los del usuario logueado y los ocultos
 app.get("/articulos/excluyendo/:documento", (req, res) => {
     const userId = req.params.documento;
-    const query = 'SELECT * FROM articulo WHERE id_usuario != ?';
+    const query = 'SELECT * FROM articulo WHERE id_usuario != ? AND estado != "oculto"';
     db.query(query, [userId], (err, result) => {
         if (err) {
             console.log(err);
@@ -188,7 +188,6 @@ app.get("/articulos/excluyendo/:documento", (req, res) => {
         }
     });
 });
-
 
 // Ruta para obtener un artículo por su ID con la información del propietario
 app.get("/articulo/:id", (req, res) => {
@@ -217,12 +216,13 @@ app.get("/articulo/:id", (req, res) => {
 });
 
 
-// Ruta para obtener los artículos de una categoría específica excepto los del usuario logueado
+// Ruta para obtener los artículos de una categoría específica excepto los del usuario logueado y los ocultos
 app.get("/articulos/categoria/:categoria/excluyendo/:documento", (req, res) => {
     const { categoria, documento } = req.params;
     const formattedCategoria = categoria.replace(/-/g, ' '); // Reemplaza guiones con espacios
 
-    const query = 'SELECT * FROM articulo WHERE categoria = ? AND id_usuario != ?';
+
+    const query = 'SELECT * FROM articulo WHERE categoria = ? AND id_usuario != ? AND estado != "oculto"';
     db.query(query, [formattedCategoria, documento], (err, result) => {
         if (err) {
             console.log(err);
@@ -232,7 +232,6 @@ app.get("/articulos/categoria/:categoria/excluyendo/:documento", (req, res) => {
         }
     });
 });
-
 
 // Ruta para crear una solicitud de permuta
 app.post("/solicitudPermuta", (req, res) => {
@@ -525,8 +524,25 @@ app.post("/register", (req, res) => {
     });
 });
 
+// Ruta para actualizar el estado de un artículo
+app.put("/articulo/:id/estado", (req, res) => {
+    const articuloId = req.params.id;
+    const { estado } = req.body; // El nuevo estado (publicado/oculto)
 
 
+    const query = 'UPDATE articulo SET estado=? WHERE id=?';
+    const values = [estado, articuloId];
+
+
+    db.query(query, values, (err, result) => {
+        if (err) {
+            console.error('Error al actualizar el estado del artículo:', err);
+            res.status(500).send("Error al actualizar el estado del artículo");
+        } else {
+            res.send("Estado del artículo actualizado exitosamente");
+        }
+    });
+});
 
 // Servir archivos estáticos de la carpeta public
 app.use('/public', express.static(path.join(__dirname, '..', 'client', 'public')));

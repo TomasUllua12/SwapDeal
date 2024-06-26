@@ -4,6 +4,7 @@ import axios from "axios";
 import UserContext from "../context/UserContext.jsx";
 import { useParams, useNavigate } from "react-router-dom";
 
+
 function EditarArticulo() {
     const { user } = useContext(UserContext);
     const { id } = useParams();
@@ -14,9 +15,11 @@ function EditarArticulo() {
     const [tiempoUso, setTiempoUso] = useState("");
     const [imagen, setImagen] = useState(null);
     const [existingImagen, setExistingImagen] = useState("");
+    const [estado, setEstado] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
         const fetchArticulo = async () => {
@@ -29,6 +32,7 @@ function EditarArticulo() {
                 setCategoria(articulo.categoria);
                 setTiempoUso(articulo.tiempo_uso);
                 setExistingImagen(articulo.imagen);
+                setEstado(articulo.estado);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching the article:", error);
@@ -37,6 +41,7 @@ function EditarArticulo() {
         };
         fetchArticulo();
     }, [id]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -71,6 +76,7 @@ function EditarArticulo() {
         }
     };
 
+
     const handleEliminarArticulo = async () => {
         try {
             setLoading(true);
@@ -89,9 +95,27 @@ function EditarArticulo() {
         }
     };
 
+
+    const toggleEstado = async () => {
+        const nuevoEstado = estado === 'publicado' ? 'oculto' : 'publicado';
+        try {
+            setLoading(true);
+            const response = await axios.put(`http://localhost:3002/articulo/${id}/estado`, { estado: nuevoEstado });
+            setEstado(nuevoEstado);
+            setSuccessMessage(`Estado del artículo actualizado a ${nuevoEstado}`);
+            setLoading(false);
+        } catch (error) {
+            console.error("Error al actualizar el estado del artículo:", error);
+            setErrorMessage("Error al actualizar el estado del artículo");
+            setLoading(false);
+        }
+    };
+
+
     useEffect(() => {
         let successTimeout;
         let errorTimeout;
+
 
         // Lógica para limpiar los mensajes después de 3 segundos
         if (successMessage) {
@@ -100,11 +124,13 @@ function EditarArticulo() {
             }, 3000);
         }
 
+
         if (errorMessage) {
             errorTimeout = setTimeout(() => {
                 setErrorMessage("");
             }, 3000);
         }
+
 
         // Limpieza de timeouts al desmontar el componente o cuando cambian los mensajes
         return () => {
@@ -112,6 +138,7 @@ function EditarArticulo() {
             clearTimeout(errorTimeout);
         };
     }, [successMessage, errorMessage]);
+
 
     return (
         <div className='body-editarArticulo'>
@@ -199,6 +226,13 @@ function EditarArticulo() {
                         <div className="botones">
                             <button className='boton-publi' type="submit">Guardar cambios</button>
                             <button className='boton-eliminar' onClick={handleEliminarArticulo}>Eliminar artículo</button>
+                            <button
+                                className='boton-estado'
+                                type="button"
+                                onClick={toggleEstado}
+                            >
+                                {estado === 'publicado' ? 'Ocultar' : 'Publicar'}
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -206,5 +240,6 @@ function EditarArticulo() {
         </div>
     );
 }
+
 
 export default EditarArticulo;
