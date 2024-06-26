@@ -150,7 +150,7 @@ html {
   height: 48px;
   top: -15px;
   left: calc(50% - 28px);
-  background-image: url("../../../public/assets/icons/LogoSwapDeal.svg");
+ 
 }
 .main-principal-section-2--title {
   width: 90%;
@@ -165,7 +165,7 @@ html {
   font-size: 2.4rem;
   font-weight: bold;
   line-height: 2.6rem;
-  color: var(--just-white);
+  color: #000000;
 }
 .main-principal-section-2--title-description {
   margin-bottom: 20px;
@@ -176,17 +176,25 @@ html {
 }
 
 /* MAIN SECTION 2 CARDS*/
+.main-principal-section-2--cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* Espacio entre las tarjetas */
+}
+
 .main-principal-section-2--cards .--card {
-  width: 90%;
-  min-width: 288px;
-  max-width: 400px;
+  width: 18%; /* Ajustar el ancho para permitir  tarjetas por fila */
+  min-width: 150px;
+  max-width: calc(20% - 30px); /* Ajustar el ancho máximo considerando el margen */
   min-height: 150px;
-  margin: 15px auto;
+  margin: 15px 1%;
   padding: 15px;
   background-color: var(--warm-black);
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
 }
+
 .--card .--card__icon {
   display: inline-block;
   width: 20px;
@@ -224,7 +232,7 @@ html {
 
 .swapdeal-image-container {
   width: 100%;
-  min-width: 320;
+  min-width: 320px; /* Agregar px a la min-width */
   height: 50vh;
   background-image: url("./assets/img/shakehands.png");
   background-position: center;
@@ -234,7 +242,7 @@ html {
 .swapdeal-image-container__color {
   position: absolute;
   width: 100%;
-  min-width: 320;
+  min-width: 320px; /* Agregar px a la min-width */
   height: 50vh;
   background: #000000;
   opacity: 0.5;
@@ -260,6 +268,7 @@ html {
   max-width: 900px;
   margin: 0 auto;
 }
+
 .main-principal-section-3--title-text {
   margin-bottom: 30px;
   font-size: 2.4rem;
@@ -267,10 +276,65 @@ html {
   line-height: 2.6rem;
   color: var(--black);
 }
+
 .main-principal-section-3--description {
   margin-bottom: 30px;
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.6rem;
   color: #757575;
+}
+
+.main-principal-section-3--list {
+  font-size: 1.4rem;
+  color: #757575;
+  list-style-type: disc;
+  margin-left: 20px;
+  text-align: left; /* Para alinear las viñetas a la izquierda */
+  display: inline-block; /* Para centrar la lista */
+}
+
+.main-principal-section-3--list li {
+  margin-bottom: 10px;
+}
+
+/* MAIN SECTION 4 */
+.main-principal-section-4 {
+  width: 100%;
+  min-width: 320px;
+  height: auto;
+  padding-bottom: 180px;
+  padding-top: 150px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.main-principal-section-4--title-text {
+  margin-bottom: 30px;
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 2.6rem;
+  color: var(--black);
+}
+
+.main-principal-section-4--description {
+  margin-bottom: 30px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+  color: #757575;
+}
+
+.main-principal-section-4--list {
+  font-size: 1.4rem;
+  color: #757575;
+  list-style-type: disc;
+  margin-left: 20px;
+  text-align: left; /* Para alinear las viñetas a la izquierda */
+  display: inline-block; /* Para centrar la lista */
+}
+
+.main-principal-section-4--list li {
+  margin-bottom: 10px;
 }
