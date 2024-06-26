@@ -14,6 +14,7 @@ function EditarArticulo() {
     const [tiempoUso, setTiempoUso] = useState("");
     const [imagen, setImagen] = useState(null);
     const [existingImagen, setExistingImagen] = useState("");
+    const [estado, setEstado] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -29,6 +30,7 @@ function EditarArticulo() {
                 setCategoria(articulo.categoria);
                 setTiempoUso(articulo.tiempo_uso);
                 setExistingImagen(articulo.imagen);
+                setEstado(articulo.estado);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching the article:", error);
@@ -85,6 +87,21 @@ function EditarArticulo() {
             console.error("Error al eliminar el artículo:", error);
             setSuccessMessage(""); // Limpiar mensaje de éxito si hubiera alguno
             setErrorMessage("Error al eliminar el artículo");
+            setLoading(false);
+        }
+    };
+
+    const toggleEstado = async () => {
+        const nuevoEstado = estado === 'publicado' ? 'oculto' : 'publicado';
+        try {
+            setLoading(true);
+            const response = await axios.put(`http://localhost:3002/articulo/${id}/estado`, { estado: nuevoEstado });
+            setEstado(nuevoEstado);
+            setSuccessMessage(`Estado del artículo actualizado a ${nuevoEstado}`);
+            setLoading(false);
+        } catch (error) {
+            console.error("Error al actualizar el estado del artículo:", error);
+            setErrorMessage("Error al actualizar el estado del artículo");
             setLoading(false);
         }
     };
@@ -199,6 +216,13 @@ function EditarArticulo() {
                         <div className="botones">
                             <button className='boton-publi' type="submit">Guardar cambios</button>
                             <button className='boton-eliminar' onClick={handleEliminarArticulo}>Eliminar artículo</button>
+                            <button 
+                                className='boton-estado' 
+                                type="button" 
+                                onClick={toggleEstado}
+                            >
+                                {estado === 'publicado' ? 'Ocultar' : 'Publicar'}
+                            </button>
                         </div>
                     </div>
                 </form>

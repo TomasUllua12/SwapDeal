@@ -178,10 +178,10 @@ app.delete("/articulo/:id", (req, res) => {
     });
 });
 
-// Ruta para obtener todos los artículos excepto los del usuario logueado
+// Ruta para obtener todos los artículos excepto los del usuario logueado y los ocultos
 app.get("/articulos/excluyendo/:documento", (req, res) => {
     const userId = req.params.documento;
-    const query = 'SELECT * FROM articulo WHERE id_usuario != ?';
+    const query = 'SELECT * FROM articulo WHERE id_usuario != ? AND estado != "oculto"';
     db.query(query, [userId], (err, result) => {
         if (err) {
             console.log(err);
@@ -219,13 +219,12 @@ app.get("/articulo/:id", (req, res) => {
     });
 });
 
-
-// Ruta para obtener los artículos de una categoría específica excepto los del usuario logueado
+// Ruta para obtener los artículos de una categoría específica excepto los del usuario logueado y los ocultos
 app.get("/articulos/categoria/:categoria/excluyendo/:documento", (req, res) => {
     const { categoria, documento } = req.params;
     const formattedCategoria = categoria.replace(/-/g, ' '); // Reemplaza guiones con espacios
 
-    const query = 'SELECT * FROM articulo WHERE categoria = ? AND id_usuario != ?';
+    const query = 'SELECT * FROM articulo WHERE categoria = ? AND id_usuario != ? AND estado != "oculto"';
     db.query(query, [formattedCategoria, documento], (err, result) => {
         if (err) {
             console.log(err);
@@ -465,7 +464,7 @@ function getArticuloData(articuloId) {
 
 
 
-
+//ruta para guardar en el historial
 app.get("/historialPermutas/:documento", (req, res) => {
     const userId = req.params.documento;
     const query = `
@@ -500,13 +499,14 @@ app.get("/historialPermutas/:documento", (req, res) => {
 });
 
 
+
+
 // Ruta para registrar un nuevo usuario
 app.post("/register", (req, res) => {
     const { nombre, apellido, email, password, documento, telefono } = req.body;
     const fecha_union = new Date();
     const query = 'INSERT INTO usuario (nombre, apellido, email, password, fecha_union, documento, telefono) VALUES (?, ?, ?, ?, ?, ?, ?)';
     const values = [nombre, apellido, email, password, fecha_union, documento, telefono];
-
 
     db.query(query, values, (err, result) => {
         if (err) {
@@ -521,21 +521,20 @@ app.post("/register", (req, res) => {
 });
 
 
-// Ruta para registrar un nuevo usuario
-app.post("/register", (req, res) => {
-    const { nombre, apellido, email, password, documento, telefono } = req.body;
-    const fecha_union = new Date();
-    const query = 'INSERT INTO usuario (nombre, apellido, email, password, fecha_union, documento, telefono) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    const values = [nombre, apellido, email, password, fecha_union, documento, telefono];
+// Ruta para actualizar el estado de un artículo
+app.put("/articulo/:id/estado", (req, res) => {
+    const articuloId = req.params.id;
+    const { estado } = req.body; // El nuevo estado (publicado/no_publicado)
+
+    const query = 'UPDATE articulo SET estado=? WHERE id=?';
+    const values = [estado, articuloId];
 
     db.query(query, values, (err, result) => {
         if (err) {
-            console.error('Error al registrar el usuario:', err);
-            res.status(500).send(`Error al registrar el usuario: ${err.message}`);
+            console.error('Error al actualizar el estado del artículo:', err);
+            res.status(500).send("Error al actualizar el estado del artículo");
         } else {
-            // Devolver los datos del usuario recién registrado
-            const newUser = { nombre, apellido, email, fecha_union, documento, telefono };
-            res.status(201).json(newUser);
+            res.send("Estado del artículo actualizado exitosamente");
         }
     });
 });
