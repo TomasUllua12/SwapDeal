@@ -47,18 +47,17 @@
   font-family: "Montserrat";
 }
 .main-permutas-solicitudes__container {
-    width: 50%;
-    height: auto;
-    background-color: #fff;
-    border-radius: 20px;
-    margin: 20px;
-    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  width: 50%;
+  height: auto;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
-.per{
+.per {
   color: #000;
   padding: 2%;
-
 }
 
 .main-permutas-permutas {
@@ -79,18 +78,18 @@
   font-family: "Montserrat";
 }
 .main-permutas-permutas__container {
-    width: 50%;
-    height: 400px;
-    background-color: #fff;
-    border-radius: 20px;
-    margin: 20px;
-    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  width: 50%;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 
 .main-permutas-historial {
   width: 100%;
   height: auto;
-  background-color: #eeeeee8c;
+  background-color: #ffffff8c;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,10 +105,11 @@
   font-family: "Montserrat";
 }
 .main-permutas-historial__container {
-    width: 50%;
-    height: auto;
-    background-color: #fff;
-    border-radius: 20px;
-    margin: 20px;
-    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  padding: 30px 0px 30px 0px;
+  width: 50%;
+  height: auto;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
