@@ -16,18 +16,20 @@ export function Inicio(props) {
 
   useEffect(() => {
     const fetchArticulos = async () => {
-        try {
-            const response = await axios.get(`http://localhost:3002/articulos/excluyendo/${user.documento}`);
-            setArticulos(response.data);
-        } catch (error) {
-            console.error("Error fetching articles:", error);
-        }
+      try {
+        const response = await axios.get(
+          `http://localhost:3002/articulos/excluyendo/${user.documento}`
+        );
+        setArticulos(response.data);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      }
     };
 
     if (user) {
-        fetchArticulos();
+      fetchArticulos();
     }
-}, [user]);
+  }, [user]);
 
   return (
     <>
@@ -53,34 +55,41 @@ export function Inicio(props) {
         </div>
 
         <div className="informacion-secciones">
-          <div className="mundo-cambiante">
-            <video autoPlay playsInline muted loop className="video-mundo">
-              <source
-                src="../../../public/assets/vids/Cyber_World_Network.mp4"
-                type="video/mp4"
-              />
-              Tu navegador no admite la etiqueta de video HTML5.
-            </video>
-            <div className="texto-mundo">
-              <span className="texto-swap">
-                SWAPDEAL<br></br>
-              </span>
-              ENCONTRANOS EN TODO EL MUNDO<br></br> <br></br>
-              Una experiencia para todos, porque todos merecen lo mejor
+          <div className="primer-container-inicio">
+            <div className="mundo-cambiante">
+              <video autoPlay playsInline muted loop className="video-mundo">
+                <source
+                  src="../../../public/assets/vids/Cyber_World_Network.mp4"
+                  type="video/mp4"
+                />
+                Tu navegador no admite la etiqueta de video HTML5.
+              </video>
+              <div className="texto-mundo">
+                <span className="texto-swap">
+                  SWAPDEAL<br></br>
+                </span>
+                ENCONTRANOS EN TODO EL MUNDO<br></br> <br></br>
+                Una experiencia para todos, porque todos merecen lo mejor
+              </div>
             </div>
-          </div>
 
-          <div className="cantidad-permutas">
-            <div>
-              <div className="permutas-en">PERMUTAS EN</div>
-              <div className="numeros-permutas">
-                <div className="mes">El mes: 23.456</div>
-                <br></br>
-                <div className="mes">La semana: 4880</div>
-                <br></br>
-                <div className="mes">El dia: 1368</div>
-                <br></br>
-                <div className="mes">La hora: 45</div>
+            <div className="cantidad-permutas">
+              <div>
+                <div className="permutas-en">ÚLTIMAS PERMUTAS EN</div>
+                <div className="numeros-permutas">
+                  <div className="mes">
+                    El mes: <br></br> <b>23.456</b>
+                  </div>
+                  <div className="mes">
+                    La semana: <br></br> <b>4880</b>
+                  </div>
+                  <div className="mes">
+                    El dia: <br></br> <b>1368</b>
+                  </div>
+                  <div className="mes">
+                    La hora: <br></br> <b>45</b>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -100,53 +109,19 @@ export function Inicio(props) {
               </div>
             </div>
           </div>
-
-          <div className="seguirdad-swapdeal">
-            <div>
-              <div className="verificacion">
-                SWAPDEAL CUENTA CON VERIFICACION CONSTANTE
-              </div>
-              <div className="protocolo">
-                {" "}
-                -Contamos con los mejores protocolos de seguridad de datos{" "}
-                <br></br>
-                <br></br>
-                -Tenemos IA como asistentes virtuales <br></br>
-                <br></br>
-                -Nuestros servidos funcionan 24/7 para mantener la seguridad
-              </div>
-            </div>
-          </div>
-
-          <div className="categorias-mas-intercambiada">
-            <div>
-              <div className="categoria-mas">LA CATEGORIA MAS PERMUTADA ES</div>
-              <div className="contenedor-categoria">
-                <card name="Hogar" color="#994000" />
-              </div>
-            </div>
-          </div>
-
-          <div className="informacion-sobre-app">
-            <div>
-              <a className="mejores-practicas" href="">
-                SWAPDEAL MIRA LAS MEJORES PRACTICAS DENTRO DE LA APLICACION
-              </a>
-            </div>
-          </div>
         </div>
 
         <div className="seccion-articulos-recomendados">
-          <div className="main-perfil-articulos-container">
+          <div className="main-inicio-articulos-container">
             <div className="articulos-recomendados">
               ARTICULOS RECOMENDADOS<br></br>
               <br></br>
             </div>
-              <div className="scrollable-content">
-                  {articulos.map((articulo) => (
-                    <Articulo key={articulo.id} articulo={articulo} />
-                  ))}
-              </div>
+            <div className="scrollable-content">
+              {articulos.map((articulo) => (
+                <Articulo key={articulo.id} articulo={articulo} />
+              ))}
+            </div>
           </div>
         </div>
       </main>
