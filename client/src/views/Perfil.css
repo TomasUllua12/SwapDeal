@@ -9,14 +9,13 @@
 
 .main-perfil-foto {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   background-color: #ffa4a4fd;
   border-radius: 300px;
-  margin-left: 7%;
   top: 100px;
-  box-shadow: inset 0 0 0 10px #ffffff;
-  margin: 50px auto; /* Esto centrará el elemento horizontalmente */
+  box-shadow: inset 0 0 0 7px #ffffff;
+  margin: 70px 23vw; /* Esto centrará el elemento horizontalmente */
   left: 0;
   right: 70vw;
   background-image: url("../../public/assets/img/perfilFoto.jpg");
@@ -43,17 +42,19 @@
 
 .main-perfil-container {
   display: flex;
+  margin: 0 auto;
+  margin-left: 20vw;
+  margin-right: 20vw;
 }
 .main-perfil-data {
-  width: 30vw;
   height: 80vh;
   background-color: #ffffff;
 }
 .main-perfil-data-container {
-  width: 80%;
+  width: 100%;
   height: 62%;
-  margin: 170px auto 20px auto;
-  padding: 20px 70px 70px 70px;
+  margin: 170px 70px 20px auto;
+  padding: 20px 0px 70px 70px;
   display: flex; /* Convertir el contenedor en flexbox */
   flex-direction: column;
   align-items: center;
@@ -83,7 +84,7 @@
 }
 
 .main-perfil-articulos {
-  width: 70vw;
+  width: 60vw;
   height: auto;
   background-color: #ffffff;
   display: flex;
@@ -92,8 +93,8 @@
 .main-perfil-articulos-buttons {
   width: 100%;
   height: 60px;
-  padding-left: 140px;
   padding-top: 30px;
+  margin-left: 5vw;
 }
 .main-perfil-articulos-buttons button {
   border: none;
@@ -111,10 +112,10 @@
   transform: scale(1.1);
 }
 .main-perfil-articulos-container {
-  width: 80%;
+  width: 90%;
   height: 85%; /* Ajusta la altura según tu necesidad */
   background-color: #f3f3f3;
-  margin: auto;
+  margin: auto 0 auto auto;
   border-radius: 30px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.1);
   border: solid #ebebeb 1px;
@@ -156,25 +157,4 @@
   background: #790808; /* Color del thumb al pasar el mouse */
 }
 
-@media (max-width: 425px) {
-  .main-perfil-articulos-container {
-    width: 70%; /* Ajusta el ancho al 100% para pantallas pequeñas */
-    padding: 20px; /* Ajusta el padding si es necesario */
-  }
-  .scrollable-content {
-    width: calc(90%); /* Ajusta el ancho según el ancho de la scrollbar */
-     /* Ajusta la posición izquierda del contenedor interno */
-    padding-right: 10px; /* Ajusta el espacio para la scrollbar */
-  }
-  .scrollable-content::-webkit-scrollbar {
-    width: 8px; /* Reduce el ancho de la scrollbar para pantallas pequeñas */
-  }
-  .scrollable-content::-webkit-scrollbar-track {
-    margin-top: 20px; /* Ajusta el margen superior para pantallas pequeñas */
-    margin-bottom: 50px; /* Ajusta el margen inferior para pantallas pequeñas */
-  }
-  .scrollable-content::-webkit-scrollbar-thumb {
-    border-radius: 5px; /* Ajusta el radio de la scrollbar para pantallas pequeñas */
-  }
-}
 
