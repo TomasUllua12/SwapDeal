@@ -4,6 +4,7 @@ import axios from "axios";
 import UserContext from "../context/UserContext.jsx";
 import { useParams, useNavigate } from "react-router-dom";
 
+
 function EditarArticulo() {
     const { user } = useContext(UserContext);
     const { id } = useParams();
@@ -15,9 +16,11 @@ function EditarArticulo() {
     const [imagen, setImagen] = useState(null);
     const [existingImagen, setExistingImagen] = useState("");
     const [estado, setEstado] = useState("");
+    const [estado, setEstado] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
         const fetchArticulo = async () => {
@@ -31,6 +34,7 @@ function EditarArticulo() {
                 setTiempoUso(articulo.tiempo_uso);
                 setExistingImagen(articulo.imagen);
                 setEstado(articulo.estado);
+                setEstado(articulo.estado);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching the article:", error);
@@ -39,6 +43,7 @@ function EditarArticulo() {
         };
         fetchArticulo();
     }, [id]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -72,6 +77,7 @@ function EditarArticulo() {
             setLoading(false);
         }
     };
+
 
     const handleEliminarArticulo = async () => {
         try {
@@ -110,6 +116,7 @@ function EditarArticulo() {
         let successTimeout;
         let errorTimeout;
 
+
         // Lógica para limpiar los mensajes después de 3 segundos
         if (successMessage) {
             successTimeout = setTimeout(() => {
@@ -117,11 +124,13 @@ function EditarArticulo() {
             }, 3000);
         }
 
+
         if (errorMessage) {
             errorTimeout = setTimeout(() => {
                 setErrorMessage("");
             }, 3000);
         }
+
 
         // Limpieza de timeouts al desmontar el componente o cuando cambian los mensajes
         return () => {
@@ -129,6 +138,7 @@ function EditarArticulo() {
             clearTimeout(errorTimeout);
         };
     }, [successMessage, errorMessage]);
+
 
     return (
         <div className='body-editarArticulo'>
@@ -230,5 +240,6 @@ function EditarArticulo() {
         </div>
     );
 }
+
 
 export default EditarArticulo;

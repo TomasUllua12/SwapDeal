@@ -217,8 +217,10 @@ app.delete("/articulo/:id", (req, res) => {
 });
 
 // Ruta para obtener todos los artículos excepto los del usuario logueado y los ocultos
+// Ruta para obtener todos los artículos excepto los del usuario logueado y los ocultos
 app.get("/articulos/excluyendo/:documento", (req, res) => {
     const userId = req.params.documento;
+    const query = 'SELECT * FROM articulo WHERE id_usuario != ? AND estado != "oculto"';
     const query = 'SELECT * FROM articulo WHERE id_usuario != ? AND estado != "oculto"';
     db.query(query, [userId], (err, result) => {
         if (err) {
@@ -229,7 +231,6 @@ app.get("/articulos/excluyendo/:documento", (req, res) => {
         }
     });
 });
-
 
 // Ruta para obtener un artículo por su ID con la información del propietario
 app.get("/articulo/:id", (req, res) => {
@@ -272,7 +273,6 @@ app.get("/articulos/categoria/:categoria/excluyendo/:documento", (req, res) => {
         }
     });
 });
-
 
 // Ruta para crear una solicitud de permuta
 app.post("/solicitudPermuta", (req, res) => {
