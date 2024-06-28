@@ -5,6 +5,7 @@ const cors = require("cors");
 const multer = require("multer"); 
 const path = require("path");
 
+
 app.use(cors());
 app.use(express.json());
 
@@ -66,12 +67,45 @@ app.post("/login", (req, res) => {
     });
 });
 
+
+
+
+
+// Configuración de almacenamiento para Multer
+const storageConfig = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, '../client/public/assets/fotosPerfil'));
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, uniqueSuffix + '-' + file.originalname);
+    }
+});
+
+const uploadd = multer({ 
+    storage: storageConfig,  // Corrección aquí
+    fileFilter: (req, file, cb) => {
+        const filetypes = /jpeg|jpg|png/;
+        const mimetype = filetypes.test(file.mimetype);
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+
+        if (mimetype && extname) {
+            cb(null, true);
+        } else {
+            cb(new Error("Solo se permiten archivos de imagen (jpeg, jpg, png)"));
+        }
+    }
+});
+
 // Ruta para actualizar el perfil del usuario
-app.put("/usuario/:documento", (req, res) => {
+app.put("/usuario/:documento", uploadd.single('foto_perfil'), (req, res) => {  // Aquí asegúrate de usar 'foto_perfil'
     const userId = req.params.documento;
-    const { nombre, apellido, email, password,telefono, reputacion, descripcion } = req.body;
-    db.query('UPDATE usuario SET nombre=?, apellido=?, email=?, password=?, telefono=?, reputacion=?, descripcion=? WHERE documento=?',
-        [nombre, apellido, email, password, telefono, reputacion, descripcion, userId],
+    const { nombre, apellido, email, password, telefono, reputacion, descripcion } = req.body;
+    const fotoPerfil = req.file ? `/assets/fotosPerfil/${req.file.filename}` : null;
+
+    db.query(
+        'UPDATE usuario SET nombre=?, apellido=?, email=?, password=?, telefono=?, reputacion=?, descripcion=?, imagen=? WHERE documento=?',
+        [nombre, apellido, email, password, telefono, reputacion, descripcion, fotoPerfil, userId],
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -83,10 +117,14 @@ app.put("/usuario/:documento", (req, res) => {
     );
 });
 
+
+
+
 // Configuración de Multer para la carga de archivos
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, path.join(__dirname, '..', 'client', 'public', 'assets', 'productos'));
+        
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname));
@@ -524,7 +562,7 @@ app.post("/register", (req, res) => {
 // Ruta para actualizar el estado de un artículo
 app.put("/articulo/:id/estado", (req, res) => {
     const articuloId = req.params.id;
-    const { estado } = req.body; // El nuevo estado (publicado/no_publicado)
+    const { estado } = req.body; // El nuevo estado (publicado/oculto)
 
     const query = 'UPDATE articulo SET estado=? WHERE id=?';
     const values = [estado, articuloId];

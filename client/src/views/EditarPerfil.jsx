@@ -13,35 +13,33 @@ export function EditarPerfil(props) {
   const [telefono, setTelefono] = useState(user.telefono);
   const [reputacion, setReputacion] = useState(user.reputacion);
   const [descripcion, setDescripcion] = useState(user.descripcion);
+  const [fotoPerfil, setFotoPerfil] = useState(null); // Nuevo estado para la foto de perfil
+
+  const handleFileChange = (e) => {
+    setFotoPerfil(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('nombre', nombre);
+    formData.append('apellido', apellido);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('telefono', telefono);
+    formData.append('reputacion', reputacion);
+    formData.append('descripcion', descripcion);
+    if (fotoPerfil) {
+      formData.append('foto_perfil', fotoPerfil); // Añadir la foto de perfil al formulario
+    }
+
     try {
-      console.log("Datos enviados en la solicitud:", {
-        // Agrega este console.log
-        nombre,
-        apellido,
-        email,
-        password,
-        telefono,
-        reputacion,
-        descripcion,
-        fecha_union: user.fecha_union,
-        documento: user.documento,
-      });
       const response = await axios.put(
         `http://localhost:3002/usuario/${user.documento}`,
-        {
-          nombre: nombre,
-          apellido: apellido,
-          email: email,
-          password: password,
-          telefono: telefono,
-          reputacion: reputacion,
-          descripcion: descripcion,
-          fecha_union: user.fecha_union, // No estamos modificando la fecha de unión en este formulario
-        }
+        formData,
+        { headers: { 'Content-Type': 'multipart/form-data' } }
       );
+
       if (response.data) {
         setUser({
           ...user,
@@ -52,8 +50,8 @@ export function EditarPerfil(props) {
           telefono,
           reputacion,
           descripcion,
+          foto_perfil: fotoPerfil ? URL.createObjectURL(fotoPerfil) : user.foto_perfil, // Actualizar la ruta de la foto de perfil
         });
-        // Actualiza la información del usuario en el contexto
         localStorage.setItem(
           "user",
           JSON.stringify({
@@ -65,9 +63,9 @@ export function EditarPerfil(props) {
             telefono,
             reputacion,
             descripcion,
+            foto_perfil: fotoPerfil ? URL.createObjectURL(fotoPerfil) : user.foto_perfil, // Actualizar la ruta de la foto de perfil en el localStorage
           })
         );
-        // Actualiza la información del usuario en el localStorage
         alert("Perfil actualizado exitosamente");
       } else {
         alert("Error al actualizar el perfil");
@@ -147,10 +145,19 @@ export function EditarPerfil(props) {
               <textarea
                 rows="8"
                 cols="51"
-                maxlength="300"
+                maxLength="300"
                 className="descripc"
                 value={descripcion}
                 onChange={(e) => setDescripcion(e.target.value)}
+              />
+            </div>
+
+            <div className="formas">
+              <label>Foto de Perfil:</label>
+              <input
+                type="file"
+                className="foto_perfil"
+                onChange={handleFileChange}
               />
             </div>
 

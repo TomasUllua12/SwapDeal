@@ -5,7 +5,7 @@ import FooterWave from "../components/Footers/FooterWave";
 import { Link } from "react-router-dom";
 import Articulo from "../components/Articulo";
 import axios from "axios";
-import UserContext from "../context/UserContext.jsx"; // Importa el contexto de usuario
+import UserContext from "../context/UserContext.jsx";
 
 // Función para formatear la fecha
 function formatDate(fecha) {
@@ -15,10 +15,10 @@ function formatDate(fecha) {
 }
 
 export function Perfil(props) {
-  const { user } = useContext(UserContext); // Obtiene la información del usuario del contexto
+  const { user } = useContext(UserContext);
   const [articulos, setArticulos] = useState([]);
+  const [fotoPerfilUrl, setFotoPerfilUrl] = useState(""); // Estado para la URL de la foto de perfil
 
-  // Manejar el caso en el que los datos aún no se han cargado
   if (!user) {
     return <div>Loading...</div>;
   }
@@ -31,23 +31,35 @@ export function Perfil(props) {
 
   useEffect(() => {
     const fetchArticulos = async () => {
-        try {
-            const response = await axios.get(`http://localhost:3002/usuario/${user.documento}/articulo`);
-            console.log("Artículos recibidos:", response.data); // Logging adicional
-            setArticulos(response.data);
-        } catch (error) {
-            console.error("Error fetching articles:", error);
-        }
+      try {
+        const response = await axios.get(`http://localhost:3002/usuario/${user.documento}/articulo`);
+        setArticulos(response.data);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      }
     };
+
+    const fetchFotoPerfil = async () => {
+      try {
+        // Obtener el objeto completo del usuario para obtener la URL de la foto de perfil
+        const response = await axios.get(`http://localhost:3002/usuario/${user.documento}`);
+        setFotoPerfilUrl(response.data.imagen); // Guarda la URL de la foto de perfil del usuario
+      } catch (error) {
+        console.error("Error fetching profile photo:", error);
+      }
+    };
+
     if (user) {
-        fetchArticulos();
+      fetchArticulos();
+      fetchFotoPerfil();
     }
-}, [user]);
+  }, [user]);
 
   return (
     <>
       <div className="main-perfil">
-        <div className="main-perfil-foto"></div>
+        {/* Aquí se muestra la foto de perfil */}
+        <img className="main-perfil-foto" src={fotoPerfilUrl} alt="Foto de perfil" />
         <section className="main-perfil-banner">
           <div className="main-perfil-banner__image">
             <Header />
@@ -56,8 +68,8 @@ export function Perfil(props) {
         <div className="main-perfil-container">
           <section className="main-perfil-data">
             <div className="main-perfil-data-container">
-              <h3> {user.nombre}</h3>
-              <h3> {user.apellido}</h3>
+              <h3>{user.nombre}</h3>
+              <h3>{user.apellido}</h3>
               <div>
                 <h4>Reputación 📓</h4>
                 <p className="emojis">{obtenerReputacion(user.reputacion)}</p>
@@ -86,16 +98,15 @@ export function Perfil(props) {
                 <h3>Cartera de Inventario</h3>
                 <span className="icono-signo-mas"></span>
               </div>
-                <div className="scrollable-content">
-                  {articulos.map((articulo) => (
-                    <Articulo key={articulo.id} articulo={articulo} />
-                  ))}
-                </div>
+              <div className="scrollable-content">
+                {articulos.map((articulo) => (
+                  <Articulo key={articulo.id} articulo={articulo} />
+                ))}
+              </div>
             </div>
           </section>
         </div>
       </div>
-
       <FooterWave />
     </>
   );
