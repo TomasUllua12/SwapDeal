@@ -16,7 +16,6 @@ function EditarArticulo() {
     const [imagen, setImagen] = useState(null);
     const [existingImagen, setExistingImagen] = useState("");
     const [estado, setEstado] = useState("");
-    const [estado, setEstado] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);

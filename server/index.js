@@ -221,7 +221,6 @@ app.delete("/articulo/:id", (req, res) => {
 app.get("/articulos/excluyendo/:documento", (req, res) => {
     const userId = req.params.documento;
     const query = 'SELECT * FROM articulo WHERE id_usuario != ? AND estado != "oculto"';
-    const query = 'SELECT * FROM articulo WHERE id_usuario != ? AND estado != "oculto"';
     db.query(query, [userId], (err, result) => {
         if (err) {
             console.log(err);
