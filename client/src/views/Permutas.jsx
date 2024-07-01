@@ -82,7 +82,7 @@ function Permutas() {
         <section className="main-permutas-solicitudes">
           <div className="main-permutas-solicitudes__container">
             {solicitudes.length === 0 ? (
-              <p className="per">No tienes solicitudes de permuta.</p>
+              <p className="per">No tienes solicitudes de permuta</p>
             ) : (
               solicitudes.map(solicitud => (
                 <Solicitud
@@ -100,7 +100,7 @@ function Permutas() {
         <section className="main-permutas-historial">
           <div className="main-permutas-historial__container">
             {historial.length === 0 ? (
-              <p>No hay permutas completadas.</p>
+              <p className="his">No hay permutas completadas</p>
             ) : (
               historial.map(permuta => (
                 <PermutaCompletada key={permuta.id_historial} permuta={permuta} />

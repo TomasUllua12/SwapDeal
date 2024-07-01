@@ -92,6 +92,7 @@ function ArticuloView() {
             <p><b>{articulo.categoria}</b></p>
 
             <p>Tiempo de Uso: <b>{articulo.tiempo_uso}</b></p>
+            <p>Descripcion: <b>{articulo.descripcion}</b></p>
             <div className="VendedorInfo">
               <h2>Información del usuario</h2>
               <p>

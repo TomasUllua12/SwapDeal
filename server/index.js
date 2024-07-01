@@ -501,7 +501,7 @@ function getArticuloData(articuloId) {
 
 
 
-//ruta para guardar en el historial
+// Ruta para guardar en el historial
 app.get("/historialPermutas/:documento", (req, res) => {
     const userId = req.params.documento;
     const query = `
@@ -517,7 +517,9 @@ app.get("/historialPermutas/:documento", (req, res) => {
             u2.apellido AS apellido_usuario2, 
             u2.email AS email_usuario2, 
             u2.telefono AS telefono_usuario2,
-            h.fecha
+            h.fecha,
+            h.valoracion AS valoracion_usuario1,    
+            h.valoracion2 AS valoracion_usuario2    
         FROM historial h
         JOIN usuario u1 ON h.id_usuario = u1.documento
         JOIN usuario u2 ON h.id_usuario2 = u2.documento
@@ -575,6 +577,8 @@ app.put("/articulo/:id/estado", (req, res) => {
         }
     });
 });
+
+
 
 
 
