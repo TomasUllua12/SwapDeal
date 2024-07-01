@@ -506,25 +506,25 @@ app.get("/historialPermutas/:documento", (req, res) => {
     const userId = req.params.documento;
     const query = `
         SELECT 
-            h.id_historial, 
-            h.titulo_articulo, 
-            h.titulo_articulo2, 
-            u1.nombre AS nombre_usuario1, 
-            u1.apellido AS apellido_usuario1, 
-            u1.email AS email_usuario1, 
-            u1.telefono AS telefono_usuario1, 
-            u2.nombre AS nombre_usuario2, 
-            u2.apellido AS apellido_usuario2, 
-            u2.email AS email_usuario2, 
-            u2.telefono AS telefono_usuario2,
-            h.fecha,
-            h.valoracion AS valoracion_usuario1,    
-            h.valoracion2 AS valoracion_usuario2    
-        FROM historial h
-        JOIN usuario u1 ON h.id_usuario = u1.documento
-        JOIN usuario u2 ON h.id_usuario2 = u2.documento
-        WHERE h.id_usuario = ? OR h.id_usuario2 = ?
-        ORDER BY h.fecha DESC;  -- Ordenar por fecha en orden descendente
+            id_historial, 
+            titulo_articulo, 
+            titulo_articulo2, 
+            id_usuario AS id_usuario1,
+            nombre AS nombre_usuario1, 
+            apellido AS apellido_usuario1, 
+            email AS email_usuario1, 
+            telefono AS telefono_usuario1, 
+            id_usuario2, 
+            nombre2 AS nombre_usuario2, 
+            apellido2 AS apellido_usuario2, 
+            email2 AS email_usuario2, 
+            telefono2 AS telefono_usuario2,
+            fecha,
+            valoracion,    
+            valoracion2    
+        FROM historial
+        WHERE id_usuario = ? OR id_usuario2 = ?
+        ORDER BY fecha DESC;  -- Ordenar por fecha en orden descendente
     `;
 
     db.query(query, [userId, userId], (err, result) => {
@@ -538,6 +538,28 @@ app.get("/historialPermutas/:documento", (req, res) => {
 });
 
 
+// Ruta para actualizar la valoración de un usuario en una permuta específica
+app.post("/actualizarValoracion", (req, res) => {
+    const { id_historial, id_usuario, id_usuario1, id_usuario2, nuevaValoracion } = req.body;
+
+    // Determinar qué columna actualizar basada en el ID del usuario
+    const columnaValoracion = id_usuario === id_usuario1 ? 'valoracion' : 'valoracion2';
+
+    const query = `
+        UPDATE historial
+        SET ${columnaValoracion} = ?
+        WHERE id_historial = ? AND (id_usuario = ? OR id_usuario2 = ?)
+    `;
+
+    db.query(query, [nuevaValoracion, id_historial, id_usuario, id_usuario], (err, result) => {
+        if (err) {
+            console.error('Error al actualizar la valoración:', err);
+            res.status(500).json({ error: "Error al actualizar la valoración" });
+        } else {
+            res.json({ message: "Valoración actualizada exitosamente" });
+        }
+    });
+});
 
 
 // Ruta para registrar un nuevo usuario
