@@ -33,7 +33,7 @@
   font-weight: 700;
 }
 
-.content {
+.contenido {
   font-size: 1.2rem;
   font-family: "Montserrat";
   font-weight: 500;
@@ -44,11 +44,8 @@
   text-align: left; /* Asegura que el texto esté alineado a la izquierda */
 }
 
-.content.expanded {
-  margin: 10px;
+.contenido.expanded {
+  padding: 10px;
   max-height: 500px; /* Ajusta según el contenido que tengas */
 }
 
-.content.collapsed {
-  max-height: 0;
-}
