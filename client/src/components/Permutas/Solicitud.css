@@ -53,31 +53,29 @@
 
 .content.expanded {
   margin: 10px;
-  max-height: 500px; /* Ajusta según el contenido que tengas */
-  padding: 60%;
-  
+  max-height: 500px;
 }
 
 .solicitud-permuta-completa {
   margin-top: 15px;
   display: flex;
-  flex-direction: column; /* Cambiar a columna si hay problemas de espacio */
   align-items: flex-start; /* Alinear a la izquierda */
 }
 
 .solicitud-mi-producto__container, .solicitud-su-producto__container {
-  margin-bottom: 15px; /* Añadir un margen inferior */
+  margin: 0px 50px 15px 50px; /* Añadir un margen inferior */
   width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
 }
 
 .solicitud-buttons {
   display: flex;
   justify-content: center; /* Alinea los botones al centro */
+  flex-direction: column;
   margin-top: 10px; /* Agrega margen superior */
 }
 
 .solicitud-buttons button {
-  margin: 0 5px; /* Espaciado entre botones */
+  margin: 20px 5px; /* Espaciado entre botones */
   padding: 10px 20px; /* Aumenta el padding para hacer los botones más grandes */
   font-size: 1.2rem; /* Tamaño de la fuente */
   border: none; /* Elimina el borde */
