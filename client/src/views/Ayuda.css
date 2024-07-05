@@ -55,6 +55,7 @@
 }
 
 .enviar-consulta {
+  font-family: "Montserrat";
   width: 60vw;
   margin: 0 auto;
   display: flex;
@@ -79,6 +80,8 @@
 }
 
 .inpu-mail {
+  font-family: "Montserrat";
+  font-size: 1.2rem;
   background-color: #fff;
   margin-top: 5px;
   border-radius: 20px;
@@ -96,6 +99,8 @@
 }
 
 .inpu-asunto {
+  font-family: "Montserrat";
+  font-size: 1.2rem;
   background-color: #fff;
   border-radius: 20px;
   padding: 8px;
@@ -113,6 +118,8 @@
 }
 
 .inpu-consul {
+  font-family: "Montserrat";
+  font-size: 1.2rem;
   background-color: #fff;
   margin: 0 auto;
   width: 100%;
