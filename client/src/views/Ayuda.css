@@ -55,20 +55,16 @@
 }
 
 .enviar-consulta {
+  font-family: "Montserrat";
   width: 60vw;
   margin: 0 auto;
   display: flex;
   border-radius: 20px;
-  justify-content: left;
-  align-items: center;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   box-shadow: 2px 2px 5px #3333;
-  padding-top: 1%;
-  padding-bottom: 2%;
+  padding: 2% 5%;
 }
 
 .consul {
@@ -84,12 +80,16 @@
 }
 
 .inpu-mail {
+  font-family: "Montserrat";
+  font-size: 1.2rem;
   background-color: #fff;
-  margin-right: 57%;
+  margin-top: 5px;
   border-radius: 20px;
-  padding: 5px;
+  border: solid 1px #dbdbdb;
+  padding: 8px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.07);
   color: #000000;
+  width: 50%;
 }
 
 .asunto {
@@ -99,13 +99,16 @@
 }
 
 .inpu-asunto {
+  font-family: "Montserrat";
+  font-size: 1.2rem;
   background-color: #fff;
-  margin-right: 41.5%;
   border-radius: 20px;
-  padding: 5px;
+  padding: 8px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.07);
   color: #000000;
   padding-right: 150px;
+  border: solid 1px #dbdbdb;
+  width: 50%;
 }
 
 .ti-consul {
@@ -115,11 +118,13 @@
 }
 
 .inpu-consul {
+  font-family: "Montserrat";
+  font-size: 1.2rem;
   background-color: #fff;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   border-radius: 10px;
-  border: solid #c2c2c2 2px;
+  border: solid 1px #dbdbdb;
   padding: 5px;
   box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.07);
   color: #000000;
@@ -128,7 +133,16 @@
 }
 
 .enviar {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 1.2rem;
   margin-top: 5%;
+  border-radius: 20px;
   background-color: #b60900;
-  margin-left: 55%;
+  margin-left: 80%;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.enviar:hover {
+  transform: scale(1.05);
+  background-color: #ca3028;
 }

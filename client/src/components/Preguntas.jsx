@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Preguntas.css";
 
-export function MostrarPreguntas({ children }) {
+export function MostrarPreguntas({ children, pregunta, respuesta}) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -14,12 +14,12 @@ export function MostrarPreguntas({ children }) {
       <div className="pregunta-expandable-container">
         <div className="header" onClick={toggleExpand}>
           <h2>
-            ¿Pregunta frecuente número #?
+            {pregunta}
           </h2>
         </div>
-        <div className={`content ${isExpanded ? "expanded" : "collapsed"}`}>
+        <div className={`contenido ${isExpanded ? "expanded" : "collapsed"}`}>
           <p>
-            <b>Nueva solicitud</b> de permuta por parte de: <b>Simon Feeney</b>
+            {respuesta}
           </p>
         </div>
       </div>
