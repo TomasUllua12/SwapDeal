@@ -18,10 +18,10 @@ function SeleccionarArticulo({ onSeleccionar }) {
 
     return (
         <div className="seleccionar-articulo">
-            <h2>Selecciona un artículo para permutar</h2>
+            <h2 className="sele" >Selecciona un artículo para permutar</h2>
             <ul>
                 {articulos.map(articulo => (
-                    <li key={articulo.id} onClick={() => onSeleccionar(articulo.id)}>
+                    <li className="ar" key={articulo.id} onClick={() => onSeleccionar(articulo.id)}>
                         {articulo.titulo}
                     </li>
                 ))}

@@ -7,6 +7,14 @@
     position: relative;
 }
 
+.sele{
+    color: #000;
+}
+
+.ar{
+    color: #000;
+}
+
 .seleccionar-articulo h2 {
     margin-bottom: 20px;
 }
