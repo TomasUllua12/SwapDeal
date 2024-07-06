@@ -84,7 +84,7 @@ function PermutaCompletada({ permuta }) {
                 <br/>con 
                 <br/><b>{nombreOtro}</b> (Email: {emailOtro}, Teléfono: {telefonoOtro}) por <i>{tituloArticuloOtro}</i>
                 <br/>Fecha de la permuta: {formattedFecha}
-                <br/>Valoración de {nombreLogueado.split(' ')[0]}: {obtenerValoracion(valoracionLogueado)}
+                <br/>Valoración propia : {obtenerValoracion(valoracionLogueado)}
                 <br/>Valoración de {nombreOtro.split(' ')[0]}: {obtenerValoracion(valoracionOtro)}
                 {!valoracionLogueado && !enviado && (
                     <div>
