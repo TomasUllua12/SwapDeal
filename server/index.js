@@ -98,23 +98,48 @@ const uploadd = multer({
 });
 
 // Ruta para actualizar el perfil del usuario
-app.put("/usuario/:documento", uploadd.single('foto_perfil'), (req, res) => {  // Aquí asegúrate de usar 'foto_perfil'
+app.put("/usuario/:documento", uploadd.single('foto_perfil'), (req, res) => {  
     const userId = req.params.documento;
     const { nombre, apellido, email, password, telefono, reputacion, descripcion } = req.body;
-    const fotoPerfil = req.file ? `/assets/fotosPerfil/${req.file.filename}` : null;
+    let fotoPerfil = null;
 
-    db.query(
-        'UPDATE usuario SET nombre=?, apellido=?, email=?, password=?, telefono=?, reputacion=?, descripcion=?, imagen=? WHERE documento=?',
-        [nombre, apellido, email, password, telefono, reputacion, descripcion, fotoPerfil, userId],
-        (err, result) => {
+    // Consultar la imagen existente si no se ha cargado una nueva
+    if (!req.file) {
+        db.query('SELECT imagen FROM usuario WHERE documento = ?', [userId], (err, results) => {
             if (err) {
                 console.log(err);
-                res.status(500).send("Error updating user profile");
-            } else {
-                res.send("User profile updated successfully");
+                return res.status(500).send("Error fetching user profile image");
             }
-        }
-    );
+            fotoPerfil = results[0].imagen;
+
+            db.query(
+                'UPDATE usuario SET nombre=?, apellido=?, email=?, password=?, telefono=?, reputacion=?, descripcion=?, imagen=? WHERE documento=?',
+                [nombre, apellido, email, password, telefono, reputacion, descripcion, fotoPerfil, userId],
+                (err, result) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send("Error updating user profile");
+                    } else {
+                        res.send("User profile updated successfully");
+                    }
+                }
+            );
+        });
+    } else {
+        fotoPerfil = `/assets/fotosPerfil/${req.file.filename}`;
+        db.query(
+            'UPDATE usuario SET nombre=?, apellido=?, email=?, password=?, telefono=?, reputacion=?, descripcion=?, imagen=? WHERE documento=?',
+            [nombre, apellido, email, password, telefono, reputacion, descripcion, fotoPerfil, userId],
+            (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send("Error updating user profile");
+                } else {
+                    res.send("User profile updated successfully");
+                }
+            }
+        );
+    }
 });
 
 
@@ -216,7 +241,7 @@ app.delete("/articulo/:id", (req, res) => {
     });
 });
 
-// Ruta para obtener todos los artículos excepto los del usuario logueado y los ocultos
+
 // Ruta para obtener todos los artículos excepto los del usuario logueado y los ocultos
 app.get("/articulos/excluyendo/:documento", (req, res) => {
     const userId = req.params.documento;

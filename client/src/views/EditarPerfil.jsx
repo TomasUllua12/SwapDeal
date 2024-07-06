@@ -3,6 +3,8 @@ import "./EditarPerfil.css";
 import axios from "axios";
 import UserContext from "../context/UserContext.jsx";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export function EditarPerfil(props) {
   const { user, setUser } = useContext(UserContext); // Obtén la información del usuario del contexto
@@ -66,13 +68,13 @@ export function EditarPerfil(props) {
             foto_perfil: fotoPerfil ? URL.createObjectURL(fotoPerfil) : user.foto_perfil, // Actualizar la ruta de la foto de perfil en el localStorage
           })
         );
-        alert("Perfil actualizado exitosamente");
+        toast.success("Perfil actualizado exitosamente");
       } else {
-        alert("Error al actualizar el perfil");
+        toast.error("Error al actualizar el perfil");
       }
     } catch (error) {
       console.error("Error al actualizar el perfil:", error);
-      alert("Error al actualizar el perfil");
+      toast.error("Error al actualizar el perfil");
     }
   };
 
@@ -167,6 +169,7 @@ export function EditarPerfil(props) {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }

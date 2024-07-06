@@ -26,7 +26,7 @@ function SeleccionarArticulo({ onSeleccionar }) {
                     </li>
                 ))}
             </ul>
-            <button onClick={() => window.history.back()}>Cancelar</button>
+            <button className="bot" onClick={() => window.history.back()}>Cancelar</button>
         </div>
     );
 }
