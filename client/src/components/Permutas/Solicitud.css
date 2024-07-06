@@ -118,3 +118,40 @@
 .expandable-container.solicitud-recibida {
   background-color: #ffebee; /* Rojo claro para recibidas */
 }
+
+.mensaje {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fade-in-out 2s ease-in-out;
+}
+
+.mensaje-exito {
+  background-color: #28a745;
+  color: white;
+}
+
+.mensaje-error {
+  background-color: red;
+  color: white;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
