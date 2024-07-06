@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../context/UserContext";
+import './SeleccionarArticulo.css';
 
 function SeleccionarArticulo({ onSeleccionar }) {
     const { user } = useContext(UserContext);
@@ -16,16 +17,16 @@ function SeleccionarArticulo({ onSeleccionar }) {
     }, [user.documento]);
 
     return (
-        <div>
+        <div className="seleccionar-articulo">
             <h2>Selecciona un artículo para permutar</h2>
             <ul>
                 {articulos.map(articulo => (
-                    <li key={articulo.id}>
+                    <li key={articulo.id} onClick={() => onSeleccionar(articulo.id)}>
                         {articulo.titulo}
-                        <button onClick={() => onSeleccionar(articulo.id)}>Seleccionar</button>
                     </li>
                 ))}
             </ul>
+            <button onClick={() => window.history.back()}>Cancelar</button>
         </div>
     );
 }

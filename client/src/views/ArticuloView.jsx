@@ -1,10 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import Modal from 'react-modal';
 import "./ArticuloView.css";
 import UserContext from "../context/UserContext";
 import SeleccionarArticulo from "../components/SeleccionarArticulo";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
+
+Modal.setAppElement('#root'); // Necesario para accesibilidad
 
 function ArticuloView() {
   const { id } = useParams();
@@ -116,16 +119,21 @@ function ArticuloView() {
               </>
             ) : (
               <>
-                {seleccionando ? (
+                <button
+                  className="permutar-articulo"
+                  onClick={handlePermutar}
+                >
+                  Permutar Artículo
+                </button>
+                <Modal
+                  isOpen={seleccionando}
+                  onRequestClose={() => setSeleccionando(false)}
+                  contentLabel="Seleccionar Artículo"
+                  className="modal"
+                  overlayClassName="overlay"
+                >
                   <SeleccionarArticulo onSeleccionar={handleSeleccionar} />
-                ) : (
-                  <button
-                    className="permutar-articulo"
-                    onClick={handlePermutar}
-                  >
-                    Permutar Artículo
-                  </button>
-                )}
+                </Modal>
                 <button
                   className="volver-button"
                   onClick={() => window.history.back()}
