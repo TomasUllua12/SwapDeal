@@ -146,3 +146,14 @@
   transform: scale(1.05);
   background-color: #ca3028;
 }
+
+
+.mensaje-exito {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid green;
+  background-color: #e7f3e7;
+  color: green;
+  border-radius: 5px;
+  text-align: center;
+}

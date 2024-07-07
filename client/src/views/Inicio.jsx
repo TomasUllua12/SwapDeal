@@ -122,22 +122,15 @@ export function Inicio(props) {
             <div>
               <div className="categoria-mas">LA CATEGORIA MAS PERMUTADA ES</div>
               <div className="contenedor-categoria">
-                <card name="Hogar" color="#994000" />
+                <img src="../../public/assets/img/Captura de pantalla 2024-07-06 193432.png" alt="Categoría Más Permutada" className="imagen-categoria" />
               </div>
             </div>
           </div>
 
-          <div className="informacion-sobre-app">
-            <div>
-              <a className="mejores-practicas" href="">
-                SWAPDEAL MIRA LAS MEJORES PRACTICAS DENTRO DE LA APLICACION
-              </a>
-            </div>
-          </div>
         </div>
 
         <div className="seccion-articulos-recomendados">
-          <div className="main-perfil-articulos-container">
+          <div className="main-perfil-articulos-contai">
             <div className="articulos-recomendados">
               ARTICULOS RECOMENDADOS<br></br>
               <br></br>
