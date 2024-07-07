@@ -85,6 +85,7 @@
   height: auto;
   font-weight: bolder;
   padding-right: 1vw;
+  font-size: 16px;
 }
 
 .texto-swap {
@@ -93,6 +94,7 @@
   width: auto;
   height: auto;
   font-weight: bolder;
+  font-size: 20px;
 }
 
 .cantidad-permutas {

@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+.selec {
+  font-size: 18px;
+  margin-right: 10px; /* Ajusta el margen según sea necesario */
+}
+
 .editarArticulo-background {
   position: fixed;
   top: 0;
@@ -55,8 +60,9 @@
   font-family: "Montserrat";
 }
 
+
 .text-editarArticulo {
-  margin-top: 10vh;
+  margin-top: 1%;
   font-size: 4vh;
   margin-left: 20%;
   margin-bottom: 1vh;
@@ -64,26 +70,49 @@
   font-size: 3rem;
   font-weight: bold;
   margin-left: 20vw;
-  margin-top: 10vh;
   padding-bottom: 2vh;
 }
 
 .formu-editarArticulo {
-    margin-left: 20vw;
-    margin-right: 20vw;
+  margin-left: 20vw;
+  margin-right: 20vw;
 }
 
 .image-upload-container {
-    width: auto;
-    padding: 20px;
+  display: flex;
+  align-items: center; /* Alinea los elementos verticalmente */
 }
-.espacio-foArticulo {
-    padding: 0;
-    margin:  40px 40px 0px 40px;
+
+.upload-input {
+  display: none; /* Oculta el input por defecto */
 }
+
+.upload-labelArticulo {
+  cursor: pointer; /* Cambia el cursor para indicar que es clicable */
+}
+
+.image-container {
+  width: 300px; /* Ajusta el tamaño según sea necesario */
+  height: 300px; /* Ajusta el tamaño según sea necesario */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc; /* Opcional: Agrega un borde para distinguir el contenedor */
+  margin-top: 20px;
+  margin-left: 20px; /* Ajusta el margen según sea necesario */
+}
+
 .current-image {
-    width: 30%;
-    margin-left: 20%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.espacio-foArticulo {
+  padding: 0;
+  margin: 0px 40px 0px 30px;
+  display: flex;
+  flex-direction: row;
 }
 
 .formulario-editarArticulo {
@@ -128,15 +157,55 @@
   }
 }
 
-.current-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  display: block;
-  margin: auto;
+.tie {
+  font-size: 20px;
+}
+
+.descripcion {
+  margin-top: 15px;
+}
+
+.descrip {
+  width: 940px; /* Ajusta el ancho a tu necesidad */
+  height: 60px; /* Ajusta la altura a tu necesidad */
+  resize: none; /* Evita que el usuario cambie el tamaño del textarea */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+  margin-bottom: 2vh;
+  border-radius: 7px;
+  margin-top: 8px;
+  background-color: #fff;
+  color: black;
+}
+
+.descrip::placeholder {
+  color: black; /* Color del placeholder */
+}
+
+.desc {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.botoness{
+  display: flex;
+  flex-direction: row;
 }
 
 
+.enviaa {
+  color: #ffffff;
+  margin-right: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #b60900;
+  padding: 1vh 2vh 1vh 2vh;
+  border-radius: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.envia:hover {
+  transform: scale(1.1);
+  border: solid 1px #fff;
+}
 
 
 

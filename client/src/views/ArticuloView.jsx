@@ -91,8 +91,7 @@ function ArticuloView() {
         <div className="articulo-info-section">
           <div className="articulo-info-section-square">
             <h1>{articulo.titulo}</h1>
-            <h2>{articulo.descripcion}</h2>
-            <p><b>{articulo.categoria}</b></p>
+            <p>Categoria: <b>{articulo.categoria}</b></p>
 
             <p>Tiempo de Uso: <b>{articulo.tiempo_uso}</b></p>
             <p>Descripcion: <b>{articulo.descripcion}</b></p>
