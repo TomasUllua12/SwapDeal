@@ -33,7 +33,7 @@ return (
     <Header />
     <main className="categoria-main">
         <div className="categoria-banner">
-        <h2 className="categoria-title">{decodedCategoria}</h2>
+        <h2 className="categoria-ti">{decodedCategoria}</h2>
         </div>
         <div className="scrollable-contnt">
         {articulos.map((articulo) => (
