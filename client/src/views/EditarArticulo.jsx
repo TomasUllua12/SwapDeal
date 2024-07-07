@@ -151,13 +151,13 @@ function EditarArticulo() {
       <div className="editarArticulo-background"></div>
       <div className="editarArticulo-wrapper"></div>
       <div className="body-editarArticulo">
-        <p className="text-editar">Edita información del artículo</p>
+        <p className="text-editarArticulo">Edita información del artículo</p>
         {loading && <p>Loading...</p>}
         {!loading && (
-          <form className="formu-editar" onSubmit={handleSubmit}>
-            <div className="espacio-fo">
+          <form className="formu-editarArticulo" onSubmit={handleSubmit}>
+            <div className="espacio-foArticulo">
               <div className="image-upload-container" id="upload-container">
-                <label htmlFor="image-input" className="upload-label">
+                <label htmlFor="image-input" className="upload-labelArticulo">
                   Seleccione la imágen del artículo
                 </label>
                 <input
@@ -176,7 +176,7 @@ function EditarArticulo() {
                 )}
               </div>
             </div>
-            <div className="formulario">
+            <div className="formulario-editarArticulo">
               <div className="titu">
                 <label htmlFor="title">Título:</label>
                 <input
