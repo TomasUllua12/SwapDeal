@@ -156,29 +156,33 @@ function EditarArticulo() {
         {!loading && (
           <form className="formu-editarArticulo" onSubmit={handleSubmit}>
             <div className="espacio-foArticulo">
-              <div className="image-upload-container" id="upload-container">
-                <label htmlFor="image-input" className="upload-labelArticulo">
-                  Seleccione la imágen del artículo
-                </label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  id="image-input"
-                  className="upload-input"
-                  onChange={handleFileChange}
-                />
-                {previewImagen && (
-                  <img
-                    src={previewImagen}
-                    alt="Vista previa del artículo"
-                    className="current-image"
+            <div className="espacio-foArticulo">
+                <div className="image-upload-container" id="upload-container">
+                  <label htmlFor="image-input" className="upload-labelArticulo">
+                    <span className="selec">Seleccione la imágen del artículo</span>
+                  </label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    id="image-input"
+                    className="upload-input"
+                    onChange={handleFileChange}
                   />
+                </div>
+                {previewImagen && (
+                  <div className="image-container">
+                    <img
+                      src={previewImagen}
+                      alt="Vista previa del artículo"
+                      className="current-image"
+                    />
+                  </div>
                 )}
               </div>
             </div>
             <div className="formulario-editarArticulo">
               <div className="titu">
-                <label htmlFor="title">Título:</label>
+                <label htmlFor="title"><span className="tie">Título:</span></label>
                 <input
                   className="inpu-ti"
                   type="text"
@@ -191,7 +195,7 @@ function EditarArticulo() {
                 />
               </div>
               <div className="cate">
-                <label htmlFor="category">Categoría:</label>
+                <label htmlFor="category"><span className="tie">Categoria</span></label>
                 <select
                   className="caja"
                   id="category"
@@ -236,7 +240,7 @@ function EditarArticulo() {
                 </select>
               </div>
               <div className="uso">
-                <label htmlFor="usage-time">Tiempo de uso:</label>
+                <label  htmlFor="usage-time"><span className="tie">Tiempo de uso:</span></label>
                 <input
                   className="inpu-us"
                   type="text"
@@ -249,8 +253,11 @@ function EditarArticulo() {
                 />
               </div>
               <div className="descripcion">
-                <label htmlFor="description">Descripción:</label>
+                <label htmlFor="description" className="desc">Descripción:</label>
                 <textarea
+                  rows="7"
+                  cols="51"
+                  maxLength="300"
                   className="descrip"
                   id="description"
                   name="description"
@@ -260,19 +267,19 @@ function EditarArticulo() {
                   onChange={(e) => setDescripcion(e.target.value)}
                 ></textarea>
               </div>
-              <div className="botones">
-                <button className="boton-publi" type="submit">
+              <div className="botoness">
+                <button className="enviaa" type="submit">
                   Guardar cambios
                 </button>
                 <button
-                  className="boton-eliminar"
+                  className="enviaa"
                   type="button"
                   onClick={handleEliminarArticulo}
                 >
                   Eliminar artículo
                 </button>
                 <button
-                  className="boton-estado"
+                  className="enviaa"
                   type="button"
                   onClick={toggleEstado}
                 >

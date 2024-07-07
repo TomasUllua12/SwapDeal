@@ -22,7 +22,12 @@
   vertical-align: middle;
   width: 18px;
   height: 18px;
-  margin-left: 10px;
+  margin-left: 18px;
   background-image: url("./assets/icons/diagonal-arrow.svg");
   background-size: contain;
+}
+
+.header--button:hover {
+  transform: scale(1.1);
+  border: solid 1px #fff;
 }

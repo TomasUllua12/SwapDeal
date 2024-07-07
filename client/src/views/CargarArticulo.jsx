@@ -76,7 +76,7 @@ export function CargarArticulo(props) {
 
         <div className="formu-carga">
           <div className="espacio-fo">
-            <div className="image-upload-container" id="upload-container">
+            <div className="image-upload-containerr" id="upload-container">
               {imagenPreview ? (
                 <img
                   src={imagenPreview}
@@ -92,7 +92,7 @@ export function CargarArticulo(props) {
                 type="file"
                 accept="image/*"
                 id="image-input"
-                className="upload-input"
+                className="upload-inputt"
                 onChange={handleFileChange}
               />
             </div>
@@ -173,8 +173,8 @@ export function CargarArticulo(props) {
               />
             </div>
 
-            <div className="descrip">
-              <label htmlFor="description">Descripción:</label>
+            <div className="descri">
+              <label htmlFor="description"><span className="des">Descripción:</span></label>
               <input
                 className="inpu-des"
                 type="text"

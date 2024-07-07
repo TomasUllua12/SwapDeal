@@ -85,6 +85,7 @@
   height: auto;
   font-weight: bolder;
   padding-right: 1vw;
+  font-size: 16px;
 }
 
 .texto-swap {
@@ -93,6 +94,7 @@
   width: auto;
   height: auto;
   font-weight: bolder;
+  font-size: 20px;
 }
 
 .cantidad-permutas {
@@ -155,11 +157,13 @@
 }
 
 .comentario1 {
+  padding: 2px;
   font-size: 2vh;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
 }
 
 .comentario2 {
+  margin-top: 25px;
   font-size: 2vh;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
   padding-bottom: 3%;
@@ -194,7 +198,6 @@
 
 .categorias-mas-intercambiada {
   color: #000000;
-
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
   border-radius: 7px;
   flex: 1 1 30%;
@@ -217,34 +220,17 @@
 .contenedor-categoria {
   height: auto;
   width: auto;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.informacion-sobre-app {
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.07);
-  border-radius: 7px;
-  flex: 1 1 30%;
-  margin: 1%;
-  text-align: center;
-
-  color: #fff;
-  background-color: #b60900;
-  width: 100%;
-  height: 8%;
-  font-weight: bolder;
-  font-size: 2vh;
-  padding-top: 1%;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
-}
-
-.mejores-practicas {
-  color: #fff;
-  outline: none;
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+.imagen-categoria {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: cover;
 }
 
 .seccion-articulos-recomendados {
@@ -258,7 +244,7 @@
   font-size: 2vh;
 }
 
-.main-perfil-articulos-container {
+.main-perfil-articulos-contai {
   width: 80%;
   height: 85%; /* Ajusta la altura según tu necesidad */
   background-color: #f8f8f8;
