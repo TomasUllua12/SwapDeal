@@ -64,7 +64,7 @@
 .main-permutas-permutas {
   width: 100%;
   height: auto;
-  background-color: #eeeeee8c;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,7 +90,7 @@
 .main-permutas-historial {
   width: 100%;
   height: auto;
-  background-color: #eeeeee8c;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;

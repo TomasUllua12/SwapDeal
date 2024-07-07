@@ -14,9 +14,10 @@ function EditarArticulo() {
   const [tiempoUso, setTiempoUso] = useState("");
   const [imagen, setImagen] = useState(null);
   const [existingImagen, setExistingImagen] = useState("");
+  const [previewImagen, setPreviewImagen] = useState(""); // Nuevo estado para la vista previa de la imagen
   const [estado, setEstado] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [mensajeExito, setMensajeExito] = useState("");
+  const [mensajeError, setMensajeError] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -32,7 +33,7 @@ function EditarArticulo() {
         setCategoria(articulo.categoria);
         setTiempoUso(articulo.tiempo_uso);
         setExistingImagen(articulo.imagen);
-        setEstado(articulo.estado);
+        setPreviewImagen(articulo.imagen); // Establecer la imagen existente como vista previa inicial
         setEstado(articulo.estado);
         setLoading(false);
       } catch (error) {
@@ -43,6 +44,12 @@ function EditarArticulo() {
     fetchArticulo();
   }, [id]);
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setImagen(file);
+    setPreviewImagen(URL.createObjectURL(file)); // Actualizar la vista previa de la imagen
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -51,9 +58,10 @@ function EditarArticulo() {
     formData.append("categoria", categoria);
     formData.append("tiempo_uso", tiempoUso);
     formData.append("id_usuario", user.documento);
-    formData.append("imagen", existingImagen);
     if (imagen) {
       formData.append("imagen", imagen);
+    } else {
+      formData.append("imagen", existingImagen);
     }
     try {
       setLoading(true);
@@ -67,15 +75,14 @@ function EditarArticulo() {
         }
       );
       console.log("Respuesta del servidor:", response.data);
-      setSuccessMessage("Artículo actualizado exitosamente");
-      setErrorMessage(""); // Limpiar mensaje de error si hubiera alguno
+      setMensajeExito("Artículo actualizado exitosamente");
       setLoading(false);
-      alert("Artículo modificado exitosamente");
-      navigate(`/ArticuloView/${id}`);
+      setTimeout(() => {
+        navigate("/Perfil");
+      }, 2000);
     } catch (error) {
       console.error("Error al actualizar el artículo:", error);
-      setSuccessMessage(""); // Limpiar mensaje de éxito si hubiera alguno
-      setErrorMessage("Error al actualizar el artículo");
+      setMensajeError("Error al actualizar el artículo");
       setLoading(false);
     }
   };
@@ -87,15 +94,14 @@ function EditarArticulo() {
         `http://localhost:3002/articulo/${id}`
       );
       console.log("Respuesta del servidor:", response.data);
-      setSuccessMessage("Artículo eliminado exitosamente");
-      setErrorMessage(""); // Limpiar mensaje de error si hubiera alguno
+      setMensajeExito("Artículo eliminado exitosamente");
       setLoading(false);
-      alert("Artículo eliminado exitosamente");
-      navigate("/Perfil"); // Redirigir al perfil después de eliminar
+      setTimeout(() => {
+        navigate("/Perfil");
+      }, 2000);
     } catch (error) {
       console.error("Error al eliminar el artículo:", error);
-      setSuccessMessage(""); // Limpiar mensaje de éxito si hubiera alguno
-      setErrorMessage("Error al eliminar el artículo");
+      setMensajeError("Error al eliminar el artículo");
       setLoading(false);
     }
   };
@@ -109,11 +115,11 @@ function EditarArticulo() {
         { estado: nuevoEstado }
       );
       setEstado(nuevoEstado);
-      setSuccessMessage(`Estado del artículo actualizado a ${nuevoEstado}`);
+      setMensajeExito(`Estado del artículo actualizado a ${nuevoEstado}`);
       setLoading(false);
     } catch (error) {
       console.error("Error al actualizar el estado del artículo:", error);
-      setErrorMessage("Error al actualizar el estado del artículo");
+      setMensajeError("Error al actualizar el estado del artículo");
       setLoading(false);
     }
   };
@@ -122,25 +128,23 @@ function EditarArticulo() {
     let successTimeout;
     let errorTimeout;
 
-    // Lógica para limpiar los mensajes después de 3 segundos
-    if (successMessage) {
+    if (mensajeExito) {
       successTimeout = setTimeout(() => {
-        setSuccessMessage("");
-      }, 3000);
+        setMensajeExito("");
+      }, 2000);
     }
 
-    if (errorMessage) {
+    if (mensajeError) {
       errorTimeout = setTimeout(() => {
-        setErrorMessage("");
-      }, 3000);
+        setMensajeError("");
+      }, 2000);
     }
 
-    // Limpieza de timeouts al desmontar el componente o cuando cambian los mensajes
     return () => {
       clearTimeout(successTimeout);
       clearTimeout(errorTimeout);
     };
-  }, [successMessage, errorMessage]);
+  }, [mensajeExito, mensajeError]);
 
   return (
     <>
@@ -161,12 +165,12 @@ function EditarArticulo() {
                   accept="image/*"
                   id="image-input"
                   className="upload-input"
-                  onChange={(e) => setImagen(e.target.files[0])}
+                  onChange={handleFileChange}
                 />
-                {existingImagen && !imagen && (
+                {previewImagen && (
                   <img
-                    src={existingImagen}
-                    alt="Current article"
+                    src={previewImagen}
+                    alt="Vista previa del artículo"
                     className="current-image"
                   />
                 )}
@@ -262,6 +266,7 @@ function EditarArticulo() {
                 </button>
                 <button
                   className="boton-eliminar"
+                  type="button"
                   onClick={handleEliminarArticulo}
                 >
                   Eliminar artículo
@@ -276,6 +281,16 @@ function EditarArticulo() {
               </div>
             </div>
           </form>
+        )}
+        {mensajeExito && (
+          <div className="mensaje-exito">
+            <p>{mensajeExito}</p>
+          </div>
+        )}
+        {mensajeError && (
+          <div className="mensaje-error">
+            <p>{mensajeError}</p>
+          </div>
         )}
       </div>
     </>
