@@ -5,7 +5,7 @@
 }
 html {
   font-size: 62.5%;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -88,9 +88,10 @@ html {
 }
 .header-principal__title {
   font-size: 2.3rem;
-  font-weight: 1000;
+  font-weight: 500;
   line-height: 2.6rem;
   color: var(--just-white);
+  font-family: "Montserrat";
 }
 .header-principal__description {
   margin-top: 23px;
@@ -123,9 +124,10 @@ html {
 .main-principal-section-1--title-text {
   padding-top: 50px;
   font-size: 2.4rem;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 2.6rem;
-  color: var(--black);
+  color: var(--fifth-orange);
+  font-family: "Montserrat";
 }
 .main-principal-section-1--title-description {
   padding-top: 30px;
