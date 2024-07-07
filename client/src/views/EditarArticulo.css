@@ -55,7 +55,7 @@
   font-family: "Montserrat";
 }
 
-.text-editar {
+.text-editarArticulo {
   margin-top: 10vh;
   font-size: 4vh;
   margin-left: 20%;
@@ -68,7 +68,7 @@
   padding-bottom: 2vh;
 }
 
-.formu-editar {
+.formu-editarArticulo {
     margin-left: 20vw;
     margin-right: 20vw;
 }
@@ -77,18 +77,16 @@
     width: auto;
     padding: 20px;
 }
-.espacio-fo {
+.espacio-foArticulo {
     padding: 0;
     margin:  40px 40px 0px 40px;
-}
-.image-input {
-    width: 20%;
 }
 .current-image {
     width: 30%;
     margin-left: 20%;
 }
 
-.formulario {
-
+.formulario-editarArticulo {
+    width: 100%;
+    margin-top: 0;
 }
