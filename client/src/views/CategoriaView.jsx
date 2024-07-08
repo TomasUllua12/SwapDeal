@@ -38,7 +38,7 @@ function CategoriaView() {
         <section className="main-categoria-banner">
           <div className="main-categoria-banner__image">
             <Header />
-            <h2 className="categoria-title">Categoría → {decodedCategoria}</h2>
+            <h2 className="categoria-title">Categorías → {decodedCategoria}</h2>
           </div>
         </section>
         <div className="scrollable-contnt">
