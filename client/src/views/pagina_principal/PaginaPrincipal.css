@@ -513,7 +513,7 @@ html {
       var(--fifth-orange)
     )
     0 0 / 1000% no-repeat;
-  animation: animation-about 10s ease infinite;
+  animation: animation-about 2s ease infinite;
   z-index: -1;
 }
 @keyframes animation-about {
