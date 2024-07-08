@@ -163,13 +163,17 @@
 
 .descripcion {
   margin-top: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
+
 .descrip {
-  width: 940px; /* Ajusta el ancho a tu necesidad */
+  width: 90%; /* Ajusta el ancho a tu necesidad */
   height: 60px; /* Ajusta la altura a tu necesidad */
   resize: none; /* Evita que el usuario cambie el tamaño del textarea */
   box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento */
+  padding: 1%;
   margin-bottom: 2vh;
   border-radius: 7px;
   margin-top: 8px;
@@ -183,7 +187,7 @@
 
 .desc {
   font-weight: bolder;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .botoness{

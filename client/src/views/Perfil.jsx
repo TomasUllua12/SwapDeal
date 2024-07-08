@@ -95,7 +95,7 @@ export function Perfil(props) {
             </div>
             <div className="main-perfil-articulos-container">
               <div className="cartera-de-inventario">
-                <h3>Cartera de Inventario</h3>
+                <h3>Inventario</h3>
                 <span className="icono-signo-mas"></span>
               </div>
               <div className="scrollable-content">

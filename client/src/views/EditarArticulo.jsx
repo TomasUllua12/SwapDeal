@@ -207,13 +207,13 @@ function EditarArticulo() {
                   <option className="optio" value="" disabled>
                     Seleccionar categoría
                   </option>
-                  <option className="optio" value="hogar-y-muebles">
+                  <option className="optio" value="hogar y muebles">
                     Hogar y Muebles
                   </option>
                   <option className="optio" value="tecnologia">
                     Tecnología
                   </option>
-                  <option className="optio" value="moda-y-accesorios">
+                  <option className="optio" value="moda y accesorios">
                     Moda y Accesorios
                   </option>
                   <option className="optio" value="deportes">
@@ -225,10 +225,10 @@ function EditarArticulo() {
                   <option className="optio" value="vehiculos">
                     Vehículos
                   </option>
-                  <option className="optio" value="herramientas-y-materiales">
+                  <option className="optio" value="herramientas y materiales">
                     Herramientas y Materiales
                   </option>
-                  <option className="optio" value="salud-y-belleza">
+                  <option className="optio" value="salud y belleza">
                     Salud y Belleza
                   </option>
                   <option className="optio" value="mascotas">
@@ -257,7 +257,7 @@ function EditarArticulo() {
                 <textarea
                   rows="7"
                   cols="51"
-                  maxLength="300"
+                  maxLength="500"
                   className="descrip"
                   id="description"
                   name="description"

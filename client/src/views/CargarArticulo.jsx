@@ -126,34 +126,34 @@ export function CargarArticulo(props) {
                 <option className="optio" value="" disabled selected>
                   Seleccionar categoría
                 </option>
-                <option className="optio" value="Hogar y Muebles">
+                <option className="optio" value="hogar y Muebles">
                   Hogar y Muebles
                 </option>
-                <option className="optio" value="Tecnología">
+                <option className="optio" value="tecnología">
                   Tecnología
                 </option>
-                <option className="optio" value="Moda y Accesorios">
+                <option className="optio" value="moda y Accesorios">
                   Moda y Accesorios
                 </option>
-                <option className="optio" value="Deportes">
+                <option className="optio" value="deportes">
                   Deportes
                 </option>
-                <option className="optio" value="Entretenimiento">
+                <option className="optio" value="entretenimiento">
                   Entretenimiento
                 </option>
-                <option className="optio" value="Vehículos">
+                <option className="optio" value="vehículos">
                   Vehículos
                 </option>
-                <option className="optio" value="Herramientas y Materiales">
+                <option className="optio" value="herramientas y Materiales">
                   Herramientas y Materiales
                 </option>
-                <option className="optio" value="Salud y Belleza">
+                <option className="optio" value="salud y Belleza">
                   Salud y Belleza
                 </option>
-                <option className="optio" value="Mascotas">
+                <option className="optio" value="mascotas">
                   Mascotas
                 </option>
-                <option className="optio" value="Variedades">
+                <option className="optio" value="variedades">
                   Variedades
                 </option>
               </select>
