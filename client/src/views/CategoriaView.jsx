@@ -8,42 +8,48 @@ import UserContext from "../context/UserContext";
 import "./CategoriaView.css";
 
 function CategoriaView() {
-const { categoria } = useParams();
-  const decodedCategoria = decodeURIComponent(categoria).replace(/-/g, ' '); // Decodifica el parámetro y reemplaza guiones con espacios
-const [articulos, setArticulos] = useState([]);
-const { user } = useContext(UserContext);
+  const { categoria } = useParams();
+  const decodedCategoria = decodeURIComponent(categoria).replace(/-/g, " "); // Decodifica el parámetro y reemplaza guiones con espacios
+  const [articulos, setArticulos] = useState([]);
+  const { user } = useContext(UserContext);
 
-useEffect(() => {
+  useEffect(() => {
     const fetchArticulos = async () => {
-    try {
-        const response = await axios.get(`http://localhost:3002/articulos/categoria/${encodeURIComponent(decodedCategoria)}/excluyendo/${user.documento}`);
+      try {
+        const response = await axios.get(
+          `http://localhost:3002/articulos/categoria/${encodeURIComponent(
+            decodedCategoria
+          )}/excluyendo/${user.documento}`
+        );
         setArticulos(response.data);
-    } catch (error) {
+      } catch (error) {
         console.error("Error fetching articles:", error);
-    }
+      }
     };
 
     if (user && decodedCategoria) {
-    fetchArticulos();
+      fetchArticulos();
     }
-}, [user, decodedCategoria]);
+  }, [user, decodedCategoria]);
 
-return (
+  return (
     <>
-    <Header />
-    <main className="categoria-main">
-        <div className="categoria-banner">
-        <h2 className="categoria-ti">{decodedCategoria}</h2>
-        </div>
+      <main className="categoria-main">
+        <section className="main-categoria-banner">
+          <div className="main-categoria-banner__image">
+            <Header />
+            <h2 className="categoria-title">Categoría → {decodedCategoria}</h2>
+          </div>
+        </section>
         <div className="scrollable-contnt">
-        {articulos.map((articulo) => (
+          {articulos.map((articulo) => (
             <Articulo key={articulo.id} articulo={articulo} />
-        ))}
+          ))}
         </div>
-    </main>
-    <FooterWave />
+      </main>
+      <FooterWave />
     </>
-);
+  );
 }
 
 export default CategoriaView;
