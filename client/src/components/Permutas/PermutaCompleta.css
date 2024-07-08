@@ -1,6 +1,56 @@
-.permuta-completada{
+.permutaHistorial {
+  color: #000;
+  width: 96%;
+  background-color: white;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+  border-radius: 15px;
+  padding: 1% 5%;
+  font-family: "Montserrat";
+}
+
+.permuta-completada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.permuta-completada h3 {
+    color: #9b1111;
+}
+.usuariosPermutadores {
+    display: flex;
+}
+#userHistory {
+    margin: 5px 100px;
+    text-align: center;
+}
+#userHistory p {
+    margin: 2px;
+}
+.logo-intercambio {
+    margin: auto 0;
+    color: #9b1111;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.opciones-valoracion {
+    font-family: "Montserrat";
+    font-size: 1.1rem;
+    background-color: white;
     color: #000;
-    border: 1px solid #bebebe;
     border-radius: 5px;
-    padding: 1% 3%;
+    border: solid 1px #c9c9c9;
+    width: auto;
+    margin-right: 20px;
+}
+.boton-valoracion {
+    color: #ffffff;
+    background-color: rgb(233, 61, 18);
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.fecha-permuta {
+    margin-top: 10px;
+    font-weight: 600;
 }
