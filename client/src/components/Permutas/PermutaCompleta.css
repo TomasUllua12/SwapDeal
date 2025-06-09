@@ -69,3 +69,65 @@
 .permuta-articulo strong {
   color: var(--dark-gray);
 }
+
+.permutaHistorial {
+  color: #000;
+  width: 96%;
+  background-color: #fff;
+  margin: 20px auto;
+  box-shadow: var(--shadow);
+  border-radius: 15px;
+  padding: 1% 5%;
+}
+
+.permuta-completada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.usuariosPermutadores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#userHistory {
+  text-align: center;
+  margin: 5px 20px;
+}
+
+.logo-intercambio {
+  margin: auto 10px;
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.valoracion-form {
+  margin-top: 10px;
+}
+
+.opciones-valoracion {
+  font-family: "Montserrat";
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000;
+  border-radius: 5px;
+  border: 1px solid #c9c9c9;
+  margin-right: 10px;
+}
+
+.boton-valoracion {
+  color: #ffffff;
+  background-color: var(--primary-color);
+  border: none;
+  padding: 4px 10px;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.fecha-permuta {
+  margin-top: 10px;
+  font-weight: 600;
+}

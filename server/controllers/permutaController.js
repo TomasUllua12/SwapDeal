@@ -95,9 +95,21 @@ exports.getHistorial = async (req, res, next) => {
 
 exports.actualizarValoracion = async (req, res, next) => {
   try {
-    const { id_historial, id_usuario, id_usuario1, id_usuario2 } = req.body;
+    const {
+      id_historial,
+      id_usuario,
+      id_usuario1,
+      id_usuario2,
+      nuevaValoracion,
+    } = req.body;
+
     const columna = id_usuario === id_usuario1 ? "valoracion" : "valoracion2";
-    await Permuta.updateValoracion(columna, id_historial, id_usuario);
+    await Permuta.updateValoracion(
+      columna,
+      id_historial,
+      id_usuario,
+      nuevaValoracion
+    );
     res.json({ message: "Valoración actualizada exitosamente" });
   } catch (error) {
     next(error);
