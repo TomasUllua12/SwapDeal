@@ -7,8 +7,6 @@ import PermutaCompletada from "../components/Permutas/PermutaCompleta";
 import {
   getPermutasUsuario,
   getHistorial,
-  aceptarPermuta,
-  rechazarPermuta,
 } from "../services/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -60,19 +58,17 @@ function Permutas() {
 
   const handleAceptar = async (idSolicitud) => {
     try {
-      await aceptarPermuta(idSolicitud);
       setSolicitudes((prev) => prev.filter((s) => s.id !== idSolicitud));
       await actualizarHistorial();
       toast.success("Permuta aceptada con éxito");
     } catch (error) {
-      console.error("Error al aceptar la permuta:", error);
+      console.error("Error al actualizar el historial:", error);
       toast.error("Hubo un error al aceptar la permuta");
     }
   };
 
   const handleRechazar = async (idSolicitud) => {
     try {
-      await rechazarPermuta(idSolicitud);
       setSolicitudes((prev) => prev.filter((s) => s.id !== idSolicitud));
       toast.success("Permuta rechazada con éxito");
     } catch (error) {

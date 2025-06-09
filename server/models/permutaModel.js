@@ -111,12 +111,12 @@ exports.getHistorialByUser = (documento) => {
   });
 };
 
-exports.updateValoracion = (columna, id_historial, id_usuario) => {
+exports.updateValoracion = (columna, id_historial, id_usuario, valor) => {
   const query = `UPDATE historial SET ${columna} = ? WHERE id_historial = ? AND (id_usuario = ? OR id_usuario2 = ?)`;
   return new Promise((resolve, reject) => {
     db.query(
       query,
-      [1, id_historial, id_usuario, id_usuario],
+      [valor, id_historial, id_usuario, id_usuario],
       (err, result) => {
         if (err) reject(err);
         else resolve(result);
