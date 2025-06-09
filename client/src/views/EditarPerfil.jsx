@@ -1,21 +1,60 @@
-import React, { useState, useContext } from "react";
+import { useState } from "react";
 import "./EditarPerfil.css";
-import axios from "axios";
-import UserContext from "../context/UserContext.jsx";
-import { Link } from "react-router-dom";
+import useAuth from "../context/useAuth";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { updateUsuario } from "../services/api";
+import "react-toastify/dist/ReactToastify.css";
 
-export function EditarPerfil(props) {
-  const { user, setUser } = useContext(UserContext); // Obtén la información del usuario del contexto
-  const [nombre, setNombre] = useState(user.nombre);
-  const [apellido, setApellido] = useState(user.apellido);
-  const [email, setEmail] = useState(user.email);
-  const [password, setPassword] = useState(user.password);
-  const [telefono, setTelefono] = useState(user.telefono);
-  const [reputacion, setReputacion] = useState(user.reputacion);
-  const [descripcion, setDescripcion] = useState(user.descripcion);
-  const [fotoPerfil, setFotoPerfil] = useState(null); // Nuevo estado para la foto de perfil
+/* ──────────────────
+   Reglas de validación (idénticas a Register, sin documento)
+────────────────── */
+const editRules = [
+  {
+    field: "nombre",
+    test: (v) => v.trim().length >= 2,
+    msg: "El nombre debe tener al menos 2 caracteres.",
+  },
+  {
+    field: "apellido",
+    test: (v) => v.trim().length >= 2,
+    msg: "El apellido debe tener al menos 2 caracteres.",
+  },
+  {
+    field: "email",
+    test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+    msg: "El email no es válido.",
+  },
+  {
+    field: "password",
+    test: (v) => v.length >= 4,
+    msg: "La contraseña debe tener al menos 4 caracteres.",
+  },
+  {
+    field: "telefono",
+    test: (v) => /^\d{6,}$/.test(v),
+    msg: "El teléfono debe ser numérico y tener al menos 6 dígitos.",
+  },
+];
+
+export function EditarPerfil() {
+  const { usuario, loginUser } = useAuth();
+  const navigate = useNavigate();
+
+  const [nombre, setNombre] = useState(usuario.nombre);
+  const [apellido, setApellido] = useState(usuario.apellido);
+  const [email, setEmail] = useState(usuario.email);
+  const [password, setPassword] = useState(usuario.password);
+  const [telefono, setTelefono] = useState(usuario.telefono);
+  const [reputacion] = useState(usuario.reputacion); // solo lectura
+  const [descripcion, setDescripcion] = useState(usuario.descripcion || "");
+  const [fotoPerfil, setFotoPerfil] = useState(null);
+
+  /* helper: limpia el validity y actualiza el state */
+  const handleChange = (setter) => (e) => {
+    e.target.setCustomValidity("");
+    setter(e.target.value);
+  };
 
   const handleFileChange = (e) => {
     setFotoPerfil(e.target.files[0]);
@@ -23,55 +62,49 @@ export function EditarPerfil(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('apellido', apellido);
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('telefono', telefono);
-    formData.append('reputacion', reputacion);
-    formData.append('descripcion', descripcion);
-    if (fotoPerfil) {
-      formData.append('foto_perfil', fotoPerfil); // Añadir la foto de perfil al formulario
+    const form = e.target;
+
+    /* ─── Validaciones mínimas ─── */
+    const values = { nombre, apellido, email, password, telefono };
+    for (const { field, test, msg } of editRules) {
+      if (!test(values[field])) {
+        form[field].setCustomValidity(msg);
+        form[field].reportValidity();
+        return;
+      }
     }
 
-    try {
-      const response = await axios.put(
-        `http://localhost:3002/usuario/${user.documento}`,
-        formData,
-        { headers: { 'Content-Type': 'multipart/form-data' } }
-      );
+    /* si pasa validación, enviar */
+    const formData = new FormData();
+    formData.append("nombre", nombre);
+    formData.append("apellido", apellido);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("telefono", telefono);
+    formData.append("reputacion", reputacion);
+    formData.append("descripcion", descripcion);
+    if (fotoPerfil) formData.append("foto_perfil", fotoPerfil);
 
-      if (response.data) {
-        setUser({
-          ...user,
-          nombre,
-          apellido,
-          email,
-          password,
-          telefono,
-          reputacion,
-          descripcion,
-          foto_perfil: fotoPerfil ? URL.createObjectURL(fotoPerfil) : user.foto_perfil, // Actualizar la ruta de la foto de perfil
-        });
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            ...user,
-            nombre,
-            apellido,
-            email,
-            password,
-            telefono,
-            reputacion,
-            descripcion,
-            foto_perfil: fotoPerfil ? URL.createObjectURL(fotoPerfil) : user.foto_perfil, // Actualizar la ruta de la foto de perfil en el localStorage
-          })
-        );
-        toast.success("Perfil actualizado exitosamente");
-      } else {
-        toast.error("Error al actualizar el perfil");
-      }
+    try {
+      await updateUsuario(usuario.documento, formData);
+
+      /* actualiza contexto + storage */
+      loginUser({
+        ...usuario,
+        nombre,
+        apellido,
+        email,
+        password,
+        telefono,
+        reputacion,
+        descripcion,
+        imagen: fotoPerfil
+          ? `/public/assets/fotosPerfil/${fotoPerfil.name}`
+          : usuario.imagen,
+      });
+
+      toast.success("Perfil actualizado exitosamente");
+      setTimeout(() => navigate("/Perfil"), 1000);
     } catch (error) {
       console.error("Error al actualizar el perfil:", error);
       toast.error("Error al actualizar el perfil");
@@ -86,19 +119,19 @@ export function EditarPerfil(props) {
         <div className="caja-info">
           <p className="editar">Editar Perfil</p>
           <Link to="/Perfil">
-            <a href="" className="volver">
-              Volver al perfil
-            </a>
+            <span className="volver">Volver al perfil</span>
           </Link>
 
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmit} autoComplete="off">
             <div className="formas">
               <label>Nombre:</label>
               <input
                 type="text"
+                name="nombre"
                 className="nombr"
+                required
                 value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
+                onChange={handleChange(setNombre)}
               />
             </div>
 
@@ -106,9 +139,11 @@ export function EditarPerfil(props) {
               <label>Apellido:</label>
               <input
                 type="text"
+                name="apellido"
                 className="apelli"
+                required
                 value={apellido}
-                onChange={(e) => setApellido(e.target.value)}
+                onChange={handleChange(setApellido)}
               />
             </div>
 
@@ -116,9 +151,11 @@ export function EditarPerfil(props) {
               <label>Email:</label>
               <input
                 type="email"
+                name="email"
                 className="mail"
+                required
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleChange(setEmail)}
               />
             </div>
 
@@ -126,19 +163,23 @@ export function EditarPerfil(props) {
               <label>Contraseña:</label>
               <input
                 type="password"
+                name="password"
                 className="contra"
+                required
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handleChange(setPassword)}
               />
             </div>
 
             <div className="formas">
-              <label>Telefono:</label>
+              <label>Teléfono:</label>
               <input
                 type="text"
+                name="telefono"
                 className="telefono"
+                required
                 value={telefono}
-                onChange={(e) => setTelefono(e.target.value)}
+                onChange={handleChange(setTelefono)}
               />
             </div>
 
@@ -149,8 +190,9 @@ export function EditarPerfil(props) {
                 cols="51"
                 maxLength="300"
                 className="descripc"
+                name="descripcion"
                 value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
+                onChange={handleChange(setDescripcion)}
               />
             </div>
 

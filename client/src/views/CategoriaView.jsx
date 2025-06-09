@@ -1,36 +1,40 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import FooterWave from "../components/Footers/FooterWave";
 import { Header } from "../components/Header";
 import Articulo from "../components/Articulo";
-import axios from "axios";
-import UserContext from "../context/UserContext";
+import { getArticulosByCategoria } from "../services/api";
+import useAuth from "../context/useAuth";
 import "./CategoriaView.css";
 
 function CategoriaView() {
   const { categoria } = useParams();
-  const decodedCategoria = decodeURIComponent(categoria).replace(/-/g, " "); // Decodifica el parámetro y reemplaza guiones con espacios
+  const decodedCategoria = decodeURIComponent(categoria)
+    .replace(/-/g, " ")
+    .toLowerCase();
   const [articulos, setArticulos] = useState([]);
-  const { user } = useContext(UserContext);
+  const [loading, setLoading] = useState(true);
+  const { usuario } = useAuth();
 
   useEffect(() => {
     const fetchArticulos = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3002/articulos/categoria/${encodeURIComponent(
-            decodedCategoria
-          )}/excluyendo/${user.documento}`
+        const res = await getArticulosByCategoria(
+          decodedCategoria,
+          usuario.documento
         );
-        setArticulos(response.data);
+        setArticulos(res.data);
       } catch (error) {
-        console.error("Error fetching articles:", error);
+        console.error("Error al obtener artículos:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    if (user && decodedCategoria) {
+    if (usuario?.documento) {
       fetchArticulos();
     }
-  }, [user, decodedCategoria]);
+  }, [decodedCategoria, usuario]);
 
   return (
     <>
@@ -38,13 +42,22 @@ function CategoriaView() {
         <section className="main-categoria-banner">
           <div className="main-categoria-banner__image">
             <Header />
-            <h2 className="categoria-title">Categorías → {decodedCategoria}</h2>
+            <h2 className="categoria-title">Categoría: {decodedCategoria}</h2>
           </div>
         </section>
+
         <div className="scrollable-contnt">
-          {articulos.map((articulo) => (
-            <Articulo key={articulo.id} articulo={articulo} />
-          ))}
+          {loading ? (
+            <p className="loading">Cargando artículos...</p>
+          ) : articulos.length === 0 ? (
+            <p className="no-results">
+              No hay artículos disponibles en esta categoría.
+            </p>
+          ) : (
+            articulos.map((articulo) => (
+              <Articulo key={articulo.id} articulo={articulo} />
+            ))
+          )}
         </div>
       </main>
       <FooterWave />

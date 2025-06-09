@@ -1,19 +1,20 @@
-import React, { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./CargarArticulo.css";
-import axios from "axios";
-import UserContext from "../context/UserContext";
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../context/useAuth";
+import { createArticulo } from "../services/api";
+import { categorias } from "../data/categoriaOption";
 
-export function CargarArticulo(props) {
-  const { user } = useContext(UserContext);
+function CargarArticulo() {
+  const { usuario } = useAuth();
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [categoria, setCategoria] = useState("");
   const [tiempoUso, setTiempoUso] = useState("");
   const [imagen, setImagen] = useState(null);
   const [imagenPreview, setImagenPreview] = useState(null);
-  const [mensajeExito, setMensajeExito] = useState(""); // Nuevo estado para el mensaje de éxito
-  const navigate = useNavigate(); // Hook de navegación para redirigir al perfil
+  const [mensajeExito, setMensajeExito] = useState("");
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -23,31 +24,29 @@ export function CargarArticulo(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!imagen) {
+      setMensajeExito("Debe subir una imagen");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("titulo", titulo);
     formData.append("descripcion", descripcion);
-    formData.append("categoria", categoria);
+    formData.append("categoria", categoria.toLowerCase());
     formData.append("tiempo_uso", tiempoUso);
     formData.append("imagen", imagen);
-    formData.append("id_usuario", user.documento);
+    formData.append("id_usuario", usuario.documento);
+
     try {
-      const response = await axios.post(
-        "http://localhost:3002/articulo",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log("Respuesta del servidor:", response.data);
-      setMensajeExito("Artículo cargado exitosamente"); // Establecer el mensaje de éxito
+      await createArticulo(formData);
+      setMensajeExito("Artículo cargado exitosamente");
       setTimeout(() => {
-        navigate("/Perfil"); // Redirigir al perfil después de 2 segundos
+        navigate("/Perfil");
       }, 1500);
     } catch (error) {
       console.error("Error al cargar el artículo:", error);
-      setMensajeExito("Error al cargar el artículo"); // Establecer el mensaje de error
+      setMensajeExito("Error al cargar el artículo");
     }
   };
 
@@ -55,11 +54,10 @@ export function CargarArticulo(props) {
     if (mensajeExito) {
       const timer = setTimeout(() => {
         setMensajeExito("");
-        navigate("/Perfil");
-      }, 2000);
-      return () => clearTimeout(timer); // Cleanup the timer on component unmount
+      }, 3000);
+      return () => clearTimeout(timer);
     }
-  }, [mensajeExito, navigate]);
+  }, [mensajeExito]);
 
   return (
     <>
@@ -69,12 +67,10 @@ export function CargarArticulo(props) {
         <p className="text-cargar">Cargar información del artículo</p>
 
         <Link to="/Perfil">
-          <a href="" className="volver-carga">
-            Volver al perfil
-          </a>
+          <span className="volver-carga">Volver al perfil</span>
         </Link>
 
-        <div className="formu-carga">
+        <form className="formu-carga" onSubmit={handleSubmit}>
           <div className="espacio-fo">
             <div className="image-upload-containerr" id="upload-container">
               {imagenPreview ? (
@@ -105,7 +101,6 @@ export function CargarArticulo(props) {
                 className="inpu-ti"
                 type="text"
                 id="title"
-                name="title"
                 required
                 placeholder="Ingresa el título del artículo"
                 value={titulo}
@@ -117,45 +112,18 @@ export function CargarArticulo(props) {
               <label htmlFor="category">Categoría:</label>
               <select
                 className="caja"
-                id="category"
-                name="category"
                 required
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
-                <option className="optio" value="" disabled selected>
+                <option value="" disabled>
                   Seleccionar categoría
                 </option>
-                <option className="optio" value="hogar y Muebles">
-                  Hogar y Muebles
-                </option>
-                <option className="optio" value="tecnología">
-                  Tecnología
-                </option>
-                <option className="optio" value="moda y Accesorios">
-                  Moda y Accesorios
-                </option>
-                <option className="optio" value="deportes">
-                  Deportes
-                </option>
-                <option className="optio" value="entretenimiento">
-                  Entretenimiento
-                </option>
-                <option className="optio" value="vehículos">
-                  Vehículos
-                </option>
-                <option className="optio" value="herramientas y Materiales">
-                  Herramientas y Materiales
-                </option>
-                <option className="optio" value="salud y Belleza">
-                  Salud y Belleza
-                </option>
-                <option className="optio" value="mascotas">
-                  Mascotas
-                </option>
-                <option className="optio" value="variedades">
-                  Variedades
-                </option>
+                {categorias.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -165,7 +133,6 @@ export function CargarArticulo(props) {
                 className="inpu-us"
                 type="text"
                 id="usage-time"
-                name="usage-time"
                 required
                 placeholder="Ingresa el tiempo de uso"
                 value={tiempoUso}
@@ -174,24 +141,24 @@ export function CargarArticulo(props) {
             </div>
 
             <div className="descri">
-              <label htmlFor="description"><span className="des">Descripción:</span></label>
+              <label htmlFor="description">
+                <span className="des">Descripción:</span>
+              </label>
               <input
                 className="inpu-des"
                 type="text"
                 id="description"
-                name="description"
                 placeholder="Ingresa la descripción del artículo"
                 required
                 value={descripcion}
                 onChange={(e) => setDescripcion(e.target.value)}
               />
             </div>
+            <button type="submit" className="envia">
+              Cargar Artículo
+            </button>
           </div>
-        </div>
-
-        <button type="submit" className="envia" onClick={handleSubmit}>
-          Cargar Artículo
-        </button>
+        </form>
 
         {mensajeExito && (
           <div className="mensaje-exito">

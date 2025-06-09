@@ -59,28 +59,29 @@
 .solicitud-permuta-completa {
   margin-top: 15px;
   display: flex;
-  align-items: flex-start; /* Alinear a la izquierda */
+  align-items: flex-start;
 }
 
-.solicitud-mi-producto__container, .solicitud-su-producto__container {
-  margin: 0px 50px 15px 50px; /* Añadir un margen inferior */
-  width: 100%; /* Asegura que el contenedor ocupe el ancho completo */
+.solicitud-mi-producto__container,
+.solicitud-su-producto__container {
+  margin: 0px 50px 15px 50px;
+  width: 100%;
 }
 
 .solicitud-buttons {
   display: flex;
-  justify-content: center; /* Alinea los botones al centro */
+  justify-content: center;
   flex-direction: column;
-  margin-top: 10px; /* Agrega margen superior */
+  margin-top: 10px;
 }
 
 .solicitud-buttons button {
-  margin: 20px 5px; /* Espaciado entre botones */
-  padding: 10px 20px; /* Aumenta el padding para hacer los botones más grandes */
-  font-size: 1.2rem; /* Tamaño de la fuente */
-  border: none; /* Elimina el borde */
-  cursor: pointer; /* Cambia el cursor cuando se pasa sobre el botón */
-  transition: transform 0.3s ease, color 0.3s ease; /* Transiciones suaves */
+  margin-top: 8vh;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .solicitud-buttons .confirmar-button {

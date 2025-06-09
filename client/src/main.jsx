@@ -3,96 +3,75 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import vehicles from "./data/vehicles.js";
-import VehicleView from "./views/VehicleView.jsx";
-import articulos from "./data/articulos.js";
 import { LoginRegister } from "./views/LoginRegister.jsx";
 import { Inicio } from "./views/Inicio.jsx";
 import { Perfil } from "./views/Perfil.jsx";
 import { Categorias } from "./views/Categorias.jsx";
 import { Ayuda } from "./views/Ayuda.jsx";
-import  Permutas  from "./views/Permutas.jsx";
-import { CargarArticulo } from "./views/CargarArticulo.jsx";
+import Permutas from "./views/Permutas.jsx";
+import CargarArticulo from "./views/CargarArticulo.jsx";
 import { EditarPerfil } from "./views/EditarPerfil.jsx";
-import { UserProvider } from './context/UserContext.jsx'; // Importa el UserProvider
-import  ArticuloView  from "./views/ArticuloView.jsx";
-import  EditarArticulo  from "./views/EditarArticulo.jsx";
-import CategoriaView from "./views/CategoriaView.jsx"; 
+import ArticuloView from "./views/ArticuloView.jsx";
+import EditarArticulo from "./views/EditarArticulo.jsx";
+import CategoriaView from "./views/CategoriaView.jsx";
 
-
-
+// 🔐 Contexto y protección de rutas
+import { AuthProvider } from "./context/authContext.jsx";
+import PrivateRoute from "./routes/PrivateRoute.jsx";
 
 const routes = [
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/Login",
-    element: <LoginRegister />,
-  },
-  {
-    path: "/Inicio",
-    element: <Inicio />,
-  },
+  { path: "/", element: <App /> },
+  { path: "/Login", element: <LoginRegister /> },
+  { path: "/Inicio", element: <Inicio /> },
   {
     path: "/Perfil",
-    element: <Perfil />,
-  },
-  {
-    path: "/Categorias",
-    element: <Categorias/>,
-  },
-  {
-    path: "/Ayuda",
-    element: <Ayuda />,
-  },
-  {
-    path: "/Permutas",
-    element: <Permutas />,
-  },
-  {
-    path: "/Perfil/CargarArticulo",
-    element: <CargarArticulo />,
+    element: (
+      <PrivateRoute>
+        <Perfil />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/Perfil/EditarPerfil",
-    element: <EditarPerfil />,
+    element: (
+      <PrivateRoute>
+        <EditarPerfil />
+      </PrivateRoute>
+    ),
   },
   {
-    path: "/ArticuloView/:id",
-    element: <ArticuloView />,
+    path: "/Perfil/CargarArticulo",
+    element: (
+      <PrivateRoute>
+        <CargarArticulo />
+      </PrivateRoute>
+    ),
   },
   {
-    path: "/EditarArticulo/:id",
-    element: <EditarArticulo />,
+    path: "/Permutas",
+    element: (
+      <PrivateRoute>
+        <Permutas />
+      </PrivateRoute>
+    ),
   },
-  {
-    path: "/categoria/:categoria",
-    element: <CategoriaView />,
-  }
+  { path: "/Categorias", element: <Categorias /> },
+  { path: "/Ayuda", element: <Ayuda /> },
+  { path: "/ArticuloView/:id", element: <ArticuloView /> },
+  { path: "/EditarArticulo/:id", element: <EditarArticulo /> },
+  { path: "/categoria/:categoria", element: <CategoriaView /> },
 ];
-/*
-articulos.forEach((articulo) => {
-  routes.push({
-    path: articulo.title,
-    element: <ArticuloView articulo={articulo} />,
-  });
-});
-*/
-vehicles.forEach((vehicle) => {
-  routes.push({
-    path: vehicle.name,
-    element: <VehicleView vehicle={vehicle} />,
-  });
-});
 
-const router = createBrowserRouter(routes);
+const router = createBrowserRouter(routes, {
+  future: {
+    v7_startTransition: true,
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <UserProvider>
+    <AuthProvider>
       <RouterProvider router={router} />
-    </UserProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

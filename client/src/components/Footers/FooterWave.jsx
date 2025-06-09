@@ -1,8 +1,7 @@
-import React from "react";
 import "./FooterWave.css";
 import { Link } from "react-router-dom";
 
-export function FooterWave(props) {
+export function FooterWave() {
   return (
     <>
       <footer className="footer">
@@ -15,34 +14,27 @@ export function FooterWave(props) {
         <img
           className="footer-logo"
           src="../../public/assets/img/Logo SwapDeal Blanco.svg"
-        ></img>
+          alt="Logo SwapDeal"
+        />
         <ul className="menu">
           <li className="menu__item">
-            <Link to="/Inicio">
-              <a className="menu__link" href="#">
-                Inicio
-              </a>
+            <Link className="menu__link" to="/Inicio">
+              Inicio
             </Link>
           </li>
           <li className="menu__item">
-            <Link to="/Categorias">
-              <a className="menu__link" href="#">
-                Categorías
-              </a>
+            <Link className="menu__link" to="/Categorias">
+              Categorías
             </Link>
           </li>
           <li className="menu__item">
-            <Link to="/Permutas">
-              <a className="menu__link" href="#">
-                Permutas
-              </a>
+            <Link className="menu__link" to="/Permutas">
+              Permutas
             </Link>
           </li>
           <li className="menu__item">
-            <Link to="/Ayuda">
-              <a className="menu__link" href="#">
-                Ayuda
-              </a>
+            <Link className="menu__link" to="/Ayuda">
+              Ayuda
             </Link>
           </li>
         </ul>
@@ -55,7 +47,7 @@ export function FooterWave(props) {
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
       ></script>
       <script
-        nomodule
+        noModule
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
       ></script>
     </>

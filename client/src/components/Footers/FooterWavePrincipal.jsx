@@ -1,4 +1,3 @@
-import React from "react";
 import "./FooterWavePrincipal.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,7 +7,7 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 
-export function FooterWavePrincipal(props) {
+export function FooterWavePrincipal() {
   return (
     <>
       <footer className="footer">
@@ -21,7 +20,8 @@ export function FooterWavePrincipal(props) {
         <img
           className="footer-logo"
           src="../../public/assets/img/Logo SwapDeal Blanco.svg"
-        ></img>
+          alt="Logo SwapDeal"
+        />
         <ul className="menu">
           <li className="menu__item">
             <a
@@ -73,7 +73,7 @@ export function FooterWavePrincipal(props) {
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
       ></script>
       <script
-        nomodule
+        noModule
         src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
       ></script>
     </>

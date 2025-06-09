@@ -1,70 +1,104 @@
-import React, { useState, useContext } from "react";
+import { useState } from "react";
 import "./LoginRegister.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import UserContext from "../context/UserContext.jsx";
+import useAuth from "../context/useAuth";
+import { login, register } from "../services/api";
 
+const registerRules = [
+  {
+    field: "nombre",
+    test: (v) => v.trim().length >= 2,
+    msg: "El nombre debe tener al menos 2 caracteres.",
+  },
+  {
+    field: "apellido",
+    test: (v) => v.trim().length >= 2,
+    msg: "El apellido debe tener al menos 2 caracteres.",
+  },
+  {
+    field: "email",
+    test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+    msg: "El email no es válido.",
+  },
+  {
+    field: "password",
+    test: (v) => v.length >= 4,
+    msg: "La contraseña debe tener al menos 4 caracteres.",
+  },
+  {
+    field: "documento",
+    test: (v) => /^\d{7,}$/.test(v),
+    msg: "El documento debe ser numérico y tener al menos 7 dígitos.",
+  },
+  {
+    field: "telefono",
+    test: (v) => /^\d{6,}$/.test(v),
+    msg: "El teléfono debe ser numérico y tener al menos 6 dígitos.",
+  },
+];
 
-export function LoginRegister(props) {
-  const { setUser } = useContext(UserContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [documento, setDocumento] = useState("");
-  const [telefono, setTelefono] = useState("");
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+export function LoginRegister() {
+  const { loginUser } = useAuth();
   const navigate = useNavigate();
 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loginForm, setLoginForm] = useState({ email: "", password: "" });
+  const [registerForm, setRegisterForm] = useState({
+    nombre: "",
+    apellido: "",
+    email: "",
+    password: "",
+    documento: "",
+    telefono: "",
+  });
+
+  const handleLoginChange = (e) => {
+    setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3002/login", {
-        email,
-        password,
-      });
-      if (response.data) {
-        setUser(response.data);
-        localStorage.setItem('user', JSON.stringify(response.data));
-        navigate("/Inicio");
-      } else {
-        setErrorMessage("Credenciales inválidas");
-      }
+      const response = await login(loginForm);
+      loginUser(response.data);
+      navigate("/Inicio");
     } catch (error) {
-      console.error("Error durante el inicio de sesión:", error);
-      setErrorMessage("Error durante el inicio de sesión");
+      console.error("Error en login:", error);
+      setErrorMessage("Credenciales inválidas");
     }
   };
 
+  const handleRegisterChange = (e) => {
+    e.target.setCustomValidity("");
+    setRegisterForm({ ...registerForm, [e.target.name]: e.target.value });
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    const form = e.target;
+
+    for (const { field, test, msg } of registerRules) {
+      if (!test(registerForm[field])) {
+        form[field].setCustomValidity(msg);
+        form[field].reportValidity();
+        return;
+      }
+    }
+
     try {
-      const response = await axios.post("http://localhost:3002/register", {
-        nombre,
-        apellido,
-        email: registerEmail,
-        password: registerPassword,
-        documento,
-        telefono,
-      });
-      if (response.status === 201) {
-        const userData = response.data;
-        setUser(userData);
-        localStorage.setItem('user', JSON.stringify(userData));
+      const { status, data } = await register(registerForm);
+      if (status === 201) {
+        loginUser(data);
         navigate("/Inicio");
-      } else {
-        setErrorMessage("Error durante el registro");
       }
     } catch (error) {
-      console.error("Error durante el registro:", error);
-      setErrorMessage("Error durante el registro");
+      console.error("Error en registro:", error);
+      const backendMsg =
+        error.response?.data?.message || "Error al crear usuario";
+      form.telefono.setCustomValidity(backendMsg);
+      form.telefono.reportValidity();
     }
   };
-
 
   return (
     <>
@@ -82,103 +116,110 @@ export function LoginRegister(props) {
           <div className="login-main">
             <input type="checkbox" id="chk" aria-hidden="true" />
 
-
+            {/* LOGIN */}
             <div className="login">
-              <form className="login-form" onSubmit={handleLogin}>
+              <form
+                className="login-form"
+                onSubmit={handleLogin}
+                autoComplete="off"
+              >
                 <label className="login-label" htmlFor="chk" aria-hidden="true">
                   Iniciar sesión
                 </label>
                 <input
                   className="login-input"
                   type="email"
-                  autoComplete="off"
                   name="email"
                   placeholder="Email"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={loginForm.email}
+                  onChange={handleLoginChange}
+                  autoComplete="new-email"
                 />
                 <input
                   className="login-input"
                   type="password"
-                  name="pswd"
-                  placeholder="Password"
+                  name="password"
+                  placeholder="Contraseña"
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={loginForm.password}
+                  onChange={handleLoginChange}
+                  autoComplete="new-password"
                 />
                 <button type="submit">Iniciar sesión</button>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                {errorMessage && (
+                  <p className="error-message">{errorMessage}</p>
+                )}
               </form>
             </div>
 
-
+            {/* REGISTRO */}
             <div className="register">
-              <form className="login-form" onSubmit={handleRegister}>
+              <form
+                className="login-form"
+                onSubmit={handleRegister}
+                autoComplete="off"
+              >
                 <label className="login-label" htmlFor="chk" aria-hidden="true">
                   Creá tu cuenta
                 </label>
                 <input
                   className="login-input"
                   type="text"
-                  autoComplete="off"
                   name="nombre"
                   placeholder="Nombre"
                   required
-                  value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
+                  value={registerForm.nombre}
+                  onChange={handleRegisterChange}
                 />
                 <input
                   className="login-input"
                   type="text"
-                  autoComplete="off"
                   name="apellido"
                   placeholder="Apellido"
                   required
-                  value={apellido}
-                  onChange={(e) => setApellido(e.target.value)}
+                  value={registerForm.apellido}
+                  onChange={handleRegisterChange}
                 />
                 <input
                   className="login-input"
                   type="email"
-                  autoComplete="off"
-                  name="registerEmail"
+                  name="email"
                   placeholder="Email"
                   required
-                  value={registerEmail}
-                  onChange={(e) => setRegisterEmail(e.target.value)}
+                  autoComplete="new-email"
+                  value={registerForm.email}
+                  onChange={handleRegisterChange}
                 />
                 <input
                   className="login-input"
                   type="password"
-                  name="registerPassword"
-                  placeholder="Password"
+                  name="password"
+                  placeholder="Contraseña"
                   required
-                  value={registerPassword}
-                  onChange={(e) => setRegisterPassword(e.target.value)}
+                  autoComplete="new-password"
+                  value={registerForm.password}
+                  onChange={handleRegisterChange}
                 />
                 <input
                   className="login-input"
                   type="text"
-                  autoComplete="off"
                   name="documento"
                   placeholder="Documento"
                   required
-                  value={documento}
-                  onChange={(e) => setDocumento(e.target.value)}
+                  value={registerForm.documento}
+                  onChange={handleRegisterChange}
                 />
                 <input
                   className="login-input"
                   type="text"
-                  autoComplete="off"
                   name="telefono"
                   placeholder="Teléfono"
                   required
-                  value={telefono}
-                  onChange={(e) => setTelefono(e.target.value)}
+                  value={registerForm.telefono}
+                  onChange={handleRegisterChange}
                 />
                 <button type="submit">Crear</button>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
               </form>
             </div>
           </div>

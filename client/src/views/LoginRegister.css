@@ -84,7 +84,7 @@
   );
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  max-height: 455px;
+  max-height: 480px;
   width: 300px;
   overflow: hidden;
   border-radius: 12px;
@@ -179,4 +179,13 @@
 
 .login-form button:hover {
   background-color: #6d44b8;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: -10px;
+  z-index: 10;
+  position: relative;
 }

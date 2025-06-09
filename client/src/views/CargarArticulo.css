@@ -77,7 +77,7 @@
 }
 
 .formu-carga {
-  height: 50vh;
+  height: 60vh;
   width: 60vw;
   margin: 6vh auto;
   background: rgba(255, 255, 255, 0.5);
@@ -204,7 +204,7 @@
   flex-direction: column;
 }
 
-.des{
+.des {
   font-weight: bolder;
   font-size: 12px;
   color: #ffffff;
@@ -260,10 +260,11 @@
   font-size: 1.2rem;
   font-weight: 600;
   background-color: #b60900;
-  padding: 1vh 2vh 1vh 2vh;
+  padding: 1vh 2vh;
   border-radius: 20px;
-  align-self: self-end;
-  margin-right: 20vw;
+  margin-top: 50px;
+  margin-right: 50px;
+  align-self: flex-end;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 .envia:hover {

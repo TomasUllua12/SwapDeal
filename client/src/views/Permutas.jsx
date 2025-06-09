@@ -1,71 +1,83 @@
-import React, { useState, useEffect, useContext } from "react";
-import UserContext from "../context/UserContext";
+import { useState, useEffect } from "react";
+import useAuth from "../context/useAuth";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
 import Solicitud from "../components/Permutas/Solicitud";
 import PermutaCompletada from "../components/Permutas/PermutaCompleta";
+import {
+  getPermutasUsuario,
+  getHistorial,
+  aceptarPermuta,
+  rechazarPermuta,
+} from "../services/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Permutas.css";
 
 function Permutas() {
+  const { usuario } = useAuth();
   const [solicitudes, setSolicitudes] = useState([]);
   const [historial, setHistorial] = useState([]);
-  const { user } = useContext(UserContext);
 
   useEffect(() => {
+    if (!usuario) return;
+
     const fetchSolicitudes = async () => {
       try {
-        const response = await fetch(`http://localhost:3002/solicitudesPermuta/${user.documento}`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setSolicitudes(data);
+        const res = await getPermutasUsuario(usuario.documento);
+        setSolicitudes(res.data);
       } catch (error) {
-        console.error('Error fetching swap requests:', error);
+        console.error("Error al obtener solicitudes de permuta:", error);
       }
     };
 
     fetchSolicitudes();
-  }, [user.documento]);
+  }, [usuario]);
 
   useEffect(() => {
+    if (!usuario) return;
+
     const fetchHistorial = async () => {
       try {
-        const response = await fetch(`http://localhost:3002/historialPermutas/${user.documento}`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setHistorial(data);
+        const res = await getHistorial(usuario.documento);
+        setHistorial(res.data);
       } catch (error) {
-        console.error('Error fetching historial:', error);
+        console.error("Error al obtener historial de permutas:", error);
       }
     };
 
     fetchHistorial();
-  }, [user.documento]);
+  }, [usuario]);
+
+  const actualizarHistorial = async () => {
+    try {
+      const res = await getHistorial(usuario.documento);
+      setHistorial(res.data);
+    } catch (error) {
+      console.error("Error al actualizar historial:", error);
+    }
+  };
 
   const handleAceptar = async (idSolicitud) => {
     try {
-      const response = await fetch(`http://localhost:3002/solicitudPermuta/${idSolicitud}/aceptar`, { method: 'POST' });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      setSolicitudes(solicitudes.filter(solicitud => solicitud.id !== idSolicitud));
+      await aceptarPermuta(idSolicitud);
+      setSolicitudes((prev) => prev.filter((s) => s.id !== idSolicitud));
+      await actualizarHistorial();
+      toast.success("Permuta aceptada con éxito");
     } catch (error) {
-      console.error('Error accepting swap request:', error);
+      console.error("Error al aceptar la permuta:", error);
+      toast.error("Hubo un error al aceptar la permuta");
     }
   };
 
   const handleRechazar = async (idSolicitud) => {
     try {
-      const response = await fetch(`http://localhost:3002/solicitudPermuta/${idSolicitud}/rechazar`, { method: 'POST' });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      setSolicitudes(solicitudes.filter(solicitud => solicitud.id !== idSolicitud));
+      await rechazarPermuta(idSolicitud);
+      setSolicitudes((prev) => prev.filter((s) => s.id !== idSolicitud));
+      toast.success("Permuta rechazada con éxito");
     } catch (error) {
-      console.error('Error rejecting swap request:', error);
+      console.error("Error al rechazar la permuta:", error);
+      toast.error("Hubo un error al rechazar la permuta");
     }
   };
 
@@ -78,38 +90,45 @@ function Permutas() {
         </div>
       </section>
       <main className="main-permutas">
-        <h2 className="main-permutas-solicitudes-title">Solicitudes de Permuta</h2>
+        <h2 className="main-permutas-solicitudes-title">
+          Solicitudes de Permuta
+        </h2>
         <section className="main-permutas-solicitudes">
           <div className="main-permutas-solicitudes__container">
             {solicitudes.length === 0 ? (
               <p className="per">No tienes solicitudes de permuta</p>
             ) : (
-              solicitudes.map(solicitud => (
+              solicitudes.map((solicitud) => (
                 <Solicitud
                   key={solicitud.id}
                   solicitud={solicitud}
                   onAceptar={handleAceptar}
                   onRechazar={handleRechazar}
-                  userId={user.documento}
+                  userId={usuario.documento}
                 />
               ))
             )}
           </div>
         </section>
+
         <h2 className="main-permutas-historial-title">Historial de Permutas</h2>
         <section className="main-permutas-historial">
           <div className="main-permutas-historial__container">
             {historial.length === 0 ? (
               <p className="his">No hay permutas completadas</p>
             ) : (
-              historial.map(permuta => (
-                <PermutaCompletada key={permuta.id_historial} permuta={permuta} />
+              historial.map((permuta) => (
+                <PermutaCompletada
+                  key={permuta.id_historial}
+                  permuta={permuta}
+                />
               ))
             )}
           </div>
         </section>
       </main>
       <FooterWave />
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 }

@@ -1,39 +1,32 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import "./ArticuloView.css";
-import UserContext from "../context/UserContext";
+import useAuth from "../context/useAuth";
+import { getArticuloById, crearPermuta } from "../services/api";
 import SeleccionarArticulo from "../components/SeleccionarArticulo";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
 
-Modal.setAppElement('#root'); // Necesario para accesibilidad
+Modal.setAppElement("#root");
 
 function ArticuloView() {
   const { id } = useParams();
-  const { user } = useContext(UserContext);
-  const [articulo, setArticulo] = useState(null);
-  const [seleccionando, setSeleccionando] = useState(false);
-  const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
+  const { usuario } = useAuth();
   const navigate = useNavigate();
 
-  const obtenerReputacion = (reputacion) => {
-    const estrellas = "⭐".repeat(reputacion);
-    const circulos = "🔘".repeat(5 - reputacion);
-    return estrellas + circulos;
-  };
+  const [articulo, setArticulo] = useState(null);
+  const [seleccionando, setSeleccionando] = useState(false);
+  const [mensajeError, setMensajeError] = useState("");
 
   useEffect(() => {
     const fetchArticulo = async () => {
       try {
-        const response = await fetch(`http://localhost:3002/articulo/${id}`);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setArticulo(data);
-      } catch (error) {
-        console.error("Error fetching the article:", error);
+        const res = await getArticuloById(id);
+        setArticulo(res.data);
+      } catch (err) {
+        console.error("Error al cargar el artículo:", err);
+        setMensajeError("No se pudo cargar el artículo.");
       }
     };
 
@@ -45,98 +38,92 @@ function ArticuloView() {
   };
 
   const handleSeleccionar = async (idArticuloOfrecido) => {
-    setArticuloSeleccionado(idArticuloOfrecido);
     try {
-      const response = await fetch("http://localhost:3002/solicitudPermuta", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id_articulo_solicitado: articulo.id,
-          id_articulo_ofrecido: idArticuloOfrecido,
-          id_usuario_solicitante: user.documento,
-          id_usuario_solicitado: articulo.id_usuario,
-        }),
+      await crearPermuta({
+        id_articulo_solicitado: articulo.id,
+        id_articulo_ofrecido: idArticuloOfrecido,
+        id_usuario_solicitante: usuario.documento,
+        id_usuario_solicitado: articulo.id_usuario,
       });
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+
       setSeleccionando(false);
-      navigate("/Permutas"); // Navegar a la página de Permutas después de enviar la solicitud
-    } catch (error) {
-      console.error("Error creating swap request:", error);
+      navigate("/Permutas");
+    } catch (err) {
+      console.error("Error al crear solicitud de permuta:", err);
+      setMensajeError("Hubo un problema al enviar la solicitud.");
     }
   };
 
-  if (!articulo) {
-    return <div>Loading...</div>;
-  }
+  const obtenerReputacion = (valor) => {
+    return "⭐".repeat(valor) + "🔘".repeat(5 - valor);
+  };
 
-  const isOwner = articulo.id_usuario === user.documento;
+  if (!usuario) return <div>Cargando usuario...</div>;
+  if (!articulo) return <div>Cargando artículo...</div>;
+
+  const esPropietario = articulo.id_usuario === usuario.documento;
 
   return (
     <>
       <section className="header-articuloview">
-        <div>
-          <Header />
-        </div>
+        <Header />
       </section>
+
       <div className="ArticuloView">
         <div className="articulo-image-section">
           <div className="articulo-image-section-space">
-            <img src={articulo.imagen} alt={`${articulo.titulo} image`} />
+            <img src={articulo.imagen} alt={articulo.titulo} />
           </div>
         </div>
+
         <div className="articulo-info-section">
           <div className="articulo-info-section-square">
             <h1>{articulo.titulo}</h1>
-            <p>Categoria: <b>{articulo.categoria}</b></p>
+            <p>
+              <strong>Categoría:</strong> {articulo.categoria}
+            </p>
+            <p>
+              <strong>Tiempo de uso:</strong> {articulo.tiempo_uso}
+            </p>
+            <p>
+              <strong>Descripción:</strong> {articulo.descripcion}
+            </p>
 
-            <p>Tiempo de Uso: <b>{articulo.tiempo_uso}</b></p>
-            <p>Descripcion: <b>{articulo.descripcion}</b></p>
             <div className="VendedorInfo">
               <h2>Información del usuario</h2>
               <p>
-                Nombre: <b>{articulo.nombre_propietario}{" "}
-                {articulo.apellido_propietario}</b>
+                <strong>Nombre:</strong> {articulo.nombre_propietario}{" "}
+                {articulo.apellido_propietario}
               </p>
               <p>
-                Reputación: {obtenerReputacion(articulo.reputacion_propietario)}
+                <strong>Reputación:</strong>{" "}
+                {obtenerReputacion(articulo.reputacion_propietario)}
               </p>
             </div>
-            {isOwner ? (
+
+            {esPropietario ? (
               <>
                 <Link to={`/EditarArticulo/${id}`}>
                   <button className="editar-articulo">Editar Artículo</button>
                 </Link>
                 <Link to="/Perfil">
-                  <a href="" className="action_btn_nuevo">
-                    Volver a mi perfil
-                  </a>
+                  <button className="volver-button">Volver a mi perfil</button>
                 </Link>
               </>
             ) : (
               <>
-                <button
-                  className="permutar-articulo"
-                  onClick={handlePermutar}
-                >
+                <button className="permutar-articulo" onClick={handlePermutar}>
                   Permutar Artículo
                 </button>
                 <Modal
                   isOpen={seleccionando}
                   onRequestClose={() => setSeleccionando(false)}
-                  contentLabel="Seleccionar Artículo"
                   className="modal"
                   overlayClassName="overlay"
                 >
                   <SeleccionarArticulo onSeleccionar={handleSeleccionar} />
                 </Modal>
-                <button
-                  className="volver-button"
-                  onClick={() => window.history.back()}
-                >
+                <button className="volver-button" onClick={() => navigate(-1)}>
                   Volver
                 </button>
               </>
@@ -144,6 +131,7 @@ function ArticuloView() {
           </div>
         </div>
       </div>
+
       <FooterWave />
     </>
   );

@@ -1,27 +1,23 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import "./Perfil.css";
 import { Header } from "../components/Header";
 import FooterWave from "../components/Footers/FooterWave";
 import { Link } from "react-router-dom";
 import Articulo from "../components/Articulo";
-import axios from "axios";
-import UserContext from "../context/UserContext.jsx";
+import useAuth from "../context/useAuth";
+import { getArticulosByUser, getUsuario } from "../services/api";
 
-// Función para formatear la fecha
+// Función para formatear fecha
 function formatDate(fecha) {
   const date = new Date(fecha);
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('es-ES', options);
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return date.toLocaleDateString("es-ES", options);
 }
 
-export function Perfil(props) {
-  const { user } = useContext(UserContext);
+export function Perfil() {
+  const { usuario } = useAuth();
   const [articulos, setArticulos] = useState([]);
-  const [fotoPerfilUrl, setFotoPerfilUrl] = useState(""); // Estado para la URL de la foto de perfil
-
-  if (!user) {
-    return <div>Loading...</div>;
-  }
+  const [fotoPerfilUrl, setFotoPerfilUrl] = useState("");
 
   const obtenerReputacion = (reputacion) => {
     const estrellas = "⭐".repeat(reputacion);
@@ -30,36 +26,39 @@ export function Perfil(props) {
   };
 
   useEffect(() => {
-    const fetchArticulos = async () => {
+    const fetchData = async () => {
+      if (!usuario) return;
+
       try {
-        const response = await axios.get(`http://localhost:3002/usuario/${user.documento}/articulo`);
-        setArticulos(response.data);
+        const [resArticulos, resUsuario] = await Promise.all([
+          getArticulosByUser(usuario.documento),
+          getUsuario(usuario.documento),
+        ]);
+
+        setArticulos(resArticulos.data);
+        setFotoPerfilUrl(resUsuario.data.imagen);
       } catch (error) {
-        console.error("Error fetching articles:", error);
+        console.error("Error al cargar datos del perfil:", error);
       }
     };
 
-    const fetchFotoPerfil = async () => {
-      try {
-        // Obtener el objeto completo del usuario para obtener la URL de la foto de perfil
-        const response = await axios.get(`http://localhost:3002/usuario/${user.documento}`);
-        setFotoPerfilUrl(response.data.imagen); // Guarda la URL de la foto de perfil del usuario
-      } catch (error) {
-        console.error("Error fetching profile photo:", error);
-      }
-    };
+    fetchData();
+  }, [usuario]);
 
-    if (user) {
-      fetchArticulos();
-      fetchFotoPerfil();
-    }
-  }, [user]);
+  if (!usuario) {
+    return <p>Cargando perfil...</p>;
+  }
 
   return (
     <>
       <div className="main-perfil">
-        {/* Aquí se muestra la foto de perfil */}
-        <img className="main-perfil-foto" src={fotoPerfilUrl} alt="Foto de perfil" />
+        {fotoPerfilUrl && (
+          <img
+            className="main-perfil-foto"
+            src={fotoPerfilUrl}
+            alt="Foto de perfil"
+          />
+        )}
         <section className="main-perfil-banner">
           <div className="main-perfil-banner__image">
             <Header />
@@ -68,18 +67,23 @@ export function Perfil(props) {
         <div className="main-perfil-container">
           <section className="main-perfil-data">
             <div className="main-perfil-data-container">
-              <h3>{user.nombre}</h3>
-              <h3>{user.apellido}</h3>
+              <h3>{usuario.nombre}</h3>
+              <h3>{usuario.apellido}</h3>
               <div>
                 <h4>Reputación 📓</h4>
-                <p className="emojis">{obtenerReputacion(user.reputacion)}</p>
+                <p className="emojis">
+                  {obtenerReputacion(usuario.reputacion)}
+                </p>
                 <h4>Sobre mí 😄</h4>
-                <p>{user.descripcion}</p>
+                <p>{usuario.descripcion}</p>
                 <h4>Fecha de unión a SwapDeal 🗓️</h4>
-                <p>{user.nombre} se unió el {formatDate(user.fecha_union)}</p>
+                <p>
+                  {usuario.nombre} se unió el {formatDate(usuario.fecha_union)}
+                </p>
               </div>
             </div>
           </section>
+
           <section className="main-perfil-articulos">
             <div className="main-perfil-articulos-buttons">
               <Link to={"/Perfil/EditarPerfil"}>
@@ -93,10 +97,10 @@ export function Perfil(props) {
                 </button>
               </Link>
             </div>
+
             <div className="main-perfil-articulos-container">
               <div className="cartera-de-inventario">
                 <h3>Inventario</h3>
-                <span className="icono-signo-mas"></span>
               </div>
               <div className="scrollable-content">
                 {articulos.map((articulo) => (

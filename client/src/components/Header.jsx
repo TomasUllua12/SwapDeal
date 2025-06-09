@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-export function Header(props) {
+export function Header() {
   useEffect(() => {
     const toggleBtn = document.querySelector(".toggle_btn");
     const toggleBtnIcon = document.querySelector(".toggle_btn i");
@@ -12,7 +12,7 @@ export function Header(props) {
       dropDownMenu.classList.toggle("open");
       const isOpen = dropDownMenu.classList.contains("open");
 
-      toggleBtnIcon.classList = isOpen
+      toggleBtnIcon.className = isOpen
         ? "fa-solid fa-xmark"
         : "fa-solid fa-bars";
     };
@@ -20,73 +20,60 @@ export function Header(props) {
     toggleBtn.addEventListener("click", handleClick);
 
     return () => {
-      // Limpiar el listener cuando el componente se desmonte
       toggleBtn.removeEventListener("click", handleClick);
     };
   }, []);
 
   return (
-    <>
-      <header className="header-usual">
-        <div className="header-navbar">
-          <div className="header-logo">
-            <Link to={"/"}>
-              <img
-                className="header-logo"
-                src="../../public/assets/icons/LogoynombreSwapDealBlanco.svg"
-                alt="Logo SwapDeal"
-              />
-            </Link>
-          </div>
-          <ul className="header-links">
-            <li>
-              <Link to="/Inicio">
-                <a href="">Inicio</a>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Categorias">
-              <a href="">Categorías</a>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Permutas">
-                <a href="">Permutas</a>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Ayuda">
-                <a href="">Ayuda</a>
-              </Link>
-            </li>
-          </ul>
-          <Link to="/Perfil">
-            <a href="" className="action_btn">
-              Mi perfil
-            </a>
+    <header className="header-usual">
+      <div className="header-navbar">
+        <div className="header-logo">
+          <Link to="/">
+            <img
+              className="header-logo"
+              src="/assets/icons/LogoynombreSwapDealBlanco.svg"
+              alt="Logo SwapDeal"
+            />
           </Link>
-          <div className="toggle_btn">
-            <i class="fa-solid fa-bars"></i>
-          </div>
         </div>
-        <div className="dropdown_menu">
+        <ul className="header-links">
           <li>
-            <a href="">Inicio</a>
+            <Link to="/Inicio">Inicio</Link>
           </li>
           <li>
-            <a href="">Categorías</a>
+            <Link to="/Categorias">Categorías</Link>
           </li>
           <li>
-            <a href="">Permutas</a>
+            <Link to="/Permutas">Permutas</Link>
           </li>
           <li>
-            <a href="">Ayuda</a>
+            <Link to="/Ayuda">Ayuda</Link>
           </li>
-          <a href="" className="action_btn">
-            Mi perfil
-          </a>
+        </ul>
+        <Link to="/Perfil" className="action_btn">
+          Mi perfil
+        </Link>
+        <div className="toggle_btn">
+          <i className="fa-solid fa-bars"></i>
         </div>
-      </header>
-    </>
+      </div>
+      <div className="dropdown_menu">
+        <li>
+          <Link to="/Inicio">Inicio</Link>
+        </li>
+        <li>
+          <Link to="/Categorias">Categorías</Link>
+        </li>
+        <li>
+          <Link to="/Permutas">Permutas</Link>
+        </li>
+        <li>
+          <Link to="/Ayuda">Ayuda</Link>
+        </li>
+        <Link to="/Perfil" className="action_btn">
+          Mi perfil
+        </Link>
+      </div>
+    </header>
   );
 }
